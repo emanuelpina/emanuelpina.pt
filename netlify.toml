@@ -26,3 +26,14 @@
   for = "*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+[[redirects]]
+  from = "https://emanuelpina.netlify.com"
+  to = "https://emanuelpina.pt"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://emanuelpina.ml"
+  to = "https://emanuelpina.pt"
+  status = 301
+  force = true
