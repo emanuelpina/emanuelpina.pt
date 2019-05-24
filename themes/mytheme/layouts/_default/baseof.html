@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    <meta charset="utf-8" />
+    {{ hugo.Generator }}
+    <meta name="theme-color" content="#0A0A0A">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="{{ .Site.Params.author }}" />
+    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
+    {{ $style := resources.Get "css/main.sass" | resources.ExecuteAsTemplate "css/main.sass" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
+    {{ $syntaxcss := resources.Get "css/syntax.css" }}
+    {{ $fontscss := resources.Get "css/fonts.css" }}
+    {{ $bundlecss := slice $syntaxcss $fontscss | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $bundlecss.Permalink }}" integrity="{{ $bundlecss.Data.Integrity }}" />
+    <link rel="shortcut icon" href="{{ .Site.Params.imagescdn }}/v1558565870/favicon.png" />
+    {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+  </head>
+    <body>
+    <div class="container">
+        {{- partial "navbar.html" . -}}
+        <div class="content {{.Type}}">
+        {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </div>
+    </body>
+    {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
+    <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
+    {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+</html>

@@ -1,0 +1,28 @@
+baseURL = "https://emanuelpina.ml/"
+languageCode = "pt-PT"
+title = "Emanuel Pina"
+theme = "mytheme"
+
+enableRobotsTXT = true
+
+pygmentsUseClasses = "true"
+pygmentsCodeFences = "true"
+pygmentsOptions = "linenos=table"
+
+paginatePath= "pagina"
+
+[sitemap]
+    changefreq = "weekly"
+    priority = 0.5
+
+[params]
+  author = "Emanuel Pina"
+  description = "Blog de Emanuel Pina"
+  readmore = "Ler mais..."
+  paginationpath = "pagina"
+  imagescdn = "https://img.emanuelpina.ml"
+
+[permalinks]
+  posts = "/:title/"
+  categories = "/categorias/:title/"
+  tags = "/etiquetas/:title/"

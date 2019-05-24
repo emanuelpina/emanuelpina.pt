@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /directory-not-to-track/
+Sitemap: {{.Site.BaseURL}}sitemap.xml

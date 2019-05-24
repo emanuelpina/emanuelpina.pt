@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="range">
+{{ $paginator := .Paginate (where .Pages "Type" "posts") 5 }}
+{{ range $paginator.Pages }}
+<article class="post">
+    <h2 class="post-title"><a href="{{.Permalink}}">{{.Title}}</a></h2>
+    <span class="post-date">{{.Date.Day}} {{index $.Site.Data.meses (printf "%d" .Date.Month)}} {{.Date.Year}}</span>
+    {{- partial "categories.html" . -}}
+    <section class="post-content">
+      {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagescdn}}/c_scale,q_auto:best,w_900{{.Params.thumbnail}}" alt="{{.Title}}" />{{end}}
+      {{ $parts := split .Content "<!--readmore-->" }}
+      {{ $summary := index $parts 0 }}
+      {{ $summaryHTML := safeHTML $summary }}
+      {{ if eq $summaryHTML .Content }}
+        {{ .Content }}
+      {{ else }}
+        {{ $summaryHTML }}
+        <span class="post-read-more"><a href="{{ .Permalink }}">{{if eq .Params.readmore ""}}{{.Site.Params.readmore}}{{else}}{{.Params.readmore}}{{end}}</a></span>
+      {{ end }}
+    </section>
+</article>
+{{end}}
+{{- partial "pagination.html" . -}}
+</div>
+{{end}}

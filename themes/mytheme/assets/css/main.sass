@@ -1,0 +1,686 @@
+//Reset
+*, :before, :after
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+//Media queries breaks
+$tabletscr: 800px
+$phonescr: 400px
+
+//Colors
+$base: #111111 //Base color
+$links: #E74C3C //Links color
+$hover: #212121 //Hover color
+$grey9: #0A0A0A
+$grey8: #212121
+$grey7: #424242
+$grey6: #616161
+$grey5: #757575
+$grey4: #9E9E9E
+$grey3: #BDBDBD
+$grey2: #E0E0E0
+$grey1: #EEEEEE
+$grey0: #F5F5F5
+
+a
+    color: $links
+    text-decoration: none
+    transition: all 200ms ease-in-out
+    &:hover
+        color: $hover
+
+//Typography
+$phi: 1.61803398875 //Golden Ratio
+
+$fs: 18px //Font size
+$lh: round($fs * $phi) //Line height
+$h1: round($fs * 2.6) //Heading 1 font size
+$h2: round($fs * 2.05) //Heading 2 font size
+$h3: round($fs * 1.6) //Heading 3 font size
+$h4: round($fs * 1.25) //Heading 4 font size
+
+$halflh: round($lh / 2) //Half the size of line height
+
+html
+    font-family: 'Muli', sans-serif
+    font-size: $fs
+    line-height: $lh
+    color: $base
+
+h1, h2, h3, h4
+    font-family: 'Poppins', sans-serif
+    margin-top: round(1.5*$lh)
+    margin-bottom: $halflh
+h1
+    font-size: $h1
+    line-height: round($h1 * $phi)
+h2
+    font-size: $h2
+    line-height: round($h2 * $phi)
+h3
+    font-size: $h3
+    line-height: round($h3 * $phi)
+h4
+    font-size: $h4
+    line-height: round($h4 * $phi)
+
+p
+    margin-bottom: $lh
+
+ul, ol
+    margin-left: 1rem
+    margin-bottom: $lh
+    ul, ol
+        margin-bottom: 0
+
+blockquote
+    padding-left: 1rem
+    border-left: 7px solid #ddd
+    color: #777
+
+code
+    font-family: 'Fira Mono', monospace
+    font-size: 0.8rem
+    background-color: #272822
+    padding: 4px 8px
+    border-radius: 2px
+    color: #fff
+
+.highlight
+    margin-bottom: $lh
+    .chroma
+        border-radius: 2px
+        padding: 2px 4px
+        code
+            padding: 0
+
+hr
+    border: 1px solid #666
+    margin-bottom: $lh
+
+table
+    border-collapse: collapse
+    border: 1px solid #666
+    margin-bottom: $lh
+    th, td
+        border: 1px solid #666
+        padding: 4px 8px
+    td
+        font-size: 0.9rem
+    thead
+        border-bottom: 2px solid #666
+
+sup
+    font-size: 0.6rem
+
+.footnotes
+    font-size: 0.8rem
+    color: #888
+    hr
+        border: 1px solid #888
+        margin-bottom: 0
+    sup
+        font-size: 0
+        &:after
+            font-size: 0.6rem
+            content: "^"
+
+p img
+    width: 100%
+    max-width: 900px
+    display: block
+    margin: 0 auto
+
+.wrap-image-left
+    float: left
+    margin: 10px 20px 0 0
+
+.wrap-image-right
+    float: right
+    margin: 10px 0 0 20px
+
+.image-center
+    max-width: 600px
+    margin: 0 auto
+    margin-bottom: $lh
+    img
+        width: 100%
+
+figure
+    figcaption
+        h4
+            font-size: 0.8rem
+            line-height: round($lh*0.8)
+            margin-bottom: 0
+        p
+            font-size: 0.7rem
+            line-height: round($lh*0.7)
+            margin-bottom: 0
+
+.note, .alert, .box
+    padding: $halflh
+    margin-bottom: $lh
+    border-radius: 2px
+    p:last-child
+        margin-bottom: 0
+.note
+    background-color: #eee
+    border: 1px solid #ddd
+.alert
+    background-color: #ffff99
+    border: 1px solid #e6e68a
+.box
+    background-color: #feeceb
+    border: 1px solid #fcc0bc
+
+
+//Container
+.container
+    display: flex
+    flex-direction: column
+
+//Navbar
+.navbar-wrap
+    z-index: 1
+    position: sticky
+    top: 0
+    background-color: #fff
+    transition: all 400ms ease-in-out
+    .navbar
+        padding: 20px 0
+        max-width: 1000px
+        margin: 0 auto
+        height: 80px
+        transition: all 400ms ease-in-out
+        .mugshot
+            float: left
+            border-radius: 50%
+            width: 40px
+            margin: 0 15px
+            @media screen and (max-width: $phonescr)
+                display: none
+        .site-title
+            float: left
+            font-family: 'Amatic SC', cursive
+            font-size: 2.3rem
+            letter-spacing: 0.2rem
+            line-height: 40px
+            transition: all 200ms ease-in-out
+            @media screen and (max-width: $phonescr)
+                margin-left: 15px
+    a
+        color: $grey7
+        &:hover
+            color: $grey8
+.navbar-menu
+    background-color: $grey1
+.scroll
+    background-color: $grey9
+    a
+        color: $grey3
+        &:hover
+            color: $grey1
+    .navbar
+        padding: 10px 0
+        height: 60px
+    .menu-trigger
+        svg
+            fill: $grey3
+            &:hover
+                fill: $grey1
+    @media screen and (min-width: $tabletscr)
+        .navmenu-child
+            a
+                color: $grey7
+
+//Navmenu
+.menu-trigger
+    display: none
+    float: right
+    margin: 7px 15px 4px 15px
+    cursor: pointer
+    @media screen and (max-width: $tabletscr)
+        display: block
+    .icon-menu
+        width: 20px
+        height: 20px
+    .icon-close
+        width: 22px
+        height: 22px
+    svg
+        fill: $grey7
+        vertical-align: -3px
+        transition: fill 200ms ease-in-out
+        &:hover
+            fill: $grey8
+.navmenu
+    display: block
+    float: right
+    list-style: none
+    margin: 0 15px
+    @media screen and (max-width: $tabletscr)
+        display: none
+        width: 100%
+        margin: $lh 0 0 0
+        padding: 0 10px
+    .navmenu-item
+        display: inline-block
+        position: relative
+        padding: 2px 8px
+        font-size: 1.1rem
+        line-height: 40px
+        @media screen and (max-width: $tabletscr)
+            display: block
+            margin-left: 8px
+            margin-bottom: $lh
+            font-weight: bold
+            &:last-child
+                margin-bottom: 0
+        &:hover .navmenu-child
+            visibility: visible
+            opacity: 1
+        .navmenu-child
+            visibility: hidden
+            opacity: 0
+            list-style: none
+            position: absolute
+            right: 0
+            white-space: nowrap
+            background-color: $grey1
+            margin: 4px 8px 0 0
+            padding: 6px 18px
+            border-radius: 2px
+            font-size: 1rem
+            line-height: round(1.5*$lh)
+            text-transform: capitalize
+            transition: all 400ms ease-in-out
+            a
+                display: block
+                &:hover
+                   color: $links
+            @media screen and (max-width: $tabletscr)
+                visibility: visible
+                opacity: 1
+                position: relative
+                margin: 0
+                font-weight: normal
+                background-color: unset
+.navmenu-show
+    display: block
+
+//Content
+.content
+    padding: round(1.5*$lh) $lh $lh $lh
+    width: 100%
+    max-width: 1000px
+    min-width: 0
+    align-self: center
+
+//Post
+.post
+    margin-bottom: round(3 * $lh)
+    &:last-child
+        margin-bottom: 0
+.post-title
+    line-height: $h1
+    margin: 0
+    a
+        color: $grey8
+        &:hover
+            color: $links
+.post-date
+    font-size: 0.9rem
+    color: $grey5
+    margin-right: 8px
+.post-categories, .post-tags
+    white-space: nowrap
+    a
+        font-size: 0.9rem
+        color: $grey5
+        &:after
+            content: ", "
+            color: $grey5
+        &:last-child:after
+            content: ""
+        &:hover
+            color: $grey7
+    svg
+        fill: $grey5
+        width: 16px
+        height: 16px
+        vertical-align: -2px
+        margin-right: 3px
+        transition: fill 200ms ease-in-out
+    &:hover svg
+        fill: $grey7
+.post-content
+    margin-top: $lh
+    text-align: justify
+    .post-featureimage
+        margin: $halflh 0 $lh 0
+        width: 100%
+        border-radius: 2px
+    .post-read-more
+        font-weight: bold
+
+//List Pages
+.list-title
+    h4
+        margin-top: 0
+        margin-bottom: round(2 * $lh)
+
+.categories, .tags
+    .post
+        margin-bottom: round(2 * $lh)
+    .post-content
+        margin-top: $halflh
+
+//Single Pages
+.posts
+    .post
+        margin-bottom: round(3 * $lh)
+    .post-title
+        text-align: center
+    .post-details
+        width: fit-content
+        margin: 0 auto
+        text-align: center
+    @media screen and (max-width: $tabletscr)
+        .post-categories
+            display: block
+    .post-content
+        margin-top: $halflh
+        .post-tags
+            display: block
+            margin-left: 0
+            margin-bottom: $lh
+            svg
+                display: none
+            a
+                font-size: 0.8rem
+                background-color: $grey2
+                padding: 4px 8px
+                border-radius: 2px
+                color: $grey7
+                &:hover
+                    background-color: $grey1
+                    color: $grey6
+                &:after
+                    content: ""
+
+//Taxonomie Page
+.taxonomie-title
+    display: block
+    margin-bottom: $lh
+    h4
+        margin-top: 0
+.taxonomie-list
+    list-style: none
+    margin-left: 0
+    a
+        font-weight: bold
+        line-height: round(1.5*$lh)
+
+//Contact Page
+.contacto
+    h4
+        margin-top: 0
+    .contact-success
+        display: block
+        margin: round(1.5*$lh) 0
+    .contact-return
+        display: block
+        margin-bottom: round(1.5*$lh)
+        a
+            color: $grey6
+            background-color: $grey1
+            border-radius: 4px
+            padding: 8px 12px
+            &:hover
+                background-color: $grey2
+                color: $grey7
+            svg
+                width: 22px
+                height: 22px
+                vertical-align: -5px
+                margin-right: 6px
+                fill: $grey6
+                transition: fill 200ms ease-in-out
+            &:hover svg
+                fill: $grey7
+.contact-form
+    max-width: 400px
+    input, textarea
+        width: 100%
+        font-family: 'Muli', sans-serif
+        font-size: 1rem
+        line-height: $lh
+        padding: 4px 12px
+        border: 1px solid $grey2
+        border-radius: 2px
+        transition: all 200ms ease-in-out
+        &::placeholder
+            color: $grey3
+        &:hover
+            background-color: $grey1
+            &::placeholder
+                color: $grey4
+        &:focus
+            outline: none
+            background-color: $grey1
+            border-color: $grey1
+            &::placeholder
+                visibility: hidden
+    .contact-form-message
+        height: 200px
+    .contact-form-gdpr
+        font-size: 0.8rem
+        line-height: round(0.8*$lh)
+        .contact-form-gdpr-box
+            width: fit-content
+            vertical-align: -1px
+            margin-right: 4px
+    .contact-form-submit
+        cursor: pointer
+        text-transform: uppercase
+        font-family: 'Muli', sans-serif
+        font-size: 0.9rem
+        letter-spacing: 1px
+        color: #fff
+        border: 0
+        border-radius: 2px
+        background-color: #4caf50
+        padding: 8px 12px
+        transition: all 200ms ease-in-out
+        &:hover
+            opacity: 0.8
+
+//Pagination
+.pagination
+    font-size: 0
+    text-align: center
+    margin-bottom: $halflh
+    div
+        display: inline
+        font-size: 1rem
+        background-color: $grey1
+        svg
+            width: 20px
+            height: 20px
+            vertical-align: -4px
+            fill: $grey6
+            transition: fill 200ms ease-in-out
+        a
+            display: inline
+            background-color: $grey1
+            padding: 8px 12px
+            &:hover
+                background-color: $grey2
+            &:hover svg
+                fill: $grey7
+    .previous-page a, .previous-page-empty
+        border-radius: 4px 0 0 4px
+    .actual-page
+        padding: 8px 12px
+        color: $grey6
+    .next-page a, .next-page-empty
+        border-radius: 0 4px 4px 0
+    .previous-page-empty, .next-page-empty
+        padding: 8px 4px
+
+//Pagination single page
+.pagination-single
+    div
+        display: inline
+        background-color: $grey1
+        svg
+            width: 20px
+            height: 20px
+            vertical-align: -4px
+            fill: $grey6
+            transition: fill 200ms ease-in-out
+        a
+            position: relative
+            display: inline
+            background-color: $grey1
+            padding: 8px 12px
+            border-radius: 4px
+            color: $grey6
+            &:hover
+                background-color: $grey2
+                &:before
+                    content: attr(alt)
+                    position: absolute
+                    bottom: round(1.5*$lh)
+                    left: 0
+                    width: max-content
+                    max-width: 300px
+                    background-color: $grey8
+                    color: $grey2
+                    font-size: 0.9rem
+                    padding: 2px 8px
+                    border-radius: 2px
+            &:hover svg
+                fill: $grey7
+    .next-post
+        float: left
+    .previous-post
+        float: right
+        a:hover:before
+            left: initial
+            right: 0
+
+//Footer
+.footer
+    width: 100%
+    max-width: 1000px
+    margin: 0 auto $halflh auto
+    text-align: center
+//Social links
+.social-links
+    svg
+        width: 22px
+        height: 22px
+        margin: 0 4px
+        vertical-align: middle
+        fill: $grey4
+        transition: fill 200ms ease-in-out
+    .icon-twitter:hover
+        fill: #1da1f2
+    .icon-instagram:hover
+        fill: #5851db
+    .icon-linkedin:hover
+        fill: #0077b5
+    .icon-github:hover
+        fill: #6e5494
+
+//Youtube and Twitch lazyload
+.youtube, .twitch
+    position: relative
+    background: #000
+    border-radius: 2px
+    padding-top: 56.25%
+    margin-bottom: $lh
+    overflow: hidden
+    cursor: pointer
+    img
+        position: absolute
+        width: 100%
+        top: -16.5%
+        opacity: 0.7
+    iframe
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+.youtube
+    .icon-play
+        position: absolute
+        width: 80px
+        top: 50%
+        left: 50%
+        transform: translate3d(-50%, -50%, 0)
+        fill: #f00
+        opacity: 0.8
+        transition: opacity 200ms ease-in-out
+    &:hover .icon-play
+        opacity: 1
+.twitch
+    .play
+        position: absolute
+        width: 120px
+        top: 50%
+        left: 50%
+        transform: translate3d(-50%, -50%, 0)
+    .icon-play
+        fill: #fff
+        opacity: 0.8
+        transition: all 200ms ease-in-out
+    &:hover .icon-play
+        fill: #b9a3e3
+        opacity: 1
+
+//Youtube and Twitch videos aspect ratios
+.ratio21-9
+    padding-top: 42.6%
+    img
+        top: -38.1%
+.ratio2-1
+    padding-top: 50%
+    img
+        top: -25%
+.ratio4-3
+    padding-top: 75%
+    img
+        top: 0
+
+//404 page
+.fourohfour
+    text-align: center
+    span
+        display: block
+    .fourohfour-title
+        font-size: 6rem
+        line-height: round(6*$lh)
+        color: $links
+    .fourohfour-return
+        margin: round(2*$lh) 0
+        a
+            color: $grey6
+            background-color: $grey1
+            border-radius: 4px
+            padding: 8px 12px
+            &:hover
+                background-color: $grey2
+                color: $grey7
+            svg
+                width: 22px
+                height: 22px
+                vertical-align: -5px
+                margin-right: 6px
+                fill: $grey6
+                transition: fill 200ms ease-in-out
+            &:hover svg
+                fill: $grey7

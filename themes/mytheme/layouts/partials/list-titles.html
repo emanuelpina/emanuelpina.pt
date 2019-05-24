@@ -1,0 +1,7 @@
+{{ if eq .Type "categories" }}
+<span class="list-title">Publicações na categoria <h4>{{.Title}}</h4></span>
+{{else if eq .Type "tags"}}
+<span class="list-title">Publicações com a etiqueta <h4>{{.Title}}</h4></span>
+{{else}}
+<span class="list-title"><h4>{{.Title}}</h4></span>
+{{end}}

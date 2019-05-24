@@ -1,0 +1,9 @@
+{{define "main"}}
+<span class="taxonomie-title"><h4>Etiquetas</h4></span>
+<ul class="taxonomie-list">
+{{range $key, $value := .Site.Taxonomies.tags}}
+{{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
+	<li><a href="/categorias/{{$key | urlize}}">{{$key | humanize}}</a> - {{$posts}} {{if gt $posts "1"}} publicações{{else}} publicação{{end}}</li>
+{{end}}
+</ul>
+{{end}}

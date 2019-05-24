@@ -1,0 +1,14 @@
+{{define "main"}}
+<article class="post">
+    <h2 class="post-title">{{.Title}}</h2>
+    <div class="post-details">
+    <span class="post-date">{{.Date.Day}} {{index $.Site.Data.meses (printf "%d" .Date.Month)}} {{.Date.Year}}</span>
+    {{- partial "categories.html" . -}}
+    </div>
+    <section class="post-content">
+        {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagescdn}}/c_scale,q_auto:best,w_900{{.Params.thumbnail}}" alt="{{.Title}}" />{{end}}        {{- partial "tags.html" . -}}
+        {{.Content}}
+    </section>
+</article>
+{{- partial "pagination-single.html" . -}}
+{{end}}
