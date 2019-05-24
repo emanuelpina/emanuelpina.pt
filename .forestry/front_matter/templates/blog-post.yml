@@ -1,0 +1,47 @@
+---
+label: Post
+hide_body: false
+display_field: title
+fields:
+- type: text
+  name: title
+  label: Title
+  config:
+    required: true
+- type: datetime
+  name: date
+  label: Date
+  config:
+    display_utc: true
+    date_format: DD MMM YYYY
+    time_format: HH:mm
+    export_format: YYYY-MM-DDTHH:mm:ssZ
+    required: true
+  default: now
+- type: file
+  name: thumbnail
+  label: Featured Image
+- name: categories
+  type: tag_list
+  default: []
+  label: Categories
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+- name: readmore
+  type: text
+  config:
+    required: false
+  label: Read More Custom Text
+pages:
+- content/posts/a-mercedes-não-dá-trégua.md
+- content/posts/e-vão-três-para-a-mercedes.md
+- content/posts/uma-corrida-que-a-ferrari-quer-esquecer.md
+- content/posts/carregamento-diferido-de-vídeos-do-youtube-no-wordpress.md
+- content/posts/geo-tour-2019.md
+- content/posts/a-formula-1-está-de-volta.md
+- content/posts/behind-the-scenes.md
+- content/posts/sebring-endurance-weekend.md
+- content/posts/bottas-vence-na-australia.md
+- content/posts/hello-world.md
