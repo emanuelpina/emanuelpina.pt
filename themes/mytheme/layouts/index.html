@@ -7,7 +7,7 @@
     <span class="post-date">{{.Date.Day}} {{index $.Site.Data.meses (printf "%d" .Date.Month)}} {{.Date.Year}}</span>
     {{- partial "categories.html" . -}}
     <section class="post-content">
-      {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagescdn}}/c_scale,q_auto:best,w_900{{.Params.thumbnail}}" alt="{{.Title}}" />{{end}}
+      {{if .Params.thumbnail }}<a href="{{.Permalink}}" alt="{{.Title}}"><img class="post-featureimage" src="{{.Site.Params.imagescdn}}/c_scale,q_auto:best,w_900{{.Params.thumbnail}}" alt="{{.Title}}" /></a>{{end}}
       {{ $parts := split .Content "<!--readmore-->" }}
       {{ $summary := index $parts 0 }}
       {{ $summaryHTML := safeHTML $summary }}
