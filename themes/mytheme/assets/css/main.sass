@@ -186,22 +186,25 @@ figure
     position: sticky
     top: 0
     background-color: #fff
+    padding: 20px 0
     transition: all 400ms ease-in-out
     .navbar
-        padding: 20px 0
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
         max-width: 1000px
         margin: 0 auto
-        height: 80px
-        transition: all 400ms ease-in-out
         .mugshot
-            float: left
+            align-self: center
             border-radius: 50%
             width: 40px
+            height: 40px
             margin: 0 15px
             @media screen and (max-width: $phonescr)
                 display: none
         .site-title
-            float: left
+            align-self: center
+            flex-grow: 2
             font-family: 'Amatic SC', cursive
             font-size: 2.3rem
             letter-spacing: 0.2rem
@@ -217,13 +220,11 @@ figure
     background-color: $grey1
 .scroll
     background-color: $grey9
+    padding: 10px 0
     a
         color: $grey3
         &:hover
             color: $grey1
-    .navbar
-        padding: 10px 0
-        height: 60px
     .menu-trigger
         svg
             fill: $grey3
@@ -236,9 +237,9 @@ figure
 
 //Navmenu
 .menu-trigger
+    align-self: center
     display: none
-    float: right
-    margin: 7px 15px 4px 15px
+    margin: 0 15px
     cursor: pointer
     @media screen and (max-width: $tabletscr)
         display: block
@@ -255,8 +256,7 @@ figure
         &:hover
             fill: $grey8
 .navmenu
-    display: block
-    float: right
+    align-self: center
     list-style: none
     margin: 0 15px
     @media screen and (max-width: $tabletscr)
@@ -269,7 +269,6 @@ figure
         position: relative
         padding: 2px 8px
         font-size: 1.1rem
-        line-height: 40px
         @media screen and (max-width: $tabletscr)
             display: block
             margin-left: 8px
