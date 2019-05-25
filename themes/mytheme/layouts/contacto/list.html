@@ -3,11 +3,11 @@
 <div class="contact-form-container">
     <p>Utilize o seguinte formulário para me enviar uma mensagem</p>
     <form class="contact-form" name="Contact" method="POST" data-netlify="true" action="/contacto/sucesso">
-        <p><input class="contact-form-name" type="text" name="name" placeholder="Nome" required /></p>
-        <p><input class="contact-form-email" type="email" name="email" placeholder="Email" required /></p>
-        <p><input class="contact-form-subject" type="text" name="subject" placeholder="Assunto" required /></p>
+        <p><input class="contact-form-name" type="text" name="name" placeholder="Nome" required/></p>
+        <p><input class="contact-form-email" type="email" name="email" placeholder="Email" required/></p>
+        <p><input class="contact-form-subject" type="text" name="subject" placeholder="Assunto" required/></p>
         <p><textarea class="contact-form-message" name="message" placeholder="Mensagem" required></textarea></p>
-        <p><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="GDPR" value="Autorizou" required /><span>Autorizo que os meus dados sejam guardados pelo tempo necessário para resposta à minha solicitação.</span></label></p>
+        <p class="contact-form-gdpr-wrap"><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="gdpr" value="Autorizou" /><span class="slider"></span></label><span class="contact-form-gdpr-label">Autorizo que os meus dados sejam guardados pelo tempo necessário para resposta à minha solicitação.</span></p>
         <p><button class="contact-form-submit" type="submit">Enviar</button></p>
     </form>
 </div>

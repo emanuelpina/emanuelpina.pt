@@ -474,12 +474,51 @@ figure
     .contact-form-message
         height: 200px
     .contact-form-gdpr
+        position: relative
+        display: inline-block
+        width: 28px
+        height: 18px
+        margin-right: 6px
+        vertical-align: middle
+        .contact-form-gdpr-box
+            width: 0
+            height: 0
+            opacity: 0
+            &:checked + .slider
+                background-color: $links
+            &:checked + .slider:before
+                -webkit-transform: translateX(10px)
+                -ms-transform: translateX(10px)
+                transform: translateX(10px)
+        .slider
+            position: absolute
+            cursor: pointer
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            background-color: $grey3
+            transition: all 400ms ease-in-out
+            border-radius: 14px
+        .slider:before
+            position: absolute
+            content: ""
+            height: round(14px)
+            width: round(14px)
+            left: 2px
+            bottom: 2px
+            background-color: white
+            transition: all 400ms ease-in-out
+            border-radius: 50%
+    .contact-form-gdpr-wrap
+        padding: 0 6px
+        transition: all 400ms ease-in-out
+    .unchecked
+        background-color: #ffcdd2
+        border-radius: 2px
+    .contact-form-gdpr-label
         font-size: 0.8rem
         line-height: round(0.8*$lh)
-        .contact-form-gdpr-box
-            width: min-content
-            vertical-align: -1px
-            margin-right: 4px
     .contact-form-submit
         cursor: pointer
         text-transform: uppercase

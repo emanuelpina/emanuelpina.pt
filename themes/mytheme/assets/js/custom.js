@@ -53,3 +53,14 @@ $('.twitch').each(function(){
   	$('[data-embed=' + twitchembed + '] > .play').replaceWith('<iframe src="https://player.twitch.tv/?autoplay=true&video=v' + twitchembed + '&t=0h0m0s" frameborder="0" allowfullscreen="true" scrolling="no" ></iframe>');
   });
 });
+
+// GDPR box checker
+$( '.contact-form' ).submit(function( event ) {
+    if($('.contact-form-gdpr-box').prop('checked') == false){
+        $('.contact-form-gdpr-wrap').addClass('unchecked');
+        event.preventDefault();
+    }
+    $('.contact-form-gdpr-box').on('focus', function(){
+        $('.contact-form-gdpr-wrap').removeClass('unchecked');
+    });
+});
