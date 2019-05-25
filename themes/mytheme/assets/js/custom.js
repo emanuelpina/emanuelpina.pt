@@ -64,3 +64,19 @@ $( '.contact-form' ).submit(function( event ) {
         $('.contact-form-gdpr-wrap').removeClass('unchecked');
     });
 });
+
+// Click on site title to scroll up
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+        if (scroll > 200) {
+            $('.site-title > a').addClass('to_top');
+        } else {
+            $('.site-title > a').removeClass('to_top');
+        }
+});
+$(document).on('click', '.to_top', function(e) {
+    var scroll = $(window).scrollTop(),
+        scrollspeed = (scroll * 0.133); // scroll 7500px per second
+    e.preventDefault();
+    $("html, body").animate({scrollTop: 0}, scrollspeed);
+ });
