@@ -35,6 +35,7 @@ fields:
     required: false
   label: Read More Custom Text
 pages:
+- content/posts/e-vão-5.md
 - content/posts/hello-world.md
 - content/posts/bottas-vence-na-australia.md
 - content/posts/sebring-endurance-weekend.md
