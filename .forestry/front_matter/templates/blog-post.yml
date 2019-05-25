@@ -35,7 +35,6 @@ fields:
     required: false
   label: Read More Custom Text
 pages:
-- content/posts/isto-é-um-teste-não-é-para-publicar.md
 - content/posts/hello-world.md
 - content/posts/bottas-vence-na-australia.md
 - content/posts/sebring-endurance-weekend.md
