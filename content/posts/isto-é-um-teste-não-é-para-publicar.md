@@ -5,6 +5,6 @@ draft = true
 readmore = ""
 tags = []
 thumbnail = ""
-title = "Isto é um teste. Não é para publicar!"
+title = "Isto é um teste."
 
 +++
