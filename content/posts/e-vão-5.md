@@ -1,7 +1,6 @@
 +++
 categories = ["Motores"]
 date = "2019-05-15T12:30:31+01:00"
-draft = true
 readmore = ""
 tags = ["F1"]
 thumbnail = "/v1558782245/2019/Turn1-Spain-2019.jpg"
