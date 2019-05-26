@@ -9,11 +9,11 @@
     <meta name="author" content="{{ .Site.Params.author }}" />
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
     {{ $style := resources.Get "css/main.sass" | resources.ExecuteAsTemplate "css/main.sass" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" />
+    <link rel="stylesheet" href="{{ if not .Site.IsServer}}{{ .Site.Params.assetscdn }}{{ end }}{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
     {{ $syntaxcss := resources.Get "css/syntax.css" }}
     {{ $fontscss := resources.Get "css/fonts.css" }}
     {{ $bundlecss := slice $syntaxcss $fontscss | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $bundlecss.Permalink }}" integrity="{{ $bundlecss.Data.Integrity }}" />
+    <link rel="stylesheet" href="{{ if not .Site.IsServer}}{{ .Site.Params.assetscdn }}{{ end }}{{ $bundlecss.RelPermalink }}" integrity="{{ $bundlecss.Data.Integrity }}" crossorigin="anonymous"/>
     <link rel="shortcut icon" href="{{ .Site.Params.imagescdn }}/v1558565870/favicon.png" />
     {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
     {{ template "_internal/twitter_cards.html" . }}
@@ -29,7 +29,7 @@
     </div>
     </body>
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
-    <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
+    <script src="{{ if not .Site.IsServer}}{{ .Site.Params.assetscdn }}{{ end }}{{ $jquery.RelPermalink }}" integrity="{{ $jquery.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+    <script src="{{ if not .Site.IsServer}}{{ .Site.Params.assetscdn }}{{ end }}{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
 </html>
