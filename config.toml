@@ -20,7 +20,6 @@ paginatePath= "pagina"
   description = "Blog de Emanuel Pina"
   readmore = "Ler mais..."
   paginationpath = "pagina"
-  assetscdn = "https://cdn.emanuelpina.pt"
   imagescdn = "https://img.emanuelpina.pt"
 
 [permalinks]
