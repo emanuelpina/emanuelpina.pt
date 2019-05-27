@@ -33,11 +33,6 @@
   status = 301
   force = true
 [[redirects]]
-  from = "https://emanuelpina.ml"
-  to = "https://emanuelpina.pt"
-  status = 301
-  force = true
-[[redirects]]
   from = "https://emanuelpina.com"
   to = "https://emanuelpina.pt"
   status = 301
