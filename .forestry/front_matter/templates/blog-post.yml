@@ -35,14 +35,15 @@ fields:
     required: false
   label: Read More Custom Text
 pages:
-- content/posts/e-vão-5.md
-- content/posts/hello-world.md
-- content/posts/bottas-vence-na-australia.md
 - content/posts/sebring-endurance-weekend.md
-- content/posts/behind-the-scenes.md
-- content/posts/a-formula-1-está-de-volta.md
-- content/posts/geo-tour-2019.md
-- content/posts/carregamento-diferido-de-vídeos-do-youtube-no-wordpress.md
-- content/posts/uma-corrida-que-a-ferrari-quer-esquecer.md
-- content/posts/e-vão-três-para-a-mercedes.md
+- content/posts/hello-world.md
 - content/posts/a-mercedes-não-dá-trégua.md
+- content/posts/e-vão-três-para-a-mercedes.md
+- content/posts/uma-corrida-que-a-ferrari-quer-esquecer.md
+- content/posts/carregamento-diferido-de-vídeos-do-youtube-no-wordpress.md
+- content/posts/geo-tour-2019.md
+- content/posts/a-formula-1-está-de-volta.md
+- content/posts/behind-the-scenes.md
+- content/posts/bottas-vence-na-australia.md
+- content/posts/e-vão-5.md
+- content/posts/vitória-sofrida-de-lewis-em-dia-de-tributo-a-lauda.md
