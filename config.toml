@@ -1,4 +1,4 @@
-baseURL = "https://comments--emanuelpina.netlify.com"
+baseURL = "https://comments--emanuelpina.netlify.com/"
 languageCode = "pt-PT"
 title = "Emanuel Pina"
 theme = "mytheme"
