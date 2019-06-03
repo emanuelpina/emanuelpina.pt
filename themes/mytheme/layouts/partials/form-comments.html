@@ -7,9 +7,7 @@
       <input type="hidden" name="options[section]" value="{{ .Section }}">
       <input type="hidden" name="options[origin]" value="{{ .Permalink }}">
       <input type="hidden" name="options[parent]" value="{{ .File.ContentBaseName }}">
-      <input type="hidden" name="fields[replyId]" value="">
-      <input type="hidden" name="fields[replyThread]" value="">
-      <input type="hidden" name="fields[replyName]" value="">
+      <input type="hidden" name="fields[reply_to]" value="">
       <input type="address" name="fields[botpot]" placeholder="botpot (do not fill!)" style="display:none">
       {{ if isset .Site.Params.staticman "recaptcha" }}
       <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ .Site.Params.recaptcha.siteKey }}">
@@ -18,7 +16,7 @@
   
       <input name="fields[name]" type="text" placeholder="Nome" required>
       <input name="fields[email]" type="email" placeholder="Email" required>
-      <textarea name="fields[comment]" placeholder="Comentário" required></textarea>
+      <textarea name="fields[body]" placeholder="Comentário" required></textarea>
   
       {{ if .Site.Params.staticman.notifications }}
         <div>

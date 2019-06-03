@@ -83,13 +83,10 @@ $(document).on('click', '.to_top', function(e) {
 
 // Staticman
 $(document).on('click', '.post-comment-reply-button', function() {
-    var replyId = $(this).attr('replyto'),
-        replyThread = $(this).attr('replythread');
-        replyName = $(this).attr('replyname');
-    $('.post-comments-form input[name="fields[replyId]"]').val(replyId);
-    $('.post-comments-form input[name="fields[replyThread]"]').val(replyThread);
-    $('.post-comments-form input[name="fields[replyName]"]').val(replyName);
-    $('.post-comments-form-title').html('Responder a ' + replyName);
+    var replyTo = $(this).attr('replyto'),
+        replyName = $(this).attr('replyto-name');
+    $('.post-comments-form input[name="fields[reply_to]"]').val(replyTo);
+    $('.post-comments-form-title').html('Responder ' + replyName);
     $('html, body').animate({
         scrollTop: $('.post-comments-form-title').offset().top - 85
     }, 200);
@@ -97,13 +94,11 @@ $(document).on('click', '.post-comment-reply-button', function() {
  });
 
  $(document).on('click', '.post-comments-form-cancel', function() {
-    var replyThread = $('.post-comments-form input[name="fields[replyThread]"]').val();
-    $('.post-comments-form input[name="fields[replyId]"]').val('');
-    $('.post-comments-form input[name="fields[replyThread]"]').val('');
-    $('.post-comments-form input[name="fields[replyName]"]').val('');
+    var commentsThread = $('.post-comments-form input[name="fields[reply_to]"]').val();
+    $('.post-comments-form input[name="fields[reply_to]"]').val('');
     $('.post-comments-form-title').html('Deixe um comentário');
     $('html, body').animate({
-        scrollTop: $('#' + replyThread).offset().top - 85
+        scrollTop: $('#' + commentsThread).offset().top - 85
     }, 200);
     $('.post-comments-form-cancel').hide();
  });
