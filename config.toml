@@ -26,3 +26,9 @@ paginatePath= "pagina"
   posts = "/:title/"
   categories = "/categorias/:title/"
   tags = "/etiquetas/:title/"
+
+[params.staticman]
+  username = "emanuelpina"
+  repository = "blog"
+  branch = "comments"
+  notifications = false
