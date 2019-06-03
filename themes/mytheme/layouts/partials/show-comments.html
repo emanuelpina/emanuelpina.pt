@@ -8,6 +8,7 @@
   {{ range $comments }}
     {{ $hasComments = add $hasComments 1 }}
     {{ if not .replyId }}
+      {{ $parentId = .replyThread }}
       {{ $parentName := .name }}
       {{ $hasReplies := 0 }}
     <div id="{{ $parentId }}" class="post-comments-thread">
