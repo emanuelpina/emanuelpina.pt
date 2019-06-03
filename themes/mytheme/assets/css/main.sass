@@ -361,7 +361,9 @@ figure
         width: 100%
         border-radius: 2px
     .post-read-more
+        display: inline-block
         font-weight: bold
+        margin-bottom: $lh
 .post-comments-count
     font-size: 1.1rem
     font-weight: bold
@@ -381,6 +383,9 @@ figure
         margin-bottom: round(2 * $lh)
     .post-content
         margin-top: $halflh
+        .post-read-more
+            display: unset
+            margin-bottom: unset
 
 //Single Pages
 .posts
