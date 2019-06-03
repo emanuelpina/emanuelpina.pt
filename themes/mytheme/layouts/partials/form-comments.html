@@ -1,6 +1,6 @@
 <section class="post-comments-form" id="deixe-um-comentario">
     <h4 class="post-comments-form-title">Deixe um comentário</h4>
-    <form method="POST" action="https://api.staticman.net/v3/entry/github/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/{{ .Site.Params.staticman.branch }}/comments">
+    <form method="POST" action="https://dev.staticman.net/v3/entry/github/{{ .Site.Params.staticman.username }}/{{ .Site.Params.staticman.repository }}/{{ .Site.Params.staticman.branch }}/comments">
       <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
       <input type="hidden" name="options[redirectError]" value="{{ .Permalink }}#comment-error">
       <input type="hidden" name="options[slug]" value="{{ .File.ContentBaseName  }}">
