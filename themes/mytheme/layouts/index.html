@@ -23,14 +23,7 @@
         <span class="post-read-more"><a href="{{ .Permalink }}">{{if eq .Params.readmore ""}}{{.Site.Params.readmore}}{{else}}{{.Params.readmore}}{{end}}</a></span>
       {{ end }}
     </section>
-    {{ if isset $.Site.Data.comments .Section }}
-      {{ $comments := index $.Site.Data.comments (.Section) (.File.ContentBaseName) }}
-      {{ if $comments }}
-      <span class="post-comments-count"><a href="{{ .Permalink }}#comentarios">{{ len $comments  }}{{ if gt (len $comments) 1 }} comentários{{ else }} comentário{{ end }}</a></span>
-      {{ end }}
-    {{ else }}
-    <span class="post-comments-count"><a href="{{ .Permalink }}#deixe-um-comentario">0 Comentários</a></span>
-    {{ end }}
+    {{- partial "count-comments.html" . -}}
 </article>
 {{end}}
 {{- partial "pagination.html" . -}}
