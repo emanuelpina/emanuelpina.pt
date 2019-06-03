@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-baseURL = "https://comments--emanuelpina.netlify.com/"
-=======
 baseURL = "https://emanuelpina.pt/"
->>>>>>> parent of 51d88d5... Update branch url
 languageCode = "pt-PT"
 title = "Emanuel Pina"
 theme = "mytheme"

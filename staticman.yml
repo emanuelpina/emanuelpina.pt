@@ -11,11 +11,7 @@ comments:
 
   # When allowedOrigins is defined, only requests sent from one of the domains
   # listed will be accepted.
-<<<<<<< HEAD
-  allowedOrigins: ["emanuelpina.netlify.com"] # TODO: Add your domains
-=======
   allowedOrigins: ["emanuelpina.pt"] # TODO: Add your domains
->>>>>>> parent of 0ad0d51... Update allowedOrigins
 
   # (*) REQUIRED
   #
@@ -44,11 +40,7 @@ comments:
   moderation: true
 
   # Name of the site. Used in notification emails.
-<<<<<<< HEAD
-  name: "emanuelpina.netlify.com" # TODO: Change this to match your site
-=======
   name: "emanuelpina.pt" # TODO: Change this to match your site
->>>>>>> parent of 0ad0d51... Update allowedOrigins
 
   # (*) REQUIRED
   #
