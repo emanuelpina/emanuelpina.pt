@@ -9,15 +9,11 @@ comments:
   # not here is part of the request, an error will be thrown.
   allowedFields: ["name", "email", "body", "reply_to"]
 
-  # When allowedOrigins is defined, only requests sent from one of the domains
-  # listed will be accepted.
-  allowedOrigins: ["emanuelpina.pt"] # TODO: Add your domains
-
   # (*) REQUIRED
   #
   # Name of the branch being used. Must match the one sent in the URL of the
   # request.
-  branch: "master"
+  branch: "comments"
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
   commitMessage: "Add new comment in {options.section}/{options.slug}"
@@ -54,7 +50,7 @@ comments:
 
   # Names of required files. If any of these isn't in the request or is empty,
   # an error will be thrown.
-  requiredFields: ["name", "body"]
+  requiredFields: ["name", "email", "body"]
 
   # Notification settings. When enabled, users can choose to receive notifications
   # via email when someone adds a reply or a new comment. This requires an account
