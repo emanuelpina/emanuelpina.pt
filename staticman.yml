@@ -11,7 +11,7 @@ comments:
 
   # When allowedOrigins is defined, only requests sent from one of the domains
   # listed will be accepted.
-  allowedOrigins: ["comments--emanuelpina.netlify.com"] # TODO: Add your domains
+  allowedOrigins: ["netlify.com"] # TODO: Add your domains
 
   # (*) REQUIRED
   #
