@@ -12,9 +12,9 @@ fields:
   name: date
   label: Date
   config:
-    display_utc: true
+    display_utc: false
     date_format: DD MMM YYYY
-    time_format: HH:mm ZZ
+    time_format: HH:mm Z
     export_format: YYYY-MM-DDTHH:mm:ssZ
     required: true
   default: now
