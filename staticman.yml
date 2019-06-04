@@ -16,7 +16,7 @@ comments:
   branch: "master"
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
-  commitMessage: "Add new comment in {options.section}/{options.slug}"
+  commitMessage: "Add new comment from {fields.name} in {options.section}/{options.slug}"
 
   # List of fields to be populated automatically by Staticman and included in
   # the data file. Keys are the name of the field. The value can be an object
@@ -36,7 +36,7 @@ comments:
   moderation: true
 
   # Name of the site. Used in notification emails.
-  name: "emanuelpina.pt" # TODO: Change this to match your site
+  name: "emanuelpina.ml" # TODO: Change this to match your site
 
   # (*) REQUIRED
   #
