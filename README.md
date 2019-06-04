@@ -1,6 +1,6 @@
 # emanuel pina . pt  
 
-This is the source of my blog using [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
+This is a development branch of my blog using [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
 
 See it live at [emanuelpina.pt](https://emanuelpina.pt)
 
