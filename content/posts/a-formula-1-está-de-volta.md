@@ -1,6 +1,6 @@
 ---
 title: A Formula 1 está de volta
-date: 2019-03-04T16:46:00.000+00:00
+date: 2019-03-04T16:47:00+00:00
 thumbnail: "/v1558565914/2019/Hamilton-W10-Testes-Barcelona.jpg"
 categories:
 - Motores
