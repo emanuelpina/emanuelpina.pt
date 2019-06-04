@@ -1,10 +1,10 @@
 ---
-categories = ["Motores"]
-date = "2019-04-02T21:19:12+01:00"
-readmore = ""
-tags = ["F1"]
-thumbnail = "/v1558563956/2019/Leclerc-Disappointed-Bahrain-2019.jpg"
-title = "Uma corrida que a Ferrari quer esquecer"
+categories: ["Motores"]
+date: "2019-04-02T21:19:12+01:00"
+readmore: ""
+tags: ["F1"]
+thumbnail: "/v1558563956/2019/Leclerc-Disappointed-Bahrain-2019.jpg"
+title: "Uma corrida que a Ferrari quer esquecer"
 ---
 Depois da uma despontante prestação em Melbourne, a Ferrari arrancou no Barém determinada em mostrar ao Mundo o seu valor. E a verdade é que dominou. Nos treinos de sexta-feira chegou a ser assustadora a facilidade com que faziam voltas por vezes até 1s mais rápidas que os restantes. Na [qualificação](https://youtu.be/QsX9xXq2pqE) os Mercedes lá conseguiram reduzir a sua desvantagem para os 0.3s, mas não me deixaram qualquer esperança que pudessem disputar a vitória na corrida. Ia ser uma dobradinha da Ferrari. Estava escrito!
 

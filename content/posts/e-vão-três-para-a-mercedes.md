@@ -1,10 +1,10 @@
 ---
-categories = ["Motores"]
-date = "2019-04-15T19:50:17+01:00"
-readmore = ""
-tags = ["F1"]
-thumbnail = "/v1558565378/2019/Leclerc-Vettel-China-2019.jpg"
-title = "E vão três para a Mercedes"
+categories: ["Motores"]
+date: "2019-04-15T19:50:17+01:00"
+readmore: ""
+tags: ["F1"]
+thumbnail: "/v1558565378/2019/Leclerc-Vettel-China-2019.jpg"
+title: "E vão três para a Mercedes"
 ---
 Na ressaca de um duro golpe no Barém a Ferrari chegou ao GP da China pressionada a ganhar. Mas infelizmente depressa se percebeu que os problemas de Melbourne, embora com menor impacto, estavam de volta. Mais uma vez a equipa italiana teve dificuldade no acerto do carro que, apesar de ter mais velocidade de ponta e por isso ser o mais rápido no 3º setor, não conseguia superiorizar-se aos Mercedes no miolo do circuito.
 
