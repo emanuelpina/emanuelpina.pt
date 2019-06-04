@@ -1,6 +1,6 @@
 +++
 categories = ["Motores"]
-date = "2019-04-29T19:29:44+01:00"
+date = "2019-04-29T19:30:44+01:00"
 readmore = ""
 tags = ["F1"]
 thumbnail = "/v1558565377/2019/Bottas-Hamilton-Baku-2019.jpg"
