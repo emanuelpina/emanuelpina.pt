@@ -25,6 +25,8 @@ comments:
   generatedFields:
     date:
       type: date
+      options:
+        format: "iso8601"
 
   # The format of the generated data files. Accepted values are "json", "yaml"
   # or "frontmatter"
