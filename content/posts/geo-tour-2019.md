@@ -7,7 +7,6 @@ categories:
 tags:
 - BTT
 readmore: ''
-
 ---
 Depois de em 2018 pouco ter andado de bicicleta, estava decidido a entrar no novo ano em melhor forma e foi com esse espírito que me propus a ajudar a "vassourar" o Geo Tour pelo segundo ano.
 

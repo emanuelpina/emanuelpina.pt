@@ -1,12 +1,11 @@
-+++
+---
 categories = ["Motores"]
 date = "2019-05-28T11:22:50+01:00"
 readmore = ""
 tags = ["F1"]
 thumbnail = "/v1558919842/2019/Hamilton-Verstappen-Monaco-2019.jpg"
 title = "Vitória sofrida de Lewis em dia de tributo a Lauda"
-
-+++
+---
 Na semana do falecimento de Niki Lauda, o tema central do Grande Prémio do Mónaco não podia ser outro que um enorme e sentido tributo ao austríaco. Tricampeão mundial (em 1975 e 77 com a Ferrari e em 84 com a McLaren), Lauda era dono de um génio e personalidade marcantes, famoso pela sua honestidade e frontalidade. Viveu apaixonado pela Formula 1, foi um exemplo para várias gerações de pilotos e teve um papel fundamental no que é hoje o sucesso da equipa Mercedes.
 
 E é sobre este sucesso que quero começar por falar. Depois de 5 títulos de pilotos e construtores seguidos, e com 6 vitórias em 6 possíveis na presente época, é compreensível que exista alguma frustração nos vencidos e antagonizem a Mercedes pelo simples facto de continuar a ganhar. Mas sejamos honestos, a única coisa de que eles são culpados é de serem mais competentes que os outros e de, frequentemente, fazerem parecer isso fácil. Desengane-se quem pense que assim é. Há ali muito trabalho para que corrida após corrida, ano após ano, se mantenham no topo. Foi isso mesmo que o Hamilton sentiu necessidade de dizer quando [analisou a sua volta de qualificação com Anthony Davidson para a Sky](https://streamable.com/mr09y). Parece fácil, mas dá muito trabalho! Os devidos créditos têm que lhes ser dados. Como organização, são a melhor equipa de Formula 1 de que tenho memória.

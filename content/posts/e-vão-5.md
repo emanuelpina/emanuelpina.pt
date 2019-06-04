@@ -1,12 +1,11 @@
-+++
+---
 categories = ["Motores"]
 date = "2019-05-15T12:30:31+01:00"
 readmore = ""
 tags = ["F1"]
 thumbnail = "/v1558782245/2019/Turn1-Spain-2019.jpg"
 title = "E vão 5!"
-
-+++
+---
 A Formula 1 regressou ao circuito de Barcelona, onde a Ferrari se tinha mostrado fortissima nos testes de inverno. Mas a minha crença num cenário semelhante este fim-de-semana era muito ténue, e foi isso mesmo que se confirmou. Com mais ou menos à vontade a Mercedes dominou e saiu de Espanha com a quinta dobradinha consecutiva!
 
 Já a Ferrari parece estar a _andar pra trás_, cada vez menos em posição de atacar a Mercedes e mais à mercê da Red Bull. Prova disso é o terceiro lugar de Verstappen na corrida.

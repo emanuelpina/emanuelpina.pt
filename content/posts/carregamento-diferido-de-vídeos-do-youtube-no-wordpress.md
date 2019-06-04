@@ -8,7 +8,6 @@ tags:
 - Javascript
 - Wordpress
 readmore: Ler tutorial...
-
 ---
 Integrar um vídeo do Youtube numa publicação no Wordpress é habitualmente tão simples quanto selecionar o botão `Adicionar multimédia` e colocar o URL do vídeo.
 

@@ -6,7 +6,6 @@ categories:
 - Desenvolvimento Web
 readmore: ''
 tags: []
-
 ---
 Para começar este _blog_ vou procurar explicar, o melhor que conseguir, os passos da sua construção.
 

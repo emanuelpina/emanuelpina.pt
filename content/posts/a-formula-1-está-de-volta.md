@@ -7,7 +7,6 @@ categories:
 tags:
 - F1
 readmore: ''
-
 ---
 Faltam já menos de duas semanas para a primeira corrida de Formula 1 em 2019, na Austrália, e tudo aponta para mais uma época muito renhida entre Ferrari e Mercedes.
 

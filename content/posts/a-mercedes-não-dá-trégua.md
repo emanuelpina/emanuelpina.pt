@@ -1,12 +1,11 @@
-+++
+---
 categories = ["Motores"]
 date = "2019-04-29T19:30:44+01:00"
 readmore = ""
 tags = ["F1"]
 thumbnail = "/v1558565377/2019/Bottas-Hamilton-Baku-2019.jpg"
 title = "A Mercedes não dá trégua!"
-
-+++
+---
 O Azerbeijão intutala-se como _A Terra do Fogo_ e a Ferrari chegou verdadeiramente em brasa, pressionada a mostrar-se capaz de derrotar os Mercedes.
 
 O circuito pelas ruas de Baku é marcado por uma longissima reta que constitui praticamente todo o 3º setor. É por isso uma pista onde a velocidade de ponta é mais determinante que a aerodinâmica e assim, na teoria, assentava perfeitamente ao SF90.
