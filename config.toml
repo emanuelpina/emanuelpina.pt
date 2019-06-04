@@ -1,4 +1,4 @@
-baseURL = "https://emanuelpina.ml/"
+baseURL = "https://emanuelpina.pt/"
 languageCode = "pt-PT"
 title = "Emanuel Pina"
 theme = "mytheme"
@@ -20,7 +20,7 @@ paginatePath= "pagina"
   description = "Blog de Emanuel Pina"
   readmore = "Ler mais..."
   paginationpath = "pagina"
-  imagescdn = "https://img.emanuelpina.ml"
+  imagescdn = "https://img.emanuelpina.pt"
 
 [permalinks]
   posts = "/:title/"
@@ -29,6 +29,6 @@ paginatePath= "pagina"
 
 [params.staticman]
   username = "emanuelpina"
-  repository = "blogdev"
+  repository = "blog"
   branch = "master"
   notifications = false
