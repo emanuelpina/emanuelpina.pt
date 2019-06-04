@@ -30,5 +30,5 @@ paginatePath= "pagina"
 [params.staticman]
   username = "emanuelpina"
   repository = "blog"
-  branch = "master"
+  branch = "comments"
   notifications = false
