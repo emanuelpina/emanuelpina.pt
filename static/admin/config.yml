@@ -1,0 +1,63 @@
+backend:
+  name: git-gateway
+  branch: netlifycms
+
+publish_mode: editorial_workflow
+
+site_url: https://emanuelpina.pt
+
+logo_url: /admin/logo.png
+
+slug:
+  encoding: "unicode"
+  clean_accents: true
+  sanitize_replacement: "_"
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: emanuelpina
+    api_key: 612286252726967
+
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Post" # Used in the UI
+    folder: "content/posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "date"
+        required: false
+        widget: "datetime"
+        dateFormat: "DD MMM YYYY"
+        timeFormat: "HH:mm Z"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+      - label: "Featured Image"
+        name: "thumbnail"
+        required: false
+        widget: "image"
+        media_library:
+          config:
+            default_transformations:
+              -   - fetch_format: auto
+                    width: 900
+                    quality: auto
+                    crop: fill
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+      - label: "Tags"
+        name: "tags"
+        required: false
+        widget: "list"
+      - label: "Read More Custom Text"
+        name: "readmore"
+        required: false
+        widget: "string"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
