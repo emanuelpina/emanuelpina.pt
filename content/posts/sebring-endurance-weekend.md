@@ -1,14 +1,15 @@
 ---
 title: Sebring Endurance Weekend
-date: 2019-03-11T23:23:12.241+00:00
-thumbnail: "/v1558565915/2019/IMSA-12h-Sebring-2018.jpg"
+date: 2019-03-11T23:23:12.241Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565915/2019/IMSA-12h-Sebring-2018.jpg
 categories:
-- Motores
-- Simulação
+  - Motores
+  - Simulação
 tags:
-- IMSA
-- WEC
-- iRacing
+  - IMSA
+  - WEC
+  - iRacing
 readmore: ''
 ---
 Intitula-se como o local de nascimento das corridas de resistência na América. Bem, isso não sei! Mas que Sebring é um circuito histórico no desporto motorizado é verdade, e no final desta semana recebe de uma assentada duas das maiores competições de resistência atuais. As [1000 milhas de Sebring](https://www.fiawec.com/en/race/show/4600), prova do [FIA World Endurance Championship](https://www.fiawec.com/), e as [12h de Sebring](https://sportscarchampionship.imsa.com/events/2019-mobil-1-twelve-hours-sebring-presented-advance-auto-parts), a contar para o [IMSA SportsCar Championship](https://sportscarchampionship.imsa.com/).
