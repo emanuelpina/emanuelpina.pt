@@ -1,11 +1,12 @@
 ---
 title: A Formula 1 está de volta
-date: 2019-03-04T16:47:00+00:00
-thumbnail: "/v1558565914/2019/Hamilton-W10-Testes-Barcelona.jpg"
+date: 2019-03-04T16:47:00.000Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/Hamilton-W10-Testes-Barcelona.jpg
 categories:
-- Motores
+  - Motores
 tags:
-- F1
+  - F1
 readmore: ''
 ---
 Faltam já menos de duas semanas para a primeira corrida de Formula 1 em 2019, na Austrália, e tudo aponta para mais uma época muito renhida entre Ferrari e Mercedes.
