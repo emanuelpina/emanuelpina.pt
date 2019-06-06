@@ -1,11 +1,12 @@
 ---
 title: Behind the scenes
-date: 2019-02-17T17:43:00.000+00:00
-thumbnail: "/v1558565914/2019/webdevelopment.jpg"
+date: 2019-02-17T17:43:00.000Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/webdevelopment.jpg
 categories:
-- Desenvolvimento Web
-readmore: ''
+  - Desenvolvimento Web
 tags: []
+readmore: ''
 ---
 Para começar este _blog_ vou procurar explicar, o melhor que conseguir, os passos da sua construção.
 
