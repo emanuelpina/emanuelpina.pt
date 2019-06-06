@@ -1,10 +1,13 @@
 ---
-categories: ["Motores"]
-date: "2019-05-15T12:30:31+01:00"
-readmore: ""
-tags: ["F1"]
-thumbnail: "/v1558782245/2019/Turn1-Spain-2019.jpg"
-title: "E vão 5!"
+title: E vão 5!
+date: '2019-05-15T12:30:31+01:00'
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558782245/2019/Turn1-Spain-2019.jpg
+categories:
+  - Motores
+tags:
+  - F1
+readmore: ''
 ---
 A Formula 1 regressou ao circuito de Barcelona, onde a Ferrari se tinha mostrado fortissima nos testes de inverno. Mas a minha crença num cenário semelhante este fim-de-semana era muito ténue, e foi isso mesmo que se confirmou. Com mais ou menos à vontade a Mercedes dominou e saiu de Espanha com a quinta dobradinha consecutiva!
 
