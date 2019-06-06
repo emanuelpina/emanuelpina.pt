@@ -1,15 +1,14 @@
 ---
-date: 2019-06-06T20:06:13+01:00
+title: 'JAMstack, uma nova realidade'
+date: 2019-06-06T19:06:13.000Z
+thumbnail: ''
 categories:
-- Desenvolvimento Web
+  - Desenvolvimento Web
 tags:
-- JAMstack
-- Hugo
-- Netlify
-- Git
-title: JAMstack, uma nova realidade
-thumbnail: "/v1558565915/2019/Uptime-Monitor-HetrixTools.jpg"
+  - JAMstack
+  - Hugo
+  - Netlify
+  - Git
 readmore: ''
-draft: true
-
 ---
+A construção de *websites* teve, como muitas outras vertentes da computação, uma estrondosa evolução.
