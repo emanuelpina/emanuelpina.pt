@@ -6,12 +6,7 @@
     {{- partial "categories.html" . -}}
     </div>
     <section class="post-content">
-        {{if .Params.thumbnail }}
-            <picture>
-                <source srcset='{{ .Site.Params.imagescdn }}/c_scale,q_auto:best,w_900{{ replace (.Params.thumbnail) "jpg" "webp" }}' type="image/webp">
-                <img class="post-featureimage" src="{{ .Site.Params.imagescdn }}/c_scale,q_auto:best,w_900{{ .Params.thumbnail }}" alt="{{ .Title }}">
-            </picture>
-        {{end}}
+        {{if .Params.thumbnail }}<img class="post-featureimage" src="{{ .Params.thumbnail }}" alt="{{ .Title }}">{{end}}
         {{- partial "tags.html" . -}}
         {{.Content}}
     </section>
