@@ -3,6 +3,8 @@ languageCode = "pt-PT"
 title = "Emanuel Pina"
 theme = "mytheme"
 
+metaDataFormat = "yaml"
+
 enableRobotsTXT = true
 
 pygmentsUseClasses = "true"
