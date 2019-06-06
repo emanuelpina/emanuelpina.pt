@@ -1,11 +1,12 @@
 ---
 title: Geo Tour 2019
-date: 2019-03-01T17:32:50.561+00:00
-thumbnail: "/v1558565915/2019/geotour2019.jpg"
+date: 2019-03-01T17:32:50.561Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565915/2019/geotour2019.jpg
 categories:
-- Ciclismo
+  - Ciclismo
 tags:
-- BTT
+  - BTT
 readmore: ''
 ---
 Depois de em 2018 pouco ter andado de bicicleta, estava decidido a entrar no novo ano em melhor forma e foi com esse espírito que me propus a ajudar a "vassourar" o Geo Tour pelo segundo ano.
