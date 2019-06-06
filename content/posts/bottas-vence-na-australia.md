@@ -1,11 +1,12 @@
 ---
 title: Bottas vence na Austrália
-date: 2019-03-26T22:02:00.000+00:00
-thumbnail: "/v1558565914/2019/Bottas-Winner-Australia-2019.jpg"
+date: 2019-03-26T22:02:00.000Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/Bottas-Winner-Australia-2019.jpg
 categories:
-- Motores
+  - Motores
 tags:
-- F1
+  - F1
 readmore: ''
 ---
 Começou em Melbourne, como já é tradição, a nova temporada de Fórmula 1\. Finalmente!
