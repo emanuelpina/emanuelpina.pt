@@ -11,4 +11,4 @@ tags:
   - Git
 readmore: ''
 ---
-A construção de *websites* teve, como muitas outras vertentes da computação, uma estrondosa evolução.
+A construção de _websites_ teve, como muitas outras vertentes da computação, uma estrondosa evolução.
