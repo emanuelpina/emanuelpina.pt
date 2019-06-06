@@ -18,7 +18,7 @@ upload_dir: ''
 public_path: ''
 front_matter_path: ''
 use_front_matter_path: 
-file_template: ":filename:"
+file_template: ":year:/:filename:"
 build:
   preview_command: hugo -D -b $DEPLOY_URL -d public
   publish_command: hugo -d public
