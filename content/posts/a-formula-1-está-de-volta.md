@@ -1,6 +1,6 @@
 ---
 title: A Formula 1 está de volta
-date: 2019-03-04T16:47:00.000Z
+date: '2019-03-04T16:48:00+00:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/Hamilton-W10-Testes-Barcelona.jpg
 categories:
