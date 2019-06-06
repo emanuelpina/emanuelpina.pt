@@ -1,13 +1,13 @@
 ---
-categories:
-- Motores
-date: 2019-04-29T18:29:44+01:00
-readmore: ''
-tags:
-- F1
-thumbnail: "/v1558565377/2019/Bottas-Hamilton-Baku-2019.jpg"
 title: A Mercedes não dá trégua!
-
+date: 2019-04-29T17:29:44.000Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565377/2019/Bottas-Hamilton-Baku-2019.jpg
+categories:
+  - Motores
+tags:
+  - F1
+readmore: ''
 ---
 O Azerbeijão intutala-se como _A Terra do Fogo_ e a Ferrari chegou verdadeiramente em brasa, pressionada a mostrar-se capaz de derrotar os Mercedes.
 
