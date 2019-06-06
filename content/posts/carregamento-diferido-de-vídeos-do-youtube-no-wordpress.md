@@ -1,12 +1,13 @@
 ---
 title: Carregamento diferido de vídeos do Youtube no Wordpress
-date: 2019-03-08T14:45:00.000+00:00
-thumbnail: "/v1558565915/2019/Javascript.jpg"
+date: 2019-03-08T14:45:00.000Z
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565915/2019/Javascript.jpg
 categories:
-- Desenvolvimento Web
+  - Desenvolvimento Web
 tags:
-- Javascript
-- Wordpress
+  - Javascript
+  - Wordpress
 readmore: Ler tutorial...
 ---
 Integrar um vídeo do Youtube numa publicação no Wordpress é habitualmente tão simples quanto selecionar o botão `Adicionar multimédia` e colocar o URL do vídeo.
