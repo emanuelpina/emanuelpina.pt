@@ -1,6 +1,6 @@
 ---
 title: Behind the scenes
-date: 2019-02-17T17:43:00.000Z
+date: '2019-02-17T17:44:00+00:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/webdevelopment.jpg
 categories:
