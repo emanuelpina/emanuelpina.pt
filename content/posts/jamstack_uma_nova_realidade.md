@@ -1,6 +1,8 @@
 ---
 title: 'JAMstack, uma nova realidade'
 date: '2019-06-07T17:06:27+01:00'
+thumbnail: >-
+  https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1559945348/2019/JAMstack.jpg
 categories:
   - Desenvolvimento Web
 tags:
