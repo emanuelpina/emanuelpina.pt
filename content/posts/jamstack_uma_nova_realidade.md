@@ -12,4 +12,4 @@ O desenvolvimento web é tão antigo quanto a internet em si e, tal como esta, t
 
 Se no início os _sites_ consistiam num conjunto básico de páginas estáticas, escritas com algumas das linguagens que ainda hoje se utilizam (HTML, CSS e Javascript), depressa os programadores correram na busca de soluções que permitissem de forma mais eficiente criar e apresentar conteúdo na _web_. Eis que surgem os _Content Management Systems_ (CMS).
 
-O primeiro CMS que utilizei foi o PHPNuke, depois o Joomla e por fim o Wordpress. 
+O primeiro CMS que utilizei foi o PHPNuke, depois o Joomla e por fim o Wordpress. Estas soluções, hoje designadas de monolíticas, têm como carateristica serem ferramentas _"tudo em um"_. Ou seja, integram concomitantemente o _backend_ (paínel de administração que permite gerir o contéudo do _site_) e _frontend_ (o _site_ própriamente dito, aquilo que é apresentado ao utilizador).
