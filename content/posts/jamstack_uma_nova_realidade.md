@@ -21,7 +21,7 @@ Na prática, como funcionam estes CMSs? O desenvolvedor do _site_ no painel de a
 
 Na tentativa de mitigar muitos destes problemas foi proposto um novo conceito, o [JAMstack](https://jamstack.org/). Esta ideia não se debruça sobre a utilização de uma tecnologia, ferramenta ou linguagem de programação em concreto, é sim um novo paradigma, uma nova maneira de construir _websites_ e aplicações que tem como objetivos melhor desempenho, maior segurança, menor custo de dimensionamento e melhor experiência de desenvolvimento.
 
-O que significa? O conceito JAMstack assenta em 3 pilares:
+O que significa isto? O conceito JAMstack assenta em 3 pilares:
 
 + **J**avaScript: qualquer programação dinâmica durante o ciclo de solicitação / resposta é manipulada por JavaScript, sendo executada inteiramente no lado do cliente.
 + **A**PIs: todas as funções do lado do servidor ou ações de bancos de dados são abstraídas em APIs reutilizáveis, acessadas via HTTPS com JavaScript. Seja SaaS, serviços de terceiros ou personalizados.
