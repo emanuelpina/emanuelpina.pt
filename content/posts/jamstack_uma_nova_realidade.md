@@ -27,4 +27,6 @@ O que significa isto? O conceito JAMstack assenta em 3 pilares:
 + **A**PIs: todas as funções do lado do servidor ou ações de bancos de dados são abstraídas em APIs reutilizáveis, acessadas via HTTPS com JavaScript. Seja SaaS, serviços de terceiros ou personalizados;
 + **M**arcação (HTML): Os modelos de marcação devem ser pré-compilados no momento da criação, geralmente utilizando um gerador de sites ou uma ferramenta de criação de aplicativos _web_.
 
-Confuso? Simplificando, o que se pretende é não depender um servidor para gerar as páginas (HTML) _on demand_ (por solicitação) e que a origem do conteúdo possa ser diversificada e reutilizável.
+Confuso? Simplificando, o que se pretende é não depender de um servidor para gerar as páginas (HTML) _on demand_ (por solicitação) e que a origem do conteúdo possa ser diversificada e reutilizável.
+
+Um exemplo prático. O _frontend_ é desenvolvido utilizando um dos muitos geradores de _sites_ estáticos existentes (Hugo, Jekyll, Gatsby...), armazenando o código num repositório Git (no GitHub, GitLab, Bitbucket...) e utilizando um serviço como o Netlify para compilar e publicar o _site_ cada vez que uma alteração ao código é submetida para o repositório. O _backend_ (artigos, páginas, categorias...) é gerido com recurso a um _Headless CMS_ (Strapi, Contentful, Cockpit...) e servido no _website_ através de uma API. Funções dinâmicas, como por exemplo a conversão das datas de publicação dos artigos em diferentes fusos horários ou no formato _timeago_ (publicado há xx dias), são realizadas com rescurso a JavaScript.
