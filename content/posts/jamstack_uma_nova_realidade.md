@@ -23,6 +23,8 @@ Na tentativa de mitigar muitos destes problemas foi proposto um novo conceito, o
 
 O que significa isto? O conceito JAMstack assenta em 3 pilares:
 
-+ **J**avaScript: qualquer programação dinâmica durante o ciclo de solicitação / resposta é manipulada por JavaScript, sendo executada inteiramente no lado do cliente.
-+ **A**PIs: todas as funções do lado do servidor ou ações de bancos de dados são abstraídas em APIs reutilizáveis, acessadas via HTTPS com JavaScript. Seja SaaS, serviços de terceiros ou personalizados.
-+ **M**arcação (HTML): Os modelos de marcação devem ser pré-compilados no momento da criação, geralmente utilizando um gerador de sites ou uma ferramenta de criação para aplicativos da web.
++ **J**avaScript: qualquer programação dinâmica durante o ciclo de solicitação / resposta é manipulada por JavaScript, sendo executada inteiramente no lado do cliente;
++ **A**PIs: todas as funções do lado do servidor ou ações de bancos de dados são abstraídas em APIs reutilizáveis, acessadas via HTTPS com JavaScript. Seja SaaS, serviços de terceiros ou personalizados;
++ **M**arcação (HTML): Os modelos de marcação devem ser pré-compilados no momento da criação, geralmente utilizando um gerador de sites ou uma ferramenta de criação de aplicativos _web_.
+
+Confuso? Simplificando, o que se pretende é não depender um servidor para gerar as páginas (HTML) _on demand_ (por solicitação) e que a origem do conteúdo possa ser diversificada e reutilizável.
