@@ -1,15 +1,12 @@
 ---
 title: 'JAMstack, uma nova realidade'
-date: '2019-06-07T17:06:27+01:00'
+date: '2019-06-08T23:51:00+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1559945348/2019/JAMstack.jpg
 categories:
   - Desenvolvimento Web
 tags:
   - JAMstack
-  - Hugo
-  - Netlify
-  - Git
 ---
 O desenvolvimento web é tão antigo quanto a internet em si e, tal como esta, tem tido uma evolução notável ao longo dos anos. A minha viagem começou à quase 20 anos, quando os meus pais conseguiram finalmente oferecer-me um PC. Ainda se lembram como era a internet nesses anos? Só por curiosidade, relembrem as páginas da [Sapo](https://web.archive.org/web/20000520052944/http://www.sapo.pt/), [Yahoo!](https://web.archive.org/web/20000711065742/http://www.yahoo.com/) e [AOL](https://web.archive.org/web/20000512225759/http://www.aol.com/). Que nostalgia!
 
@@ -33,7 +30,7 @@ Confuso? Simplificando, o que se pretende é não depender de um servidor para g
 
 Um exemplo prático. O _frontend_ é desenvolvido utilizando um dos muitos [geradores de _sites_ estáticos](https://www.staticgen.com/) existentes (Hugo, Jekyll, Gatsby...), armazenando o código num repositório Git (no GitHub, GitLab, Bitbucket...) e utilizando um serviço como o Netlify para compilar e publicar o _site_ cada vez que uma alteração ao código é submetida para o repositório. O _backend_ (artigos, páginas, categorias...) é gerido com recurso a um [_Headless CMS_](https://headlesscms.org/) (Strapi, Contentful, Cockpit...) e servido no _website_ através de uma ou várias APIs. Funções dinâmicas, como por exemplo a conversão das datas de publicação dos artigos em diferentes fusos horários ou no formato _timeago_ (publicado há x dias), são realizadas com recurso a JavaScript.
 
-Como se consegue perceber existem várias opções para cada uma das peças do "puzzle". Este é mais um dos atrativos deste novo conceito. Podem montar a vossa solução de acordo com as vossas necessidades e preferências. Utilizar Jekyll no GitHub com Contentful, Hugo no GitLab com Strapi ou Gatsby no GitHub com Netlify e Strapi... Já perceberam, vocês decidem!
+Como se consegue perceber existem várias opções para cada uma das peças do "puzzle". Este é mais um dos atrativos deste conceito. Podem montar a vossa solução de acordo com as vossas necessidades e preferências. Utilizar Jekyll no GitHub com Contentful, Hugo no GitLab com Strapi ou Gatsby no GitHub com Netlify e Strapi... Já perceberam, vocês decidem!
 
 No meu caso, para concretizar este blog, optei por utilizar [Hugo](https://gohugo.io/) para a criação do _frontend_, armazenando o código num repositório no [GitHub](https://github.com/) e utilizando o [Netlify](https://www.netlify.com/) para _continuous deployment_ e hospegadem. O conteúdo é armazenado no mesmo repositório, no formato [Markdown](https://www.markdownguide.org/) (.md) e gerido com o [Netlify CMS](https://www.netlifycms.org/).
 
