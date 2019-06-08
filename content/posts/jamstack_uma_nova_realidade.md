@@ -1,15 +1,12 @@
 ---
 title: 'JAMstack, uma nova realidade'
-date: '2019-06-07T17:06:27+01:00'
+date: '2019-06-08T23:51:00+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1559945348/2019/JAMstack.jpg
 categories:
   - Desenvolvimento Web
 tags:
   - JAMstack
-  - Hugo
-  - Netlify
-  - Git
 ---
 O desenvolvimento web é tão antigo quanto a internet em si e, tal como esta, tem tido uma evolução notável ao longo dos anos. A minha viagem começou à quase 20 anos, quando os meus pais conseguiram finalmente oferecer-me um PC. Ainda se lembram como era a internet nesses anos? Só por curiosidade, relembrem as páginas da [Sapo](https://web.archive.org/web/20000520052944/http://www.sapo.pt/), [Yahoo!](https://web.archive.org/web/20000711065742/http://www.yahoo.com/) e [AOL](https://web.archive.org/web/20000512225759/http://www.aol.com/). Que nostalgia!
 
