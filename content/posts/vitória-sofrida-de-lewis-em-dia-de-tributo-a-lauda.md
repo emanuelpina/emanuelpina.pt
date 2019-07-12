@@ -1,5 +1,6 @@
 ---
 title: Vitória sofrida de Lewis em dia de tributo a Lauda
+draft: true
 date: '2019-05-28T11:22:50+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558919842/2019/Hamilton-Verstappen-Monaco-2019.jpg
