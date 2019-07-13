@@ -1,5 +1,6 @@
 ---
 title: A Mercedes não dá trégua!
+draft: true
 date: 2019-04-29T17:29:44.000Z
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565377/2019/Bottas-Hamilton-Baku-2019.jpg
