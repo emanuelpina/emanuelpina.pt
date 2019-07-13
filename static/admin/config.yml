@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: master
 
-publish_mode: editorial_workflow
-
 site_url: https://emanuelpina.pt
 
 logo_url: /admin/logo.png
