@@ -1,5 +1,6 @@
 ---
 title: E vão três para a Mercedes
+draft: true
 date: '2019-04-15T19:50:17+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565378/2019/Leclerc-Vettel-China-2019.jpg
