@@ -1,5 +1,6 @@
 ---
 title: Uma corrida que a Ferrari quer esquecer
+draft: true
 date: '2019-04-02T21:19:12+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558563956/2019/Leclerc-Disappointed-Bahrain-2019.jpg
