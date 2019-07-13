@@ -1,5 +1,6 @@
 ---
 title: Bottas vence na Austrália
+draft: true
 date: 2019-03-26T22:02:00.000Z
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558565914/2019/Bottas-Winner-Australia-2019.jpg
