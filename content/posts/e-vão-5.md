@@ -1,5 +1,6 @@
 ---
 title: E vão 5!
+draft: true
 date: '2019-05-15T12:30:31+01:00'
 thumbnail: >-
   https://res.cloudinary.com/emanuelpina/image/upload/c_fill,f_auto,q_auto,w_900/v1558782245/2019/Turn1-Spain-2019.jpg

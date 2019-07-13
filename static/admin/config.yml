@@ -27,6 +27,10 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
       - label: "Date"
         name: "date"
         required: false
