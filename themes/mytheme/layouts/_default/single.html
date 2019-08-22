@@ -10,7 +10,8 @@
         {{- partial "tags.html" . -}}
         {{.Content}}
     </section>
-    {{- partial "commento.html" . -}}
+    {{- partial "show-comments.html" . -}}
+    {{- partial "form-comments.html" . -}}
 </article>
 {{- partial "pagination-single.html" . -}}
 {{end}}
