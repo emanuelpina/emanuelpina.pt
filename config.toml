@@ -1,5 +1,5 @@
 baseURL = "https://emanuelpina.pt/"
-languageCode = "pt-PT"
+languageCode = "en-gb"
 title = "Emanuel Pina"
 theme = "mytheme"
 
@@ -11,7 +11,7 @@ pygmentsUseClasses = "true"
 pygmentsCodeFences = "true"
 pygmentsOptions = "linenos=table"
 
-paginatePath= "pagina"
+paginatePath= "page"
 
 [sitemap]
     changefreq = "weekly"
@@ -21,7 +21,7 @@ paginatePath= "pagina"
   author = "Emanuel Pina"
   description = "Blog de Emanuel Pina"
   readmore = "Read more..."
-  paginationpath = "pagina"
+  paginationpath = "page"
 
 [permalinks]
   posts = "/:title/"
