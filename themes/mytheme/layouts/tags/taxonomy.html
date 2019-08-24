@@ -1,5 +1,5 @@
 {{define "main"}}
-<span class="list-title"><h4>{{.Title}}</h4></span>
+<span class="list-title">Posts with tag <h4>{{.Title}}</h4></span>
 <div class="range">
     {{ range (.Paginator 10).Pages }}
         <article class="post">

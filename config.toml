@@ -20,10 +20,10 @@ paginatePath= "pagina"
 [params]
   author = "Emanuel Pina"
   description = "Blog de Emanuel Pina"
-  readmore = "Ler mais..."
+  readmore = "Read more..."
   paginationpath = "pagina"
 
 [permalinks]
   posts = "/:title/"
-  categories = "/categorias/:title/"
-  tags = "/etiquetas/:title/"
+  categories = "/categories/:title/"
+  tags = "/tags/:title/"
