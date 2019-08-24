@@ -27,19 +27,6 @@
         </div>
         {{- partial "footer.html" . -}}
     </div>
-    {{ if .IsHome }}
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-    {{ end }}
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
     <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
@@ -57,6 +44,5 @@
       fathom('set', 'siteId', 'LSKIB');
       fathom('trackPageview');
     </script>
-    {{ if .IsHome }}<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>{{ end }}
   </body>
 </html>
