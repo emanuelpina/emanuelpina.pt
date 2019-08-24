@@ -1,4 +1,0 @@
----
-Layout: "sucesso"
-Title: "Sucesso"
----
