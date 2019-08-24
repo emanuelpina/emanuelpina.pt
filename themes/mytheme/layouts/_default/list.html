@@ -5,7 +5,7 @@
     {{ range (.Paginator 10).Pages }}
         <article class="post">
             <h3 class="post-title"><a href="{{ .Permalink }}">{{.Title}}</a></h3>
-            <span class="post-date">{{.Date.Day}} {{index $.Site.Data.meses (printf "%d" .Date.Month)}} {{.Date.Year}}</span>
+            <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
             {{ if eq $type "categories" }}
                 {{- partial "tags.html" . -}}
             {{else if eq $type "tags"}}

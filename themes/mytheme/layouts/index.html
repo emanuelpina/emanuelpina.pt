@@ -4,7 +4,7 @@
 {{ range $paginator.Pages }}
 <article class="post">
     <h2 class="post-title"><a href="{{.Permalink}}">{{.Title}}</a></h2>
-    <span class="post-date">{{.Date.Day}} {{index $.Site.Data.meses (printf "%d" .Date.Month)}} {{.Date.Year}}</span>
+    <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
     {{- partial "categories.html" . -}}
     <section class="post-content">
       {{if .Params.thumbnail }}<a href="{{ .Permalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{ .Params.thumbnail }}" alt="{{ .Title }}"></a>{{end}}
