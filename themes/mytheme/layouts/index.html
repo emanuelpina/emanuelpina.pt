@@ -18,6 +18,7 @@
         <span class="post-read-more"><a href="{{ .Permalink }}">{{if eq .Params.readmore ""}}{{.Site.Params.readmore}}{{else}}{{.Params.readmore}}{{end}}</a></span>
       {{ end }}
     </section>
+    <span class="post-comments-count">{{- partial "commento-count.html" . -}}</span>
 </article>
 {{end}}
 {{- partial "pagination.html" . -}}
