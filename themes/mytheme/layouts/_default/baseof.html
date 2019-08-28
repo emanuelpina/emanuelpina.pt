@@ -31,6 +31,7 @@
     <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+    {{ if not .Site.IsServer }}
     <script>
       (function(f, a, t, h, o, m){
         a[h]=a[h]||function(){
@@ -40,9 +41,10 @@
         m=f.getElementsByTagName('script')[0];
         o.async=1; o.src=t; o.id='fathom-script';
         m.parentNode.insertBefore(o,m)
-      })(document, window, '//fathom.emanuelpina.pt/tracker.js', 'fathom');
+      })(document, window, 'https://fathom.emanuelpina.pt/tracker.js', 'fathom');
       fathom('set', 'siteId', 'LSKIB');
       fathom('trackPageview');
     </script>
+    {{ end }}
   </body>
 </html>
