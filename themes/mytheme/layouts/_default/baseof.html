@@ -32,7 +32,7 @@
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
     {{ if .IsHome }}
-    <script src="https://cmmntcdn.mnlpn.xyz/js/count.js"></script>
+    <script src="https://cmmntcdn.emanuelpina.com/js/count.js"></script>
     {{ end }}
     {{ if not .Site.IsServer }}
     <script>
@@ -44,7 +44,7 @@
         m=f.getElementsByTagName('script')[0];
         o.async=1; o.src=t; o.id='fathom-script';
         m.parentNode.insertBefore(o,m)
-      })(document, window, 'https://fathom.mnlpn.xyz/tracker.js', 'fathom');
+      })(document, window, 'https://fathom.emanuelpina.com/tracker.js', 'fathom');
       fathom('set', 'siteId', 'NYBFX');
       fathom('trackPageview');
     </script>
