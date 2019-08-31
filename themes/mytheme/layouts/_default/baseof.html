@@ -14,7 +14,7 @@
     {{ $fontscss := resources.Get "css/fonts.css" }}
     {{ $bundlecss := slice $syntaxcss $fontscss | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $bundlecss.Permalink }}" integrity="{{ $bundlecss.Data.Integrity }}" />
-    <link rel="shortcut icon" href="https://res.cloudinary.com/emanuelpina/image/upload/v1558565870/favicon.png" />
+    <link rel="shortcut icon" href="{{.Site.Params.imagecdn}}v1558565870/favicon.png" />
     {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
