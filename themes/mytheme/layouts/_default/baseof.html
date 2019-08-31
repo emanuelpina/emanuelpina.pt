@@ -31,9 +31,6 @@
     <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
-    {{ if .IsHome }}
-    <script src="https://cmmntcdn.mnlpn.xyz/js/count.js"></script>
-    {{ end }}
     {{ if not .Site.IsServer }}
     <script>
       (function(f, a, t, h, o, m){
