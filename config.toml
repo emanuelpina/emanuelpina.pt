@@ -24,7 +24,7 @@ enableEmoji= true
   description = "Blog de Emanuel Pina"
   readmore = "Read more..."
   paginationpath = "page"
-  imagecdn = "https://img.emanuelpina.com/"
+  imagecdn = "https://img.mnlpn.xyz/"
 
 [permalinks]
   posts = "/:title/"
