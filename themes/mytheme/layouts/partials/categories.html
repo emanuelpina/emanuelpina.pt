@@ -2,7 +2,7 @@
 <span class="post-categories">
     <svg class="icon-categories"><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#categories"></use></svg>
 {{range .Params.categories}}
-    <a href="/categories/{{. | urlize | lower}}">{{.}}</a>
+    <a href="/categories/{{. | urlize | lower}}/">{{.}}</a>
 {{end}}
 </span>
 {{end}}

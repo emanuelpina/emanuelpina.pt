@@ -5,7 +5,7 @@
         <ul class="navmenu-child">
             {{range $key, $value := .Site.Taxonomies.categories}}
             <li class="navmenu-child-item">
-            <a href="/categories/{{$key | urlize}}">{{$key | humanize}}</a>
+            <a href="/categories/{{$key | urlize}}/">{{$key | humanize}}</a>
             </li>
             {{end}}
         </ul>
