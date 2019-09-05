@@ -65,6 +65,13 @@ $( '.contact-form' ).submit(function( event ) {
     });
 });
 
+// Honeypot Field
+$('.contact-form').submit(function(){    
+    if ($('input#contact-form-website').val().length != 0) {
+        return false;
+    } 
+});
+
 // Click on site title to scroll up
 $(window).scroll(function() {    
     var scroll = $(window).scrollTop();
@@ -79,26 +86,4 @@ $(document).on('click', '.to_top', function(e) {
         scrollspeed = (scroll * 0.133); // scroll 7500px per second
     e.preventDefault();
     $("html, body").animate({scrollTop: 0}, scrollspeed);
- });
-
-// Staticman
-$(document).on('click', '.post-comment-reply-button', function() {
-    var replyTo = $(this).attr('replyto'),
-        replyName = $(this).attr('replyto-name');
-    $('.post-comments-form input[name="fields[reply_to]"]').val(replyTo);
-    $('.post-comments-form-title').html('Responder ' + replyName);
-    $('html, body').animate({
-        scrollTop: $('.post-comments-form-title').offset().top - 85
-    }, 200);
-    $('.post-comments-form-cancel').show();
- });
-
- $(document).on('click', '.post-comments-form-cancel', function() {
-    var commentsThread = $('.post-comments-form input[name="fields[reply_to]"]').val();
-    $('.post-comments-form input[name="fields[reply_to]"]').val('');
-    $('.post-comments-form-title').html('Deixe um comentário');
-    $('html, body').animate({
-        scrollTop: $('#' + commentsThread).offset().top - 85
-    }, 200);
-    $('.post-comments-form-cancel').hide();
  });
