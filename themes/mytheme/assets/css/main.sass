@@ -490,51 +490,45 @@ figure
     .contact-form-message
         height: 200px
     .contact-form-gdpr
+        cursor: pointer
+        font-size: 0.8rem
+        line-height: round(0.8*$lh)
+        .contact-form-gdpr-box
+            display: none
+            &:hover + .contact-form-gdpr-icon
+                border-color: $grey3
+            &:checked + .contact-form-gdpr-icon
+                border-color: #4caf50
+            &:checked + .contact-form-gdpr-icon > svg
+                opacity: 1
+                fill: #4caf50
+    .contact-form-gdpr-icon
         position: relative
         display: inline-block
-        width: 28px
-        height: 18px
+        border: 1px solid $grey2
+        border-radius: 4px
+        width: 16px
+        height: 16px
+        vertical-align: -12%
         margin-right: 6px
-        vertical-align: middle
-        .contact-form-gdpr-box
-            width: 0
-            height: 0
+        transition: all 200ms ease-in-out
+        svg
+            position: absolute
             opacity: 0
-            &:checked + .slider
-                background-color: $links
-            &:checked + .slider:before
-                -webkit-transform: translateX(10px)
-                -ms-transform: translateX(10px)
-                transform: translateX(10px)
-        .slider
-            position: absolute
-            cursor: pointer
-            top: 0
-            left: 0
-            right: 0
-            bottom: 0
-            background-color: $grey3
-            transition: all 400ms ease-in-out
-            border-radius: 14px
-        .slider:before
-            position: absolute
-            content: ""
-            height: round(14px)
-            width: round(14px)
-            left: 2px
-            bottom: 2px
-            background-color: white
-            transition: all 400ms ease-in-out
-            border-radius: 50%
+            width: 14px
+            height: 14px
+            transition: all 200ms ease-in-out
     .contact-form-gdpr-wrap
         padding: 0 6px
         transition: all 400ms ease-in-out
     .unchecked
         background-color: #ffcdd2
         border-radius: 2px
-    .contact-form-gdpr-label
-        font-size: 0.8rem
-        line-height: round(0.8*$lh)
+        .contact-form-gdpr-icon
+            border-color: $grey6
+        .contact-form-gdpr-box
+            &:hover + .contact-form-gdpr-icon
+                border-color: $grey6
     .contact-form-submit
         cursor: pointer
         text-transform: uppercase
