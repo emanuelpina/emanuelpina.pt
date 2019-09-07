@@ -60,7 +60,7 @@ $( '.contact-form' ).submit(function( event ) {
         $('.contact-form-gdpr-wrap').addClass('unchecked');
         event.preventDefault();
     }
-    $('.contact-form-gdpr-box').on('focus', function(){
+    $('.contact-form-gdpr').on('click', function(){
         $('.contact-form-gdpr-wrap').removeClass('unchecked');
     });
 });
