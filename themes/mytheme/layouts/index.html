@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="range">
-{{ $paginator := .Paginate (where .Pages "Type" "posts") 5 }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") 5 }}
 {{ range $paginator.Pages }}
 <article class="post">
     <h2 class="post-title"><a href="{{.Permalink}}">{{.Title}}</a></h2>
