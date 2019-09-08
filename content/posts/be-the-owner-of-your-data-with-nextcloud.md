@@ -14,24 +14,24 @@ Nowdays we spend a big part of our lives online and over the years companies hav
 
 Let's face it, Google Search was a revolution, and Gmail, OneDrive, iCloud, Facebook or Youtube are excellent products in terms of usability and features. And best of all they're free, you would say. Are they?
 
-So, how can this companies create and mantain such great products, give them free and be profitable? More than been profitable, all those companies are now in the [top 10 list of the most values companies](https://fxssi.com/top-10-most-valuable-companies-in-the-world/). How?
+So, how can this companies create and mantain such great products, give them free and be profitable? More than been profitable, all those are now in the [top 10 list of the most values companies](https://fxssi.com/top-10-most-valuable-companies-in-the-world/). How?
 
 Because data is nowdays the most profitable resource. The metadata those companies gather of us can be used, for instance, to place ads or shape what we see when we do a search on Google or view our timeline on Facebook or Youtube. In the end, they can condition us to buy a product or to vote in a certain politic. Do you think I'm being dramatic? Take a look at Netflix documentary [*The Great Hack*](https://www.netflix.com/Title/80117542/) about Facebook and Cambridge Analytica actions during Trump and Brexit campaigns.
 
 One question that came up in that documentary and made me think was *"how much of Facebook's profits come from the use of its users' data?"* The answer is all. All of the more than $400 billion dollars that Facebook worth are result of how much of our data they gather and own. That's disturbing.
 
-What can we do? Well, look for alternative products with privacy in mind. But the first step you need to take is acknowledge the importance of protect your data. Why? Because some of the alternatives to those big data companies produtcs don't offer the same features or don't come free, or both. Yes, the truth is that presently privacy can be seen in some way as a "luxury" product.
+What can we do? Well, look for alternative products with privacy in mind. But the first step you need to take is acknowledge the importance of protect your data. Why? Because some of the alternatives to those big companies produtcs don't offer the same features or don't come free, or both. Yes, the truth is that presently privacy can be seen in some way as a "luxury" product.
 
-So far, in pursuit for privacy, what changes did I make? A couple years back I ditched Chrome for [Firefox](https://www.mozilla.org/firefox/new/). Gradually stopped using Facebook or Messenger, and recently adopted [Signal](https://www.signal.org/) for messaging and [Mastodon](https://joinmastodon.org/) as social network. My email, contacts and calendars are now handled by [Tutanota](https://tutanota.com/).
+So far, in pursuit for privacy, what changes did I make? A couple years ago I ditched Chrome for [Firefox](https://www.mozilla.org/firefox/new/). Gradually stopped using Facebook or Messenger, and recently adopted [Signal](https://www.signal.org/) for messaging and [Mastodon](https://joinmastodon.org/) as social network. My email, contacts and calendars are now handled by [Tutanota](https://tutanota.com/).
 
-For now, there was still one big piece missing, cloud storage. I was using OneDrive because of his deep integration with Windows and Office. Looking for alternatives I found good, open source, but expensive ones like [Least Authority S4](https://leastauthority.com/) ($25/month), and more affordable, but closed source ones like [Sync](https://www.sync.com/) and [Tresorit](https://tresorit.com/). Then I decided to take what I already knew on SysAdmin, learn some new things, and give a try on self-hosting [Nextcloud](https://nextcloud.com/). And two weeks later theres no looking back!
+For now there was still one big piece missing, cloud storage. I was using OneDrive because of his deep integration with Windows and Office. Looking for alternatives I found good, open source, but expensive ones like [Least Authority S4](https://leastauthority.com/) ($25/month), and more affordable, but closed source ones like [Sync](https://www.sync.com/) and [Tresorit](https://tresorit.com/). Then I decided to take what I already knew on SysAdmin, learn a couple of new things, and give a try on self-hosting [Nextcloud](https://nextcloud.com/). And two weeks later theres no looking back!
 
-Then, my roadmap so far on self-hosting Nextcloud:
+So far, my roadmap on self-hosting Nextcloud:
 
 - Deploy a Ubuntu server with Nginx, PHP and PostgreSQL installed;
-- Install and tune of Nextcloud;
-- Use Restic to automated backup Nextcloud's files and databases;
-- Use Vultr's API to automated snapshots management.
+- Install and tune Nextcloud;
+- Use Restic to automate backups of Nextcloud files and database;
+- Use Vultr's API to automate snapshots management.
   
 I'm no expert, but I will try detail each one of these steps on upcoming posts.
 
