@@ -26,11 +26,13 @@ So far, in pursuit for privacy, what changes did I make? A couple years ago I di
 
 For now there was still one big piece missing, cloud storage. I was using OneDrive because of his deep integration with Windows and Office. Looking for alternatives I found good, open source, but expensive ones like [Least Authority S4](https://leastauthority.com/) ($25/month), and more affordable, but closed source ones like [Sync](https://www.sync.com/) and [Tresorit](https://tresorit.com/). Then I decided to take what I already knew on SysAdmin, learn a couple of new things, and give a try on self-hosting [Nextcloud](https://nextcloud.com/). And two weeks later theres no looking back!
 
+Nextcloud is a community-driven, free and open source software with all is code published on [GitHub](https://github.com/nextcloud/). It offers [server-side encryption](https://nextcloud.com/encryption/) and end-to-end encryption is [under developed](https://help.nextcloud.com/t/status-end2end-encryption-in-nextcloud/50490). It's mainly a cloud storage, but [groupware capabilities](https://nextcloud.com/groupware/) could be easily added. It meets all my most urgent requirements and have room for grow and improvement.
+
 So far, my roadmap on self-hosting Nextcloud:
 
 - Deploy a Ubuntu server with Nginx, PHP and PostgreSQL installed;
 - Install and tune Nextcloud;
-- Use Restic to automate backups of Nextcloud files and database;
+- Use Restic to automate backups of Nextcloud files and database to Backblaze B2;
 - Use Vultr's API to automate snapshots management.
   
 I'm no expert, but I will try detail each one of these steps on upcoming posts.
