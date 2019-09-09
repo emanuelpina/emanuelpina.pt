@@ -740,7 +740,88 @@ figure
 //Commento
 #commento
     margin-top: round(2*$lh)
+.commento-root
+    .commento-login
+        .commento-login-text
+            transition: all 200ms ease-in-out
+            &:hover
+                color: $links
+    .commento-logged-container
+        .commento-logged-in-as
+            .commento-name
+                font-size: 1rem
+                transition: all 200ms ease-in-out
+                &:hover
+                    color: $base
+        .commento-logout
+            transition: all 200ms ease-in-out
+            &:hover
+                color: $links
+#commento-textarea-root
+    border: 1px solid $grey2
+    border-radius: 2px
+    color: $base
+    transition: all 200ms ease-in-out
+    &::placeholder
+        color: $grey3
+    &:hover
+        background-color: $grey1
+        &::placeholder
+            color: $grey4
+    &:focus
+        background-color: $grey1
+        border-color: $grey1
+        &::placeholder
+            color: $grey1
+#commento-submit-button-root
+    font-size: 0.7rem
+    font-weight: 400
+    letter-spacing: 1px
+    line-height: normal
+    color: #fff
+    border: 0
+    border-radius: 2px
+    margin-right: 0
+    padding: 10px 12px
+    box-shadow: none
+    transition: all 200ms ease-in-out
+    &:hover
+        opacity: 0.8
 #commento-login-box-oauth-buttons-container .commento-button
-    color: #ffffff
+    width: inherit
+    font-size: 0.8rem
+    font-weight: 400
+    letter-spacing: 1px
+    line-height: normal
+    color: #fff
+    padding: 8px 12px
+    box-shadow: none
+    transition: all 200ms ease-in-out
+    &:hover
+        opacity: 0.8
+#commento-login-box
+    .commento-email
+        box-shadow: none
+        border: 1px solid $grey2
+        border-radius: 2px
+        transition: all 200ms ease-in-out
+        .commento-input
+            background: none
+            &::placeholder
+                color: $grey3
+            &:hover::placeholder
+                color: $grey4
+        .commento-email-button
+            font-size: 0.8rem
+            font-weight: 400
+            letter-spacing: 1px
+            background-color: #1971c2
+            color: #fff
+            border-radius: 0 2px 2px 0
+            &:hover
+                opacity: 0.8
+    #commento-login-box-login-link
+        &:hover
+            color: $grey7
 #commento-footer
     display: none
