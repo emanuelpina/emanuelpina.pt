@@ -3,6 +3,7 @@
     <h2 class="post-title">{{.Title}}</h2>
     <div class="post-details">
     <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
+    {{- partial "readingtime.html" . -}}
     {{- partial "categories.html" . -}}
     </div>
     <section class="post-content">
