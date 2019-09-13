@@ -28,19 +28,19 @@
     Cache-Control = "public, max-age=2592000"
 
 [[redirects]]
-  from = "https://emanuelpina.netlify.com"
-  to = "https://emanuelpina.pt"
+  from = "https://emanuelpina.netlify.com/*"
+  to = "https://emanuelpina.pt/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://emanuelpina.com"
-  to = "https://emanuelpina.pt"
+  from = "https://emanuelpina.com/*"
+  to = "https://emanuelpina.pt/:splat"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://www.emanuelpina.com"
-  to = "https://emanuelpina.pt"
+  from = "https://www.emanuelpina.com/*"
+  to = "https://emanuelpina.pt/:splat"
   status = 301
   force = true
