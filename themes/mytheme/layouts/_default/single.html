@@ -3,8 +3,9 @@
     <h2 class="post-title">{{.Title}}</h2>
     <div class="post-details">
     <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
-    {{- partial "readingtime.html" . -}}
     {{- partial "categories.html" . -}}
+    {{- partial "readingtime.html" . -}}
+    {{- partial "edit.html" . -}}
     </div>
     <section class="post-content">
         {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_900/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
