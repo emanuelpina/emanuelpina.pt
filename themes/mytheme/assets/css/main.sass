@@ -335,8 +335,9 @@ figure
     font-size: 0.9rem
     color: $grey5
     margin-right: 10px
-.post-categories, .post-tags, .post-readingtime
+.post-categories, .post-tags, .post-readingtime, .post-edit
     white-space: nowrap
+    margin-right: 10px
     a
         font-size: 0.9rem
         color: $grey5
@@ -356,9 +357,6 @@ figure
         transition: fill 200ms ease-in-out
     &:hover svg
         fill: $grey7
-.post-readingtime
-    svg
-        margin-right: 0
 .post-content
     margin-top: $lh
     text-align: justify
@@ -394,9 +392,6 @@ figure
         width: fit-content
         margin: 0 auto
         text-align: center
-    @media screen and (max-width: $tabletscr)
-        .post-categories
-            display: block
     .post-content
         margin-top: $halflh
         .post-tags
