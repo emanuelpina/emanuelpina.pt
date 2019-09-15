@@ -14,6 +14,8 @@ Nowdays we spend a big part of our lives online and over the years companies hav
 
 Let's face it, Google Search was a revolution, and Gmail, OneDrive, iCloud, Facebook or Youtube are excellent products in terms of usability and features. And best of all they're free, you would say. Are they?
 
+<!--readmore-->
+
 So, how can this companies create and mantain such great products, give them free and be profitable? More than been profitable, all those are now in the [top 10 list of the most values companies](https://fxssi.com/top-10-most-valuable-companies-in-the-world/). How?
 
 Because data is nowdays the most profitable resource. The metadata those companies gather of us can be used, for instance, to place ads or shape what we see when we do a search on Google or view our timeline on Facebook or Youtube. In the end, they can condition us to buy a product or to vote in a certain politic. Do you think I'm being dramatic? Take a look at Netflix documentary [*The Great Hack*](https://www.netflix.com/Title/80117542/) about Facebook and Cambridge Analytica actions during Trump and Brexit campaigns.
