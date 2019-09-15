@@ -1,4 +1,0 @@
----
-Layout: "success"
-Title: "Success"
----
