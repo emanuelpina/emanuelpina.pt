@@ -8,7 +8,7 @@
     {{- partial "edit.html" . -}}
     </div>
     <section class="post-content">
-        {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_1000/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
+        {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
         {{- partial "tags.html" . -}}
         {{.Content}}
     </section>
