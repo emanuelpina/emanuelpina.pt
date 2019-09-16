@@ -44,3 +44,9 @@
   to = "https://emanuelpina.pt/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://e.mnlpn.xyz/*"
+  to = "https://emanuelpina.pt/:splat"
+  status = 301
+  force = true
