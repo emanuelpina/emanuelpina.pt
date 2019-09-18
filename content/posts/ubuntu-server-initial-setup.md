@@ -8,7 +8,7 @@ tags: [Ubuntu, VPS]
 readmore: "Read the tutorial..."
 ---
 
-This is the first in a series of posts that will cover from the deployment of a VPS up to the installation of Nextcloud. These are the kind of posts I will write mostly for future memory, but if they are useful to you, even better. I'm not reinventing the wheel here, these are just the result of the sum of tutorials and lessons I keep learning.
+This is the first in a series of posts that will cover from the deployment of a VPS up to the installation of Nextcloud. These are the kind of posts I will write mostly for future memory, but if they will be useful to you, even better. I'm not reinventing the wheel here, these are just the result of the sum of tutorials and lessons I keep learning.
 
 On this post I will cover the use of SSH to connect to a server, the creation of a new user with administrative privileges and the setup of a firewall.
 
