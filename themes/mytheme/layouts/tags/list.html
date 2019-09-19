@@ -1,5 +1,5 @@
 {{define "main"}}
-<span class="taxonomie-title"><h4>Tags</h4></span>
+<h2 class="taxonomie-title">Tags</h2>
 <ul class="taxonomie-list">
 {{range $key, $value := .Site.Taxonomies.tags}}
 {{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
