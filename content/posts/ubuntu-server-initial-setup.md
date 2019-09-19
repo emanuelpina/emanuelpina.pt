@@ -16,7 +16,7 @@ I'm currently using Ubuntu 18.04, but these instructions are equally valid for o
 
 <!--readmore-->
 
-#### Use SSH
+### Use SSH
 
 While managing our server, we will spend a lot of time working on a terminal session and the safest way to connect to it is through SSH, or secure shell.
 
@@ -26,7 +26,7 @@ So, you will keep your private key to yourself, to use with the SSH client, and 
 
 Moving on, after creating a new Ubuntu server there are a few configuration steps that we should take to increase security and usability.
 
-#### Create a new user
+### Create a new user
 
 To first access our server we need to login as **root**.
 
@@ -42,14 +42,14 @@ On this example we will create a new user called **johndoe**, but you should rep
 
 You'll be asked to set up a password and some information. Enter a strong one and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit `ENTER` in any field you wish to skip.
 
-#### Grant administrative privileges
+### Grant administrative privileges
 
 To grant administrative privileges to the new user we need to add it to **sudo** group:
 ```terminal
 # usermod -aG sudo johndoe
 ```
 
-#### Copy SSH key to a new user
+### Copy SSH key to a new user
 Next we have to copy the public SSH key from **root** user to the new user. This way we can login as both using the same SSH key. The simplest way to copy the files with the correct ownership and permissions is with the `rsync` command. This will copy the **root** user’s `.ssh` directory, preserve the permissions, and modify the file owners, all in a single command:
 ```terminal
 # rsync --archive --chown=johndoe:johndoe ~/.ssh /home/johndoe
@@ -67,7 +67,7 @@ You should be logged in to the new user account without using a password. Rememb
 
 You will be prompted for your regular user password when using `sudo` for the first time each session.
 
-#### Setup a firewall
+### Setup a firewall
 We can use the built-in firewall (UFW) to manage which connections are allowed to/from the server.
 
 Different applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with UFW.
@@ -104,7 +104,7 @@ OpenSSH                    ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 ```
 
-#### What's next?
+### What's next?
 
 Now that we have completed the initial configuration of our server, we can proceed with the installation of a webserver to present it to the vast and incredible world wide web!
 

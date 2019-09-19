@@ -24,7 +24,7 @@ The same reviews pointed out that [Vultr](https://www.vultr.com/products/cloud-c
 
 For now I see no advantage in using DO over Vultr. Hetzner can be back in play if I find myself in need of a little more disk space, or of the extra performance the 2vCPUs and 4GB RAM can offer.
 
-#### Wrapping up
+### Wrapping up
 
 - **Hetzner 1vCPU, 2GB RAM, 20GB Disk at €2.49 ($2.75)**: High CPU utilization and server crashed when loading videos, aparently because of CPU limitations.
 - **Hetzner 2vCPU, 4GB RAM, 40GB Disk at €4.90 ($5.41)**: Worked like a charm.

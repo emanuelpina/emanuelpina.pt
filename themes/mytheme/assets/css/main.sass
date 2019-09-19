@@ -37,10 +37,10 @@ $phi: 1.61803398875 //Golden Ratio
 
 $fs: 18px //Font size
 $lh: round($fs * $phi) //Line height
-$h1: round($fs * 2.6) //Heading 1 font size
-$h2: round($fs * 2.05) //Heading 2 font size
-$h3: round($fs * 1.6) //Heading 3 font size
-$h4: round($fs * 1.25) //Heading 4 font size
+$h1: round($fs * 2.05) //Heading 1 font size
+$h2: round($fs * 1.6) //Heading 2 font size
+$h3: round($fs * 1.25) //Heading 3 font size
+$h4: round($fs * 1.12) //Heading 4 font size
 
 $halflh: round($lh / 2) //Half the size of line height
 
@@ -339,7 +339,7 @@ figure
     &:last-child
         margin-bottom: 0
 .post-title
-    line-height: $h1
+    line-height: round($lh*$phi)
     margin: 0
     a
         color: $grey8
@@ -386,7 +386,7 @@ figure
 
 //List Pages
 .list-title
-    h4
+    h3
         margin-top: 0
         margin-bottom: round(2 * $lh)
 
@@ -432,8 +432,7 @@ figure
 .taxonomie-title
     display: block
     margin-bottom: $lh
-    h4
-        margin-top: 0
+    margin-top: 0
 .taxonomie-list
     list-style: none
     margin-left: 0
@@ -443,7 +442,7 @@ figure
 
 //Contact Page
 .contact
-    h4
+    .contact-form-title
         margin-top: 0
     .contact-form-success
         display: none
