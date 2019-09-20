@@ -89,13 +89,13 @@
          url('/fonts/poppins-v6-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
          url('/fonts/poppins-v6-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* fira-mono-regular - latin_latin-ext */
+/* cascadia-code-regular */
 @font-face {
-    font-family: 'Fira Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Fira Mono Regular'), local('FiraMono-Regular'),
-         url('/fonts/fira-mono-v7-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/fonts/fira-mono-v7-latin_latin-ext-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
+     font-family: 'Cascadia Code';
+     font-style: normal;
+     font-weight: 400;
+     font-display: swap;
+     src: local('Cascadia Code Regular'), local('CascadiaCode-Regular'),
+          url('/fonts/cascadia-code-190916-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url('/fonts/cascadia-code-190916-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
