@@ -15,7 +15,7 @@
         {{ .Content }}
       {{ else }}
         {{ $summaryHTML }}
-        <span class="post-read-more"><a href="{{ .Permalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}{{else}}{{.Params.readmore}}{{end}}</a></span>
+        <span class="post-read-more"><a href="{{ .Permalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>
       {{ end }}
     </section>
 </article>

@@ -22,7 +22,7 @@ enableEmoji= true
   author = "Emanuel Pina"
   description = "Blog de Emanuel Pina"
   thumbnail = "v1568177166/mugshot_xl.jpg"
-  readmore = "Read more..."
+  readmore = "Read more"
   paginationpath = "page"
   imagecdn = "https://img.mnlpn.xyz/"
 
