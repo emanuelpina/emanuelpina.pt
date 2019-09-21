@@ -87,6 +87,7 @@ $(document).on('click', '.to_top', function(e) {
     $("html, body").animate({scrollTop: 0}, scrollspeed);
  });
 
+// Add a link tag to each h3 heading on post-content
 $('.post-content > h3').each(function(){
     var headingid = $(this).attr('id');
     var isTouch = ('ontouchstart' in document.documentElement);
