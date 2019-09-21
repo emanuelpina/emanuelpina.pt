@@ -384,6 +384,22 @@ figure
         width: 100%
         max-width: 800px
         border-radius: 2px
+    .post-heading-link
+        display: none
+        color: $grey4
+        font-size: 1.1rem
+        font-weight: 400
+        line-height: $h3
+        margin-left: 6px
+        svg
+            width: 16px
+            height: 16px
+            fill: $grey4
+            transition: all 200ms ease-in-out
+            &:hover
+                fill: $hover
+    h3:hover > .post-heading-link
+        display: inline
     .post-read-more
         display: inline-block
         font-weight: bold
