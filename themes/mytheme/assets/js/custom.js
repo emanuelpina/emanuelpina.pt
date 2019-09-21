@@ -64,13 +64,6 @@ $( '.contact-form' ).submit(function( event ) {
     });
 });
 
-// Honeypot Field
-$('.contact-form').submit(function(){    
-    if ($('input#contact-form-website').val().length != 0) {
-        return false;
-    } 
-});
-
 // Click on site title to scroll up
 $(window).scroll(function() {    
     var scroll = $(window).scrollTop();

@@ -2,13 +2,13 @@
 <h2 class="contact-form-title">Contact Form</h2>
 <div class="contact-form-container">
     <p>You can use this form to send me a message</p>
-    <form class="contact-form" name="Contact" method="POST" action="https://mnlpn.xyz/form/mailer.php">
-        <p><input class="contact-form-name" type="text" name="name" placeholder="Name" required/></p>
-        <p><input class="contact-form-email" type="email" name="email" placeholder="Email" required/></p>
-        <p><input id="contact-form-website" type="text" name="website" placeholder="Website" /></p>
-        <p><input class="contact-form-subject" type="text" name="subject" placeholder="Subject" required/></p>
-        <p><textarea class="contact-form-message" name="message" placeholder="Message" required></textarea></p>
-        <p class="contact-form-gdpr-wrap"><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="gdpr" value="Authorized" /><span class="contact-form-gdpr-icon"><svg><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#check"></use></svg></span><span class="contact-form-gdpr-label">I authorize my data to be saved by the time needed to answer my request.</span></label></p>
+    <form class="contact-form" name="Contact" method="POST" netlify-honeypot="website" action="#success" netlify>
+        <p><input class="contact-form-name" type="text" name="Name" placeholder="Name" required/></p>
+        <p><input class="contact-form-email" type="email" name="Email" placeholder="Email" required/></p>
+        <p><input class="contact-form-website" type="text" name="Website" placeholder="Website" /></p>
+        <p><input class="contact-form-subject" type="text" name="Subject" placeholder="Subject" required/></p>
+        <p><textarea class="contact-form-message" name="Message" placeholder="Message" required></textarea></p>
+        <p class="contact-form-gdpr-wrap"><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="GDPR" value="Authorized" /><span class="contact-form-gdpr-icon"><svg><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#check"></use></svg></span><span class="contact-form-gdpr-label">I authorize my data to be saved by the time needed to answer my request.</span></label></p>
         <p><button class="contact-form-submit" type="submit">Send</button></p>
     </form>
     <div id="success" class="contact-form-success">
