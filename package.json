@@ -1,0 +1,19 @@
+{
+  "name": "EmanuelPina.pt",
+  "description": "My blog built following the JAMStack philosophy with Hugo and hosted on Netlify.",
+  "keywords": [
+    "jamstack",
+    "hugo",
+    "netlify",
+    "blog"
+  ],
+  "author": "Emanuel Pina",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emanuelpina/blogdev.git"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0"
+  }
+}
