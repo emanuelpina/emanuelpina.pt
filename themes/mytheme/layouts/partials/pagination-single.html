@@ -1,6 +1,6 @@
 {{if or .NextInSection .PrevInSection}}
 <div class="pagination-single">
-    {{if .NextInSection}}{{with .NextInSection}}<div class="next-post"><a href="{{.Permalink}}" alt="{{.Title}}"><svg class="icon-left"><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#left"></use></svg></a></div>{{end}}{{end}}
-    {{if .PrevInSection}}{{with .PrevInSection}}<div class="previous-post"><a href="{{.Permalink}}" alt="{{.Title}}"> <svg class="icon-left"><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#right"></use></svg></a></div>{{end}}{{end}}
+    {{if .NextInSection}}{{with .NextInSection}}<div class="next-post"><a href="{{.Permalink}}" alt="{{.Title}}"><svg class="icon-left"><use xlink:href="#left"></use></svg></a></div>{{end}}{{end}}
+    {{if .PrevInSection}}{{with .PrevInSection}}<div class="previous-post"><a href="{{.Permalink}}" alt="{{.Title}}"> <svg class="icon-left"><use xlink:href="#right"></use></svg></a></div>{{end}}{{end}}
 </div>
 {{end}}

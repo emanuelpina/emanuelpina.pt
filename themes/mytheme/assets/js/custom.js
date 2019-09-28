@@ -1,3 +1,10 @@
+// Embed svg sprite
+$.get("/images/sprite.svg", function(data) {
+    var sprite = new XMLSerializer().serializeToString(data.documentElement);
+    $('body').append(sprite);
+  });
+
+// Add/remove class to navbar on scroll
 $(window).scroll(function() {    
     var scroll = $(window).scrollTop();
     if (scroll > 0) {
@@ -7,20 +14,19 @@ $(window).scroll(function() {
     }
 });
 
+// Menu on small screens
 $(document).on('click', '.menu-trigger', function() {
     $('.navmenu').addClass('navmenu-show');
     $('.navbar-wrap').addClass('navbar-menu');
     $('.menu-trigger').addClass('menu-triggered');
-    $('.menu-triggered > .icon-menu').replaceWith('<svg class="icon-close"><use xlink:href="/images/sprite.svg#close"></use></svg>');
+    $('.menu-triggered > .icon-menu').replaceWith('<svg class="icon-close"><use xlink:href="#close"></use></svg>');
 });
-
 $(document).on('click', '.menu-triggered', function() {
-    $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="/images/sprite.svg#menu"></use></svg>');
+    $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
     $('.menu-trigger').removeClass('menu-triggered');
     $('.navbar-wrap').removeClass('navbar-menu');
     $('.navmenu').removeClass('navmenu-show');
 });
-
 $(document).on('click', '.has-children > a', function(e) {
     var isTouch = ('ontouchstart' in document.documentElement);
     if ( isTouch ){

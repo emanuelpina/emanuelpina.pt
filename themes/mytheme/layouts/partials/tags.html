@@ -1,6 +1,6 @@
 {{if .Params.tags}}
 <span class="post-tags">
-     <svg class="icon-tags"><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#tags"></use></svg>
+     <svg class="icon-tags"><use xlink:href="#tags"></use></svg>
 {{range .Params.tags}}
     <a href="/tags/{{. | urlize | lower}}/">{{.}}</a>
 {{end}}
