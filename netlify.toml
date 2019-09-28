@@ -18,6 +18,7 @@
   for = "*.svg"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+    Access-Control-Allow-Origin = "*"
 [[headers]]
   for = "*.woff"
   [headers.values]
