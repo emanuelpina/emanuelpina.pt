@@ -32,18 +32,7 @@
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
     <script src="{{ $jquery.Permalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
-    
-    <script type="text/javascript">
-      var DIGITAL_CLIMATE_STRIKE_OPTIONS = {
-        language: 'en',
-        disableGoogleAnalytics: true,
-        showCloseButtonOnFullPageWidget: true,
-        fullPageDisplayStartDate: new Date(2019, 8, 27)
-      }
-    </script>
-    <script src="https://assets.digitalclimatestrike.net/widget.js" async></script>
-
+    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script> 
     {{ if not .Site.IsServer }}
     <script>
       (function(f, a, t, h, o, m){
