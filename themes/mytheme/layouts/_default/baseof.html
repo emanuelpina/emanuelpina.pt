@@ -9,11 +9,11 @@
     <meta name="author" content="{{ .Site.Params.author }}" />
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
     {{ $style := resources.Get "css/main.sass" | resources.ExecuteAsTemplate "css/main.sass" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
     {{ $syntaxcss := resources.Get "css/syntax.css" }}
     {{ $fontscss := resources.Get "css/fonts.css" }}
     {{ $bundlecss := slice $syntaxcss $fontscss | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $bundlecss.Permalink }}" />
+    <link rel="stylesheet" href="{{ $bundlecss.RelPermalink }}" />
     <link rel="shortcut icon" href="{{.Site.Params.imagecdn}}v1558565870/favicon.png" />
     {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
     {{ template "_internal/twitter_cards.html" . }}
@@ -30,9 +30,9 @@
         {{- partial "footer.html" . -}}
     </div>
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
-    <script src="{{ $jquery.Permalink }}"></script>
+    <script src="{{ $jquery.RelPermalink }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $js.Permalink }}"></script> 
+    <script src="{{ $js.RelPermalink }}"></script> 
     {{ if not .Site.IsServer }}
     <script>
       (function(f, a, t, h, o, m){
