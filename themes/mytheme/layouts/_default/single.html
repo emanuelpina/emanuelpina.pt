@@ -1,15 +1,15 @@
 {{define "main"}}
 <article class="post">
     <h1 class="post-title">{{.Title}}</h1>
-    <div class="post-details">
+    <header class="post-details">
     <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
     {{- partial "categories.html" . -}}
     {{- partial "readingtime.html" . -}}
     {{- partial "edit.html" . -}}
-    </div>
+    </header>
     <section class="post-content">
         {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
-        {{- partial "tags.html" . -}}
+        <aside>{{- partial "tags.html" . -}}</aside>
         {{.Content}}
     </section>
     {{- partial "commento.html" . -}}
