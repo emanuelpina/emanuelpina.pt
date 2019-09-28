@@ -22,10 +22,12 @@
   for = "*.woff"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+    Access-Control-Allow-Origin = "*"
 [[headers]]
   for = "*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+    Access-Control-Allow-Origin = "*"
 
 [[redirects]]
   from = "https://emanuelpina.netlify.com/*"
