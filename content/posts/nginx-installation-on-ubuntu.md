@@ -300,6 +300,6 @@ And that's it. TLS 1.3 and HSTS are enabled and we got an **A+**!
 
 Now that we have connected our server to the Internet, to run Nextcloud we still need PHP and PostgreSQL. That's what I'll cover in a following post.
 
-{{< note >}}Do you want to contribute and add something to this tutorial? Have you found a typo, grammar or formatting error? Please, feel free to [edit](https://github.com/emanuelpina/blog/blob/master/content/posts/nginx-installation-on-ubuntu.md) this post and open a pull resquest.{{< /note >}}
+{{< call-for-contribution >}}
 
 [^1]: [How to enable TLS 1.3 on Nginx](https://angristan.xyz/how-to-enable-tls-13-nginx/) 

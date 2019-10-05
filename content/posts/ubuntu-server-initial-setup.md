@@ -110,6 +110,6 @@ Now that we have completed the initial configuration of our server, we can proce
 
 In a following post I will cover the installation of Nginx.
 
-{{< note >}}Do you want to contribute and add something to this tutorial? Have you found a typo, grammar or formatting error? Please, feel free to [edit](https://github.com/emanuelpina/blog/blob/master/content/posts/ubuntu-server-initial-setup.md) this post and open a pull resquest.{{< /note >}}
+{{< call-for-contribution >}}
 
 [^1]: [Initial Server Setup with Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
