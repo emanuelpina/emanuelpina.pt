@@ -95,3 +95,20 @@ $('.post-content > h3').each(function(){
         $('.post-heading-link').css("display", "inline");
     }
 });
+
+// Scroll up button with progress indication
+$(window).scroll(function () {
+        var windowScrollTop = $(window).scrollTop();
+        var windowHeight = $(window).outerHeight();
+        var bodyHeight = $(document).height();
+        var opacity = (windowScrollTop / (bodyHeight - windowHeight)) * 4;
+        var stroke = 100 - ((windowScrollTop / (bodyHeight - windowHeight)) * 100);
+        $('.scroll-up').css("opacity", opacity)
+        $('.scroll-up-progress > circle').attr({ 'stroke-dashoffset': stroke });
+});
+$(document).on('click', '.scroll-up', function(e) {
+    var scroll = $(window).scrollTop(),
+        scrollspeed = (scroll * 0.133); // scroll 7500px per second
+    e.preventDefault();
+    $("html, body").animate({scrollTop: 0}, scrollspeed);
+ });

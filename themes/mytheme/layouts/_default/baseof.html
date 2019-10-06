@@ -28,6 +28,7 @@
         {{- block "main" . }}{{- end }}
         </div>
         {{- partial "footer.html" . -}}
+        {{- partial "scroll-up.html" . -}}
     </div>
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
     <script src="{{ $jquery.RelPermalink }}"></script>
