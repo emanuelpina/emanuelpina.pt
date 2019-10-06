@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="range">
+<section class="range">
 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") 5 }}
 {{ range $paginator.Pages }}
 <article class="post">
@@ -21,5 +21,5 @@
 </article>
 {{end}}
 {{- partial "pagination.html" . -}}
-</div>
+</section>
 {{end}}

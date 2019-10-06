@@ -24,9 +24,9 @@
     <body>
     <div class="container">
         {{- partial "navbar.html" . -}}
-        <div class="content {{.Type}}">
+        <main class="content {{.Type}}">
         {{- block "main" . }}{{- end }}
-        </div>
+        </main>
         {{- partial "footer.html" . -}}
         {{- partial "scroll-up.html" . -}}
     </div>
