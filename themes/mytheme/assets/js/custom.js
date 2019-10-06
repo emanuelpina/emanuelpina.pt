@@ -98,13 +98,17 @@ $('.post-content > h3').each(function(){
 
 // Scroll up button with progress indication
 $(window).scroll(function () {
-        var windowScrollTop = $(window).scrollTop();
-        var windowHeight = $(window).outerHeight();
-        var bodyHeight = $(document).height();
-        var opacity = (windowScrollTop / (bodyHeight - windowHeight)) * 4;
-        var stroke = 100 - ((windowScrollTop / (bodyHeight - windowHeight)) * 100);
-        $('.scroll-up').css("opacity", opacity)
-        $('.scroll-up-progress > circle').attr({ 'stroke-dashoffset': stroke });
+        var windowScrollTop = $(window).scrollTop(),
+            windowHeight = $(window).outerHeight(),
+            bodyHeight = $(document).height(),
+            trigger = windowHeight * 2, // the page content is at least twice the size of the window
+            opacity = (windowScrollTop / (bodyHeight - windowHeight)) * 4,
+            stroke = 100 - ((windowScrollTop / (bodyHeight - windowHeight)) * 100);
+        console.log(windowHeight, bodyHeight, trigger);
+        if (bodyHeight > trigger) {
+            $('.scroll-up').css("opacity", opacity)
+            $('.scroll-up-progress > circle').attr({ 'stroke-dashoffset': stroke });
+        }
 });
 $(document).on('click', '.scroll-up', function(e) {
     var scroll = $(window).scrollTop(),
