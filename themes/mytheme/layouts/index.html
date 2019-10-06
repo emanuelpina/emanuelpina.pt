@@ -3,11 +3,11 @@
 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") 5 }}
 {{ range $paginator.Pages }}
 <article class="post">
-    <h1 class="post-title"><a href="{{.Permalink}}">{{.Title}}</a></h1>
+    <h1 class="post-title"><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
     <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
     {{- partial "categories.html" . -}}
     <section class="post-content">
-      {{if .Params.thumbnail }}<a href="{{ .Permalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}"></a>{{end}}
+      {{if .Params.thumbnail }}<a href="{{ .RelPermalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}"></a>{{end}}
       {{ $parts := split .Content "<!--readmore-->" }}
       {{ $summary := index $parts 0 }}
       {{ $summaryHTML := safeHTML $summary }}
@@ -15,7 +15,7 @@
         {{ .Content }}
       {{ else }}
         {{ $summaryHTML }}
-        <span class="post-read-more"><a href="{{ .Permalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>
+        <span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>
       {{ end }}
     </section>
 </article>
