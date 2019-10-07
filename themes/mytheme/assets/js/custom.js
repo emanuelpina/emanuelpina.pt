@@ -38,7 +38,7 @@ $(document).on('click', '.has-children > a', function(e) {
 $(window).on('resize', function(){
     var windowWidth = $(window).outerWidth();
         tabletscr = 800; // Media queries: screen trigger width
-    if ( windowWidth > tabletscr ){
+    if ($('body').hasClass('noscroll') && (windowWidth > tabletscr)){
         $('.navmenu').removeClass('navmenu-show');
         $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
         $('.menu-trigger').removeClass('menu-triggered');
