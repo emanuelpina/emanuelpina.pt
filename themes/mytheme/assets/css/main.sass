@@ -278,54 +278,56 @@ figure
             fill: $grey8
 .navmenu
     align-self: center
-    list-style: none
-    margin: 0 15px
     @media screen and (max-width: $tabletscr)
         display: none
         width: 100%
-        margin: $lh 0 0 0
-        padding: 0 10px
-    .navmenu-item
-        display: inline-block
-        position: relative
-        padding: 2px 8px
-        font-size: 1.1rem
+    .navmenu-list
+        list-style: none
+        margin: 0 15px
         @media screen and (max-width: $tabletscr)
-            display: block
-            margin-left: 8px
-            margin-bottom: $lh
-            font-weight: bold
-            &:last-child
-                margin-bottom: 0
-        &:hover .navmenu-child
-            visibility: visible
-            opacity: 1
-        .navmenu-child
-            visibility: hidden
-            opacity: 0
-            list-style: none
-            position: absolute
-            right: 0
-            white-space: nowrap
-            background-color: $grey1
-            margin: 4px 8px 0 0
-            padding: 6px 18px
-            border-radius: 2px
-            font-size: 1rem
-            line-height: round(1.5*$lh)
-            text-transform: capitalize
-            transition: all 400ms ease-in-out
-            a
-                display: block
-                &:hover
-                   color: $links
+            margin: $lh 0 0 0
+            padding: 0 10px
+        .navmenu-item
+            display: inline-block
+            position: relative
+            padding: 2px 8px
+            font-size: 1.1rem
             @media screen and (max-width: $tabletscr)
+                display: block
+                margin-left: 8px
+                margin-bottom: $lh
+                font-weight: bold
+                &:last-child
+                    margin-bottom: 0
+            &:hover .navmenu-child
                 visibility: visible
                 opacity: 1
-                position: relative
-                margin: 0
-                font-weight: normal
-                background-color: unset
+            .navmenu-child
+                visibility: hidden
+                opacity: 0
+                list-style: none
+                position: absolute
+                right: 0
+                white-space: nowrap
+                background-color: $grey1
+                margin: 4px 8px 0 0
+                padding: 6px 18px
+                border-radius: 2px
+                font-size: 1rem
+                line-height: round(1.5*$lh)
+                text-transform: capitalize
+                transition: all 400ms ease-in-out
+                a
+                    display: block
+                    &:hover
+                        color: $links
+                @media screen and (max-width: $tabletscr)
+                    visibility: visible
+                    opacity: 1
+                    position: relative
+                    margin: 0
+                    font-weight: normal
+                    background-color: unset
 .navmenu-show
     display: block
 

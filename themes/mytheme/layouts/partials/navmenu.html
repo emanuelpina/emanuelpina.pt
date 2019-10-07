@@ -1,13 +1,15 @@
 <div class="menu-trigger"><svg class="icon-menu"><use xlink:href="#menu"></use></svg></div>
-<ul class="navmenu">
-    <li class="navmenu-item"><a href="/contact/" alt="Contact">Contact</a></li>
-    <li class="navmenu-item has-children"><a href="/categories/" alt="Categorias">Categories</a>
-        <ul class="navmenu-child">
-            {{range $key, $value := .Site.Taxonomies.categories}}
-            <li class="navmenu-child-item">
-            <a href="/categories/{{$key | urlize}}/">{{$key | humanize}}</a>
-            </li>
-            {{end}}
-        </ul>
-    </li>
-</ul>
+<nav class="navmenu">
+    <ul class="navmenu-list">
+        <li class="navmenu-item"><a href="/contact/" alt="Contact">Contact</a></li>
+        <li class="navmenu-item has-children"><a href="/categories/" alt="Categorias">Categories</a>
+            <ul class="navmenu-child">
+                {{range $key, $value := .Site.Taxonomies.categories}}
+                <li class="navmenu-child-item">
+                <a href="/categories/{{$key | urlize}}/">{{$key | humanize}}</a>
+                </li>
+                {{end}}
+            </ul>
+        </li>
+    </ul>
+</nav>
