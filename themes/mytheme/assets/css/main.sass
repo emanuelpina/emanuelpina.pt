@@ -349,41 +349,42 @@ figure
         color: $grey8
         &:hover
             color: $links
-.post-date, .post-readingtime
-    font-size: 0.9rem
-    color: $grey5
-    margin-right: 10px
-.post-categories, .post-tags, .post-readingtime, .post-edit
-    white-space: nowrap
-    margin-right: 10px
-    a
+.post-details
+    .post-date, .post-readingtime
         font-size: 0.9rem
         color: $grey5
-        &:after
-            content: ", "
+        margin-right: 10px
+    .post-categories, .post-tags, .post-readingtime, .post-edit
+        white-space: nowrap
+        margin-right: 10px
+        a
+            font-size: 0.9rem
             color: $grey5
-        &:last-child:after
-            content: ""
-        &:hover
-            color: $grey7
-    svg
-        fill: $grey5
-        width: 16px
-        height: 16px
-        vertical-align: -2px
-        margin-right: 4px
-        transition: fill 200ms ease-in-out
-    &:hover svg
-        fill: $grey7
+            &:after
+                content: ", "
+                color: $grey5
+            &:last-child:after
+                content: ""
+            &:hover
+                color: $grey7
+        svg
+            fill: $grey5
+            width: 16px
+            height: 16px
+            vertical-align: -2px
+            margin-right: 4px
+            transition: fill 200ms ease-in-out
+        &:hover svg
+            fill: $grey7
+    .post-featureimage
+            display: block
+            margin: $lh auto
+            width: 100%
+            max-width: 800px
+            border-radius: 2px
 .post-content
     margin-top: $lh
     text-align: justify
-    .post-featureimage
-        display: block
-        margin: $halflh auto $lh auto
-        width: 100%
-        max-width: 800px
-        border-radius: 2px
     .post-heading-link
         display: none
         color: $grey4
@@ -428,12 +429,13 @@ figure
         width: fit-content
         margin: 0 auto
         text-align: center
-    .post-content
-        margin-top: $halflh
+        .post-featureimage
+            margin-top: $halflh
         .post-tags
             display: block
             margin-left: 0
             margin-bottom: $lh
+            text-align: left
             svg
                 display: none
             a
@@ -447,6 +449,8 @@ figure
                     color: $grey6
                 &:after
                     content: ""
+    .post-content
+        margin-top: $halflh
 
 //Taxonomie Page
 .taxonomie-title
