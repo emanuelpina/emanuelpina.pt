@@ -7,11 +7,11 @@
         {{- partial "readingtime.html" . -}}
         {{- partial "edit.html" . -}}
         {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
-        <aside>{{- partial "tags.html" . -}}</aside>
+        {{- partial "tags.html" . -}}
     </header>
-    <section class="post-content">
+    <div class="post-content">
         {{.Content}}
-    </section>
+    </div>
     {{- partial "commento.html" . -}}
 </article>
 {{- partial "pagination-single.html" . -}}

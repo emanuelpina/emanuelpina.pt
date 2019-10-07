@@ -8,10 +8,10 @@
                 <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
                 {{- partial "tags.html" . -}}
             </header>
-            <section class="post-content">
+            <div class="post-content">
                 {{.Summary}}
                 {{ if .Truncated }}<span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>{{end}}
-            </section>
+            </div>
         </article>
     {{end}}
     {{- partial "pagination.html" . -}}
