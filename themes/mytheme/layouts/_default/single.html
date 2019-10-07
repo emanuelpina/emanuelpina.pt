@@ -2,16 +2,16 @@
 <article class="post">
     <h1 class="post-title">{{.Title}}</h1>
     <header class="post-details">
-    <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
-    {{- partial "categories.html" . -}}
-    {{- partial "readingtime.html" . -}}
-    {{- partial "edit.html" . -}}
-    </header>
-    <section class="post-content">
+        <span class="post-date">{{.Date.Format "Jan 2, 2006"}}</span>
+        {{- partial "categories.html" . -}}
+        {{- partial "readingtime.html" . -}}
+        {{- partial "edit.html" . -}}
         {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
-        <aside>{{- partial "tags.html" . -}}</aside>
+        {{- partial "tags.html" . -}}
+    </header>
+    <div class="post-content">
         {{.Content}}
-    </section>
+    </div>
     {{- partial "commento.html" . -}}
 </article>
 {{- partial "pagination-single.html" . -}}

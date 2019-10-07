@@ -1,7 +1,7 @@
 {{if gt .Paginator.TotalPages 1}}
 <div class="pagination">
-    {{if .Paginator.HasPrev}}<div class="previous-page"><a href="{{.Permalink}}{{.Site.Params.paginationpath}}/{{sub .Paginator.PageNumber 1}}"><svg class="icon-left"><use xlink:href="#left"></use></svg></a></div>{{else}}<div class="previous-page-empty"></div>{{end}}
+    {{if .Paginator.HasPrev}}<div class="previous-page"><a href="{{.RelPermalink}}{{.Site.Params.paginationpath}}/{{sub .Paginator.PageNumber 1}}"><svg class="icon-left"><use xlink:href="#left"></use></svg></a></div>{{else}}<div class="previous-page-empty"></div>{{end}}
     <div class="actual-page">{{.Paginator.PageNumber}} / {{.Paginator.TotalPages}}</div>
-    {{if .Paginator.HasNext}}<div class="next-page"><a href="{{.Permalink}}{{.Site.Params.paginationpath}}/{{add .Paginator.PageNumber 1}}"><svg class="icon-right"><use xlink:href="#right"></use></svg></a></div>{{else}}<div class="next-page-empty"></div>{{end}}
+    {{if .Paginator.HasNext}}<div class="next-page"><a href="{{.RelPermalink}}{{.Site.Params.paginationpath}}/{{add .Paginator.PageNumber 1}}"><svg class="icon-right"><use xlink:href="#right"></use></svg></a></div>{{else}}<div class="next-page-empty"></div>{{end}}
 </div>
 {{end}}
