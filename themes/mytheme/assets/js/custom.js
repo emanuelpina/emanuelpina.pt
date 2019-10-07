@@ -16,6 +16,7 @@ $(window).scroll(function() {
 
 // Menu on small screens
 $(document).on('click', '.menu-trigger', function() {
+    $('body').addClass('noscroll');
     $('.navmenu').addClass('navmenu-show');
     $('.navbar-wrap').addClass('navbar-menu');
     $('.menu-trigger').addClass('menu-triggered');
@@ -26,11 +27,23 @@ $(document).on('click', '.menu-triggered', function() {
     $('.menu-trigger').removeClass('menu-triggered');
     $('.navbar-wrap').removeClass('navbar-menu');
     $('.navmenu').removeClass('navmenu-show');
+    $('body').removeClass('noscroll');
 });
 $(document).on('click', '.has-children > a', function(e) {
     var isTouch = ('ontouchstart' in document.documentElement);
     if ( isTouch ){
         e.preventDefault();
+    }
+});
+$(window).on('resize', function(){
+    var windowWidth = $(window).outerWidth();
+        tabletscr = 800; // Media queries: screen trigger width
+    if ( windowWidth > tabletscr ){
+        $('.navmenu').removeClass('navmenu-show');
+        $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
+        $('.menu-trigger').removeClass('menu-triggered');
+        $('.navbar-wrap').removeClass('navbar-menu');
+        $('body').removeClass('noscroll');
     }
 });
 

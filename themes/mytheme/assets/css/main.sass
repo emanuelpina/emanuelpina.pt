@@ -208,7 +208,7 @@ figure
     top: 0
     background-color: #fff
     padding: 20px 0
-    transition: all 400ms ease-in-out
+    transition: all 400ms ease-in-out, height 0ms
     .navbar
         display: flex
         flex-wrap: wrap
@@ -238,7 +238,9 @@ figure
         &:hover
             color: $grey8
 .navbar-menu
+    height: 100vh
     background-color: $grey1
+    overflow: auto
 .scroll
     background-color: $grey9
     padding: 10px 0
@@ -276,6 +278,10 @@ figure
         transition: fill 200ms ease-in-out
         &:hover
             fill: $grey8
+.menu-triggered
+    position: sticky
+    top: 6px
+    z-index: 2
 .navmenu
     align-self: center
     @media screen and (max-width: $tabletscr)
@@ -330,6 +336,10 @@ figure
                     background-color: unset
 .navmenu-show
     display: block
+    height: min-content
+    overflow: auto
+.noscroll
+    overflow: hidden
 
 //Content
 .content
