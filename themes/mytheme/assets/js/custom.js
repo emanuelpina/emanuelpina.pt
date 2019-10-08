@@ -32,8 +32,10 @@ $(document).on('click', '.menu-triggered', function() {
     $('body').removeClass('noscroll');
 });
 $(document).on('click', '.has-children > a', function(e) {
-    var isTouch = ('ontouchstart' in document.documentElement);
-    if ( isTouch ){
+    var isTouch = ('ontouchstart' in document.documentElement),
+        windowWidth = $(window).outerWidth(),
+        tabletscr = 800; // Media queries: screen trigger width
+    if ((windowWidth > tabletscr) && isTouch){
         e.preventDefault();
     }
 });
