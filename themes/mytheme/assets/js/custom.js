@@ -16,7 +16,9 @@ $(window).scroll(function() {
 
 // Menu on small screens
 $(document).on('click', '.menu-trigger', function() {
+    $('body').addClass('noscroll');
     $('.navmenu').addClass('navmenu-show');
+    $('.navbar-wrap').addClass('scroll');
     $('.navbar-wrap').addClass('navbar-menu');
     $('.menu-trigger').addClass('menu-triggered');
     $('.menu-triggered > .icon-menu').replaceWith('<svg class="icon-close"><use xlink:href="#close"></use></svg>');
@@ -25,13 +27,32 @@ $(document).on('click', '.menu-triggered', function() {
     $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
     $('.menu-trigger').removeClass('menu-triggered');
     $('.navbar-wrap').removeClass('navbar-menu');
+    $('.navbar-wrap').removeClass('scroll');
     $('.navmenu').removeClass('navmenu-show');
+    $('body').removeClass('noscroll');
 });
 $(document).on('click', '.has-children > a', function(e) {
-    var isTouch = ('ontouchstart' in document.documentElement);
-    if ( isTouch ){
+    var isTouch = ('ontouchstart' in document.documentElement),
+        windowWidth = $(window).outerWidth(),
+        tabletscr = 800; // Media queries: screen trigger width
+    if ((windowWidth > tabletscr) && isTouch){
         e.preventDefault();
     }
+});
+$(window).on('resize', function(){
+    var windowWidth = $(window).outerWidth();
+        tabletscr = 800, // Media queries: screen trigger width
+        scroll = $(window).scrollTop();
+    if ($('body').hasClass('noscroll') && (windowWidth > tabletscr)){
+        $('.navmenu').removeClass('navmenu-show');
+        $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
+        $('.menu-trigger').removeClass('menu-triggered');
+        $('.navbar-wrap').removeClass('navbar-menu');
+        $('body').removeClass('noscroll');
+        if (scroll == 0) {
+            $('.navbar-wrap').removeClass('scroll');
+        }
+    }    
 });
 
 // Lazyload and responsive Youtube videos
