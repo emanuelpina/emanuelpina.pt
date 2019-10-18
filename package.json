@@ -1,5 +1,5 @@
 {
-  "name": "EmanuelPina.pt",
+  "name": "emanuelpina.pt",
   "description": "My blog built following the JAMStack philosophy with Hugo and hosted on Netlify.",
   "keywords": [
     "jamstack",
@@ -14,6 +14,7 @@
     "url": "https://github.com/emanuelpina/blog.git"
   },
   "dependencies": {
-    "@sendgrid/mail": "^6.4.0"
+    "@sendgrid/mail": "^6.4.0",
+    "nl2br": "^0.0.3"
   }
 }
