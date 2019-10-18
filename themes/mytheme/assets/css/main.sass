@@ -496,6 +496,8 @@ figure
             display: block
 .contact-form
     max-width: 400px
+    p:nth-child(5)
+        margin-bottom: 0
     input, textarea
         width: 100%
         font-family: 'Muli', sans-serif
@@ -520,6 +522,12 @@ figure
         display: none
     .contact-form-message
         height: 200px
+    .contact-form-pgp-key
+        font-size: 0.7rem
+        padding: 0 3px
+        margin-bottom: round(0.7*$lh)
+        a
+            font-size: 0.6rem
     .contact-form-gdpr
         cursor: pointer
         font-size: 0.8rem
@@ -679,6 +687,11 @@ figure
         fill: #5851db
     .icon-github:hover
         fill: #6e5494
+    .icon-keybase
+        width: 20px
+        height: 20px
+        &:hover
+            fill: #33a0ff
 
 //Youtube and Twitch lazyload
 .youtube, .twitch
