@@ -496,8 +496,6 @@ figure
             display: block
 .contact-form
     max-width: 400px
-    p:nth-child(5)
-        margin-bottom: 0
     input, textarea
         width: 100%
         font-family: 'Muli', sans-serif
@@ -520,8 +518,10 @@ figure
                 visibility: hidden
     .contact-form-website
         display: none
-    .contact-form-message
-        height: 200px
+    .contact-form-message-wrap
+        margin-bottom: 0
+        .contact-form-message
+            height: 200px
     .contact-form-pgp-key
         font-size: 0.7rem
         padding: 0 3px
