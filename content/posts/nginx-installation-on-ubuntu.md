@@ -106,7 +106,7 @@ Add the following HTML to the file:
 Save and close the file when you are finished.
 
 In order for Nginx to serve this content, we need to create a _server block_ with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one. We will name it **emanuelpina.ml** but you can name it whatever you like:
-```terimnal
+```plain
 # sudo nano /etc/nginx/sites-available/emanuelpina.ml
 ```
 
@@ -129,7 +129,7 @@ server {
 Notice that we’ve updated the **root** configuration to our site directory, and the **server_name** to our domain name.
 
 Next, let’s enable the site by creating a link from this file to the `sites-enabled` directory, which Nginx reads from during startup:
-```terimnal
+```plain
 # sudo ln -s /etc/nginx/sites-available/emanuelpina.ml /etc/nginx/sites-enabled/
 ```
 
