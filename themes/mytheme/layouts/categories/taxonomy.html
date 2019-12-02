@@ -1,7 +1,7 @@
 {{define "main"}}
 <span class="list-title">Posts in category <h3>{{.Title}}</h3></span>
 <section class="range">
-    {{ range (.Paginator 10).Pages }}
+    {{range (.Paginator 10).Pages}}
         <article class="post">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
             <header class="post-details">
@@ -9,8 +9,8 @@
                 {{- partial "tags.html" . -}}
             </header>
             <div class="post-content">
-                {{.Summary}}
-                {{ if .Truncated }}<span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>{{end}}
+                {{.Summary | plainify}}
+                {{if .Truncated}}<span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>{{end}}
             </div>
         </article>
     {{end}}

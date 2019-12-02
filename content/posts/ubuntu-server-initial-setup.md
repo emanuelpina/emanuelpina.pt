@@ -6,6 +6,7 @@ thumbnail: v1568845837/2019/data-center-ubuntu.jpg
 categories: [SysAdmin]
 tags: [Ubuntu, VPS]
 readmore: "Read the tutorial"
+summarize: true
 ---
 
 This is the first in a series of posts that will cover from the deployment of a VPS up to the installation of Nextcloud. These are the kind of posts I will write mostly for future memory, but if they will be useful to you, even better. I'm not reinventing the wheel here, these are just the result of the sum of tutorials and lessons I keep learning.
@@ -14,7 +15,7 @@ On this post I will cover the use of SSH to connect to a server, the creation of
 
 I'm currently using Ubuntu 18.04, but these instructions are equally valid for other Ubuntu versions.
 
-<!--readmore-->
+<!--more-->
 
 ### Use SSH
 
@@ -36,7 +37,7 @@ So, our first step is to set up an alternative user account with a reduced scope
 
 On this example we will create a new user called **johndoe**, but you should replace it with a username of your choice:
 
-```terminal
+```plain
 # adduser johndoe
 ```
 
@@ -45,23 +46,23 @@ You'll be asked to set up a password and some information. Enter a strong one an
 ### Grant administrative privileges
 
 To grant administrative privileges to the new user we need to add it to **sudo** group:
-```terminal
+```plain
 # usermod -aG sudo johndoe
 ```
 
 ### Copy SSH key to a new user
 Next we have to copy the public SSH key from **root** user to the new user. This way we can login as both using the same SSH key. The simplest way to copy the files with the correct ownership and permissions is with the `rsync` command. This will copy the **root** user’s `.ssh` directory, preserve the permissions, and modify the file owners, all in a single command:
-```terminal
+```plain
 # rsync --archive --chown=johndoe:johndoe ~/.ssh /home/johndoe
 ```
 
 Now we can login with our new user account typping:
-```terminal
+```plain
 # sudo -i -u johndoe
 ```
 
 You should be logged in to the new user account without using a password. Remember, if you need to run a command with administrative privileges, type `sudo` before it like this:
-```terminal
+```plain
 # sudo command_to_run
 ```
 
@@ -73,29 +74,29 @@ We can use the built-in firewall (UFW) to manage which connections are allowed t
 Different applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with UFW.
 
 You can see this by typing:
-```terminal
+```plain
 # sudo ufw app list
 ```
-```terminal
+```plain
 Available applications:
   OpenSSH
 ```
 
 We need to make sure that the firewall allows SSH connections so that we can log back in next time. We can allow these connections by typing:
-```terminal
+```plain
 # sudo ufw allow OpenSSH
 ```
 
 Afterwards, we can enable the firewall by typing:
-```terminal
+```plain
 # sudo ufw enable
 ```
 Type `y` and press ENTER to proceed. You can see that SSH connections are still allowed by typing:
 
-```terminal
+```plain
 # sudo ufw status
 ```
-```terminal
+```plain
 Status: active
 
 To                         Action      From
