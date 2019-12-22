@@ -19,7 +19,7 @@ I’m currently using Ubuntu 18.04, but these instructions are equally valid for
 
 ### Why PostgreSQL
 
-PostgreSQL isn't the obivous choice to use with Nextcloud. In fact, the officially recommended database management system by is MySQL or MariaDB.[^1]
+PostgreSQL isn't the obvious choice to use with Nextcloud. In fact, the officially recommended database management system by Nextcloud is MySQL or MariaDB.[^1]
 
 I choosed PostgreSQL mainly because I planned to run other applications, in the same server, that are only compatible with it. My goal was to have a simple as possible setup, avoiding run multiple database systems simultaneously.
 
@@ -45,7 +45,7 @@ To learn the basics about using PostgreSQL you can start by reading [this tutori
 
 ### Tune PostgreSQL
 
-One of the downsides of PostgreSQL is its memory performance, so besides optional is higly recommended tune its settings depending on the hardware at our disposale.
+One of the downsides of PostgreSQL is its memory performance, so besides optional is highly recommended tune its settings depending on the hardware at our disposale.
 
 To do so, we can visit [PGTune](https://pgtune.leopard.in.ua/), fill the form with our system informations and get a list of settings to add/modify in `postgresql.conf`. This file can be found in `/etc/postgresql/<version_number>/main` folder. In my case, as I'm using the version 10 of PostgreSQL, I use the following command to edit it:
 ```plain
