@@ -55,7 +55,6 @@ h1, h2, h3, h4
     font-family: 'Poppins', sans-serif
     text-align: left
     margin-top: round(2*$lh)
-    margin-bottom: $halflh
 h1
     font-size: $h1
     line-height: round($h1 * $phi)
@@ -70,14 +69,14 @@ h4
     line-height: round($h4 * $phi)
 
 p
-    margin-bottom: $lh
+    margin-top: $lh
 
 ul, ol
     margin-left: 2rem
-    margin-bottom: round(1.5*$lh)
+    margin-top: $halflh
     ul, ol
         margin-left: 1rem
-        margin-bottom: 0
+        margin-top: 0
 
 blockquote
     padding-left: 1rem
@@ -93,8 +92,8 @@ code
     color: #fff
 
 .highlight
-    padding-bottom: 10px
-    margin-bottom: round($lh - 10px)
+    margin-top: $halflh
+    padding-bottom: 8px
     .chroma
         border-radius: 2px
         padding: 4px 0
@@ -108,12 +107,11 @@ code
 
 hr
     border: 1px solid #666
-    margin-bottom: $lh
 
 table
     border-collapse: collapse
     border: 1px solid #666
-    margin-bottom: $lh
+    margin-top: $lh
     th, td
         border: 1px solid #666
         padding: 4px 8px
@@ -126,6 +124,7 @@ sup
     font-size: 0.6rem
 
 .footnotes
+    margin-top: $lh
     font-size: 0.8rem
     color: #888
     &:before
@@ -133,7 +132,10 @@ sup
         //font-size: 0.7rem
     hr
         border: 1px solid #888
-        margin-bottom: 0
+    ol
+        margin-top: round(0.25*$lh)
+    p
+        margin-top: 0
     sup
         font-size: 0
         &:after
@@ -166,18 +168,18 @@ figure
         h4
             font-size: 0.8rem
             line-height: round($lh*0.8)
-            margin-bottom: 0
+            margin-top: 0
         p
             font-size: 0.7rem
             line-height: round($lh*0.7)
-            margin-bottom: 0
+            margin-top: 0
 
 .note, .alert, .danger, .info
     padding: $halflh
-    margin-bottom: $lh
+    margin-top: $lh
     border-radius: 2px
-    p:last-child
-        margin-bottom: 0
+    p:first-child
+        margin-top: 0
 .note
     background-color: #eee
     border: 1px solid #ddd
@@ -415,6 +417,7 @@ figure
     h3:hover > .post-heading-link
         display: inline
     .post-read-more
+        margin-top: $halflh
         display: inline-block
         font-weight: bold
 
@@ -447,7 +450,7 @@ figure
         .post-tags
             display: block
             margin-left: 0
-            margin-bottom: $lh
+            margin-top: $lh
             text-align: left
             svg
                 display: none
