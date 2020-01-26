@@ -36,7 +36,7 @@ With the archive downloaded, now unzip it. We’ll also attempt to install `unzi
 ```
 
 Now you’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
-```
+```plain
 # sudo chown www-data:www-data /var/www/nextcloud -R
 ```
 
