@@ -9,7 +9,7 @@ readmore: Read the tutorial
 summarize: true
 ---
 
-On the way to install Nextcloud we've already completed the [initial setup of our VPS](ubuntu-server-initial-setup/), the [installation of Nginx](nginx-installation-on-ubuntu/) and [the installation of PostgreSQL](postgresql-installation-on-ubuntu/).
+On the way to install Nextcloud we've already completed the [initial setup of our VPS](/ubuntu-server-initial-setup/), the [installation of Nginx](/nginx-installation-on-ubuntu/) and [the installation of PostgreSQL](/postgresql-installation-on-ubuntu/).
 
 I will now cover the installation of PHP 7.3.
 
