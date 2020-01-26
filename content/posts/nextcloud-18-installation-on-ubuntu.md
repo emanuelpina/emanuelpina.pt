@@ -408,3 +408,5 @@ For this changes to take effect you need to restart PHP:
 #### Congratulations :tada:
 
 You now have your self-hosted cloud storage solution and are one step closer to [be the owner of your data](/be-the-owner-of-your-data-with-nextcloud/)!
+
+{{< call-for-contribution >}}
