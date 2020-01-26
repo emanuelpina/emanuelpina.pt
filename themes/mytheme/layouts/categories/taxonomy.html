@@ -9,7 +9,7 @@
                 {{- partial "tags.html" . -}}
             </header>
             <div class="post-content">
-                {{.Summary | plainify}}
+                {{.Summary | plainify | htmlUnescape}}
                 {{if .Truncated}}<span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>{{end}}
             </div>
         </article>
