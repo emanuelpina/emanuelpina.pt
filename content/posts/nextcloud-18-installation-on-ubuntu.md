@@ -14,8 +14,8 @@ Finally, I'll now cover the installation of Nextcloud on Ubuntu!
 At this point, is expected that you already had:
 + Choose a VPS provider and [concluded the initial setup of your Ubuntu server](/ubuntu-server-initial-setup/);
 + Installed [Nginx](/nginx-installation-on-ubuntu/);
-+ Installed [PostgreSQL](/php-installation-on-ubuntu/);
-+ Installed [PHP 7.3](/postgresql-installation-on-ubuntu/).
++ Installed [PostgreSQL](/postgresql-installation-on-ubuntu/);
++ Installed [PHP 7.3](/php-installation-on-ubuntu/).
 
 I'm currently using Ubuntu 18.04, but these instructions are equally valid for other Ubuntu versions.
 
@@ -130,7 +130,7 @@ Copy the following content to the file and change the `server_name` from **box.e
 ```nginx
 upstream php-handler {
     #server 127.0.0.1:9000;
-    server unix:/var/run/php/php7.2-fpm.sock;
+    server unix:/var/run/php/php7.3-fpm.sock;
 }
 
 server {
@@ -361,7 +361,7 @@ To install **OPcache**, go back to your terminal and run the following commands:
 
 Then you need to edit a file named **10-opcache.ini**. To do so, run:
 ```plain
-# /etc/php/7.3/apache2/conf.d/10-opcache.ini
+# sudo nano /etc/php/7.3/fpm/conf.d/10-opcache.ini
 ```
 
 Add the missing lines to the file so it look like this:
