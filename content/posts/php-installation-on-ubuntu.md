@@ -129,7 +129,7 @@ When determining how much memory you can dedicate to PHP, keep in mind that the 
 
 Finally, to get a general idea on how much memory each PHP process is consuming, run:
 ```plain
-ps --no-headers -o "rss,cmd" -C php-fpm7.2 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
+ps --no-headers -o "rss,cmd" -C php-fpm7.3 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
 ```
 
 The settigns you need to change are all in the `www.conf` file. To edit it, run:
@@ -156,7 +156,7 @@ So, set pm.max_start_servers to 8. The same used before for pm.start_servers.
 
 To finish, just restart the PHP-FPM service:
 ```plain
-# sudo servicectl restart php7.3-fpm
+# sudo systemctl restart php7.3-fpm
 ```
 
 And that's all :grinning:
