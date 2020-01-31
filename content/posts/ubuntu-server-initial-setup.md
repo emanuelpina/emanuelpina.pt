@@ -19,21 +19,21 @@ I'm currently using Ubuntu 18.04, but these instructions are equally valid for o
 
 ### Use SSH
 
-While managing our server, we will spend a lot of time working on a terminal session and the safest way to connect to it is through SSH, or secure shell.
+While managing your server, you'll spend a lot of time working on a terminal session and the safest way to connect to it is through SSH, or secure shell.
 
-To do that we have to make use of an SSH key, which is a pair of encryption keys mathematically linked to each other: a private key and a public key. The public key is used to encrypt a message whereas the private key is used to decrypt it. There are several ways to generate an SSH key. Generally the SSH client we will use is capable of doing this and that's possibly the easiest way. For Windows, the most popular SSH client is [Putty](https://putty.org/). I use [Termius](https://www.termius.com/). To know more on how to connect to a server using SSH, see [this tutorial from DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/).
+To do that you've to make use of an SSH key, which is a pair of encryption keys mathematically linked to each other: a private key and a public key. The public key is used to encrypt a message whereas the private key is used to decrypt it. There are several ways to generate an SSH key. Usually the SSH client you'll use is capable of doing it and that's probably the easiest way. For Windows, the most popular SSH client is [Putty](https://putty.org/), but I use [Termius](https://www.termius.com/). To know more on how to connect to a server using SSH, see [this tutorial from DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/).
 
-So, you will keep your private key to yourself, to use with the SSH client, and install/copy the public key to your server. Almost any VPS provider nowdays have a option on their console that let's you add your public SSH keys so you can chose to automatically add them upon server deployment. That's how I do it. But if you prefer to install/copy your SSH key only after the server deployment, see [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804).
+So, you'll keep your private key to yourself, to use with the SSH client, and install/copy the public key to your server. Almost any VPS provider nowdays have a option on their console that let's you add your public SSH keys so you can chose to automatically add them upon server deployment. That's how I do it. But if you prefer to install/copy your SSH key only after the server deployment, see [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804).
 
-Moving on, after creating a new Ubuntu server there are a few configuration steps that we should take to increase security and usability.
+Moving on, after creating a new Ubuntu server there are a few configuration steps that you should take to increase security and usability.
 
 ### Create a new user
 
-To first access our server we need to login as **root**.
+To first access your server we need to login as **root**.
 
 > The **root** user is the administrative user in a Linux environment that has very broad privileges. Because of the heightened privileges of the root account, you are discouraged from using it on a regular basis. This is because part of the power inherent with the root account is the ability to make very destructive changes, even by accident. [^1]
 
-So, our first step is to set up an alternative user account with a reduced scope of influence for day-to-day work.
+So, your first step is to set up an alternative user account with a reduced scope of influence for day-to-day work.
 
 On this example we will create a new user called **johndoe**, but you should replace it with a username of your choice:
 
@@ -51,12 +51,12 @@ To grant administrative privileges to the new user we need to add it to **sudo**
 ```
 
 ### Copy SSH key to a new user
-Next we have to copy the public SSH key from **root** user to the new user. This way we can login as both using the same SSH key. The simplest way to copy the files with the correct ownership and permissions is with the `rsync` command. This will copy the **root** user’s `.ssh` directory, preserve the permissions, and modify the file owners, all in a single command:
+Next you've to copy the public SSH key from **root** user to the new user. This way you can login as both using the same SSH key. The simplest way to copy the files with the correct ownership and permissions is with the `rsync` command. This will copy the **root** user’s `.ssh` directory, preserve the permissions, and modify the file owners, all in a single command:
 ```plain
 # rsync --archive --chown=johndoe:johndoe ~/.ssh /home/johndoe
 ```
 
-Now we can login with our new user account typping:
+Now you can login with your new user account typping:
 ```plain
 # sudo -i -u johndoe
 ```
@@ -69,9 +69,9 @@ You should be logged in to the new user account without using a password. Rememb
 You will be prompted for your regular user password when using `sudo` for the first time each session.
 
 ### Setup a firewall
-We can use the built-in firewall (UFW) to manage which connections are allowed to/from the server.
+You can use the built-in firewall (UFW) to manage which connections are allowed to/from the server.
 
-Different applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with UFW.
+Different applications can register their profiles with UFW upon installation. These profiles allow UFW to manage these applications by name. OpenSSH, the service allowing you to connect to your server now, has a profile registered with UFW.
 
 You can see this by typing:
 ```plain
@@ -82,12 +82,12 @@ Available applications:
   OpenSSH
 ```
 
-We need to make sure that the firewall allows SSH connections so that we can log back in next time. We can allow these connections by typing:
+You need to make sure that the firewall allows SSH connections so that you can log back in next time. You can allow these connections by typing:
 ```plain
 # sudo ufw allow OpenSSH
 ```
 
-Afterwards, we can enable the firewall by typing:
+Afterwards, you can enable the firewall by typing:
 ```plain
 # sudo ufw enable
 ```
@@ -107,9 +107,9 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 
 ### What's next?
 
-Now that we have completed the initial configuration of our server, we can proceed with the installation of a webserver to present it to the vast and incredible world wide web!
+Now that you've completed the initial configuration of your server, you can proceed with the installation of a webserver to present it to the vast and incredible world wide web!
 
-In a following post I will cover the installation of Nginx.
+In a following post I will cover the [installation of Nginx](/nginx-installation-on-ubuntu/).
 
 {{< call-for-contribution >}}
 
