@@ -9,7 +9,7 @@ readmore: Read the tutorial
 summarize: true
 ---
 
-On the way to install Nextcloud we've already completed the [initial setup of our VPS](https://emanuelpina.pt/ubuntu-server-initial-setup/) and the [installation of a webserver (Nginx)](https://emanuelpina.pt/nginx-installation-on-ubuntu/).
+On the way to install Nextcloud we've already completed the [initial setup of our VPS](/ubuntu-server-initial-setup/) and the [installation of a webserver (Nginx)](/nginx-installation-on-ubuntu/).
 
 We'll now proceed with the installation of PostgreSQL, a relational database management system.
 
@@ -29,7 +29,7 @@ But maybe it isn't the right choice for you and for a more informed decision you
 
 ### Install PostgreSQL
 
-Ubuntu’s default repositories contain PostgreSQL packages, so we can install these using the `apt` packaging system.
+Ubuntu’s default repositories contain PostgreSQL packages, so you can install these using the `apt` packaging system.
 
 First, refresh the local package index:
 ```plain
@@ -45,9 +45,9 @@ To learn the basics about using PostgreSQL you can start by reading [this tutori
 
 ### Tune PostgreSQL
 
-One of the downsides of PostgreSQL is its memory performance, so besides optional is highly recommended tune its settings depending on the hardware at our disposale.
+One of the downsides of PostgreSQL is its memory performance, so besides optional is highly recommended tune its settings depending on the hardware at your disposale.
 
-To do so, we can visit [PGTune](https://pgtune.leopard.in.ua/), fill the form with our system informations and get a list of settings to add/modify in `postgresql.conf`. This file can be found in `/etc/postgresql/<version_number>/main` folder. In my case, as I'm using the version 10 of PostgreSQL, I use the following command to edit it:
+To do so, you can visit [PGTune](https://pgtune.leopard.in.ua/), fill the form with your system informations and get a list of settings to add/modify in `postgresql.conf`. This file can be found in `/etc/postgresql/<version_number>/main` folder. In my case, as I'm using the version 10 of PostgreSQL, I use the following command to edit it:
 ```plain
 # sudo nano /etc/postgresql/10/main/postgresql.conf
 ```
@@ -56,7 +56,7 @@ Then is a matter of search for each one of the parameters in the list and modify
 
 ### What's next?
 
-Now that we have installed a webserver and a database management system all that's missing so we can install Nextcloud is PHP.
+Now that you've installed a webserver and a database management system [all that's missing so you can install Nextcloud is PHP](/php-installation-on-ubuntu/).
 
 {{< call-for-contribution >}}
 
