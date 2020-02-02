@@ -10,9 +10,9 @@ readmore:
 
 In the process of self-hosting Nextcloud the first step was to choose a VPS provider. It wasn't a straightforward choice and in the process I ended up experiencing, by this order, Hetzner, DigitalOcean and Vultr.
 
-{{< alert >}}
+{{< marker blue p >}}
 But, first of all, let me advise you that this isn't intended to be a factual analysis, supported by quantifiable and specific data. It is rather a subjective assessment based on my use case. Therefore, I believe that your experience with these providers could be completely different. If you are into more technical and detailed analyses you can go [here](https://www.vpsbenchmarks.com/) and [here](https://community.centminmod.com/threads/13-way-vps-server-benchmark-comparison-tests-upcloud-vs-digitalocean-vs-linode-vs-vultr-vs-hetzner.17742/), for example.
-{{< /alert >}}
+{{< /marker >}}
 
 <!--readmore-->
 

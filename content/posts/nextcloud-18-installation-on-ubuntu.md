@@ -56,9 +56,7 @@ To meet the requirements of Nextcloud you need to make some changes in PHP cofig
 
 Search for `memory_limit` and change it to `512M`.
 
-{{< alert >}}
-Once you're editing **php.ini** you can take the opportunity to set [upload_max_filesize](https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) and [post_max_size](https://www.php.net/manual/en/ini.core.php#ini.post-max-size) according to your preferences.
-{{< /alert >}}
+{{< marker yellow p >}}Once you're editing **php.ini** you can take the opportunity to set [upload_max_filesize](https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) and [post_max_size](https://www.php.net/manual/en/ini.core.php#ini.post-max-size) according to your preferences.{{< /marker >}}
 
 Another thing is that as we're using `php-fpm`, system environment variables like PATH, TMP or others are not automatically populated. A PHP call like `getenv('PATH');` can therefore return an empty result. So you need to manually configure the environment variables in **www.conf**. To edit this file run:
 ```plain

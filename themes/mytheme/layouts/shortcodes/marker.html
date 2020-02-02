@@ -1,0 +1,2 @@
+{{$p := .Get 1}}
+{{if eq $p "p"}}<p>{{end}}<span class="marker {{.Get 0}}">{{.Inner | markdownify}}</span>{{if eq $p "p"}}</p>{{end}}
