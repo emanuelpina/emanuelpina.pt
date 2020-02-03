@@ -3,7 +3,7 @@
 <ul class="taxonomie-list">
 {{range $key, $value := .Site.Taxonomies.categories}}
 {{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
-	<li><a href="/categories/{{$key | urlize}}">{{$key | humanize}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
+	<li><a href="/categories/{{$key | urlize}}">{{if eq $key "sysadmin"}}SysAdmin{{else}}{{$key | humanize}}{{end}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
 {{end}}
 </ul>
 {{end}}
