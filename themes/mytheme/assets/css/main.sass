@@ -54,7 +54,7 @@ html
 h1, h2, h3, h4
     font-family: 'Poppins', sans-serif
     text-align: left
-    margin-top: round(2*$lh)
+    margin-top: round(3*$lh)
 h1
     font-size: $h1
     line-height: round($h1 * $phi)
@@ -197,6 +197,12 @@ figure
         background-color: #eee
         border: 1px solid #ddd
         color: $grey7
+    &.cfc
+        margin: round(2*$lh) 0.5%
+        margin-bottom: 0
+        font-size: 0.9rem
+        padding: 4px 10px
+
 .marker
     padding: 0 2px 2px 2px
     &.yellow
@@ -358,7 +364,7 @@ figure
 
 //Content
 .content
-    padding: round(1.5*$lh) $lh $lh $lh
+    padding: round(2*$lh) $lh $lh $lh
     width: 100%
     max-width: 1000px
     min-width: 0
@@ -366,9 +372,9 @@ figure
 
 //Post
 .post
-    margin-bottom: round(3 * $lh)
-    &:last-child
-        margin-bottom: 0
+    margin-top: round(4*$lh)
+    &:first-child
+        margin-top: 0
 .post-title
     line-height: round($lh*$phi)
     margin: 0
@@ -437,11 +443,10 @@ figure
 .list-title
     h3
         margin-top: 0
-        margin-bottom: round(2 * $lh)
 
 .categories, .tags
     .post
-        margin-bottom: round(2 * $lh)
+        margin-top: round(2*$lh)
     .post-content
         margin-top: $halflh
         .post-read-more
@@ -449,8 +454,6 @@ figure
 
 //Single Pages
 .posts
-    .post
-        margin-bottom: round(3 * $lh)
     .post-title
         text-align: center
     .post-details
@@ -609,7 +612,7 @@ figure
 .pagination
     font-size: 0
     text-align: center
-    margin-bottom: $halflh
+    margin-top: round(3*$lh)
     div
         display: inline
         font-size: 1rem
@@ -641,7 +644,7 @@ figure
 //Pagination single page
 .pagination-single
     height: $lh
-    margin-bottom: $halflh
+    margin-top: round(3*$lh)
     div
         display: inline
         background-color: $grey1
@@ -686,7 +689,8 @@ figure
 .footer
     width: 100%
     max-width: 1000px
-    margin: 0 auto $halflh auto
+    margin: $halflh auto
+    margin-top: $lh
     text-align: center
 //Social links
 .social-links
@@ -804,101 +808,12 @@ figure
             &:hover svg
                 fill: $grey7
 
-//Commento
-#commento
-    margin-top: round(2*$lh)
-.commento-root
-    .commento-login
-        .commento-login-text
-            transition: all 200ms ease-in-out
-            &:hover
-                color: $links
-    .commento-logged-container
-        .commento-logged-in-as
-            .commento-name
-                font-size: 1rem
-                transition: all 200ms ease-in-out
-                &:hover
-                    color: $base
-        .commento-logout
-            transition: all 200ms ease-in-out
-            &:hover
-                color: $links
-#commento-textarea-root
-    border: 1px solid $grey2
-    border-radius: 2px
-    color: $base
-    transition: all 200ms ease-in-out
-    &::placeholder
-        color: $grey3
-    &:hover
-        background-color: $grey1
-        &::placeholder
-            color: $grey4
-    &:focus
-        background-color: $grey1
-        border-color: $grey1
-        &::placeholder
-            color: $grey1
-#commento-submit-button-root
-    font-size: 0.7rem
-    font-weight: 400
-    letter-spacing: 1px
-    line-height: normal
-    color: #fff
-    border: 0
-    border-radius: 2px
-    margin-right: 0
-    padding: 10px 12px
-    box-shadow: none
-    transition: all 200ms ease-in-out
-    &:hover
-        opacity: 0.8
-#commento-login-box-oauth-buttons-container .commento-button
-    width: inherit
-    font-size: 0.8rem
-    font-weight: 400
-    letter-spacing: 1px
-    line-height: normal
-    color: #fff
-    padding: 8px 12px
-    box-shadow: none
-    transition: all 200ms ease-in-out
-    &:hover
-        opacity: 0.8
-#commento-login-box
-    .commento-email
-        box-shadow: none
-        border: 1px solid $grey2
-        border-radius: 2px
-        transition: all 200ms ease-in-out
-        .commento-input
-            background: none
-            &::placeholder
-                color: $grey3
-            &:hover::placeholder
-                color: $grey4
-        .commento-email-button
-            font-size: 0.8rem
-            font-weight: 400
-            letter-spacing: 1px
-            background-color: #1971c2
-            color: #fff
-            border-radius: 0 2px 2px 0
-            &:hover
-                opacity: 0.8
-    #commento-login-box-login-link
-        &:hover
-            color: $grey7
-#commento-footer
-    display: none
-
 //Scroll up button with progress indication
 .scroll-up
     cursor: pointer
     position: fixed
-    bottom: 12px
-    right: 12px
+    bottom: 10px
+    right: 10px
     width: 40px
     height: 40px
     opacity: 0
