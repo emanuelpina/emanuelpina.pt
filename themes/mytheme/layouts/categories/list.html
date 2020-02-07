@@ -2,8 +2,9 @@
 <h2 class="taxonomie-title">Categories</h2>
 <ul class="taxonomie-list">
 {{range $key, $value := .Site.Taxonomies.categories}}
-{{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
-	<li><a href="/categories/{{$key | urlize}}">{{if eq $key "sysadmin"}}SysAdmin{{else}}{{$key | humanize}}{{end}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
+{{$posts := len $value}} <!--Translate $value to number of posts per taxonomie-->
+{{$cat_alias := index $.Site.Data.categories $key}} <!--Search /data/categories.yaml for an alias name for the category-->
+	<li><a href="/categories/{{$key | urlize}}">{{if $cat_alias}}{{$cat_alias}}{{else}}{{$key | humanize}}{{end}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
 {{end}}
 </ul>
 {{end}}

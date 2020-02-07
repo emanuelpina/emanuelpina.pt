@@ -5,8 +5,9 @@
         <li class="navmenu-item has-children"><a href="/categories/" alt="Categorias">Categories</a>
             <ul class="navmenu-child">
                 {{range $key, $value := .Site.Taxonomies.categories}}
+                {{$cat_alias := index $.Site.Data.categories $key}} <!--Search /data/categories.yaml for an alias name for the category-->
                 <li class="navmenu-child-item">
-                <a href="/categories/{{$key | urlize}}/">{{if eq $key "sysadmin"}}SysAdmin{{else}}{{$key | humanize}}{{end}}</a>
+                <a href="/categories/{{$key | urlize}}/">{{if $cat_alias}}{{$cat_alias}}{{else}}{{$key | humanize}}{{end}}</a>
                 </li>
                 {{end}}
             </ul>
