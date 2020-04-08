@@ -23,7 +23,7 @@ As its developer states:
 >
 >There is no information stored in the browser with e.g. cookies. [^1]
 
-So what data does GoatHunter collect?
+So what data does GoatCounter collect?
 
 - URL of the visited page;
 - Referer header;
