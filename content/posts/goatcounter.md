@@ -9,7 +9,7 @@ readmore:
 summarize: true
 ---
 
-Although page views aren't my immediate concern when I write on this blog, is good to know if someone is reading what I share! But doing it I wanted to assure that I wasn't tracking you. In others words, that the data gathered couldn't identify or being associated to you. To do so I started by using the self-hosted version of [Fathom](https://github.com/usefathom/fathom/).
+Although page views aren't my immediate concern when I write on this blog, is good to know if someone is reading what I share! But when doing it I wanted to assure that I wasn't tracking you. In others words, that the data gathered couldn't identify or being associated to you. To do so I started by using the self-hosted version of [Fathom](https://github.com/usefathom/fathom/).
 
 Unfortunately, some time ago the developers of Fathom decided change their business model. They developed a new version of Fathom, closed source, only for paid customers, named [Fathom PRO](https://usefathom.com/) and renamed the original Fathom as Fathom Lite. Since then the development of this first version seems to had come to an end, as its latest release is from November 2018.
 
