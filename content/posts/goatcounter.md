@@ -9,9 +9,9 @@ readmore:
 summarize: true
 ---
 
-Although page views aren't my immediate concern when I write on this blog, is good to know if someone is reading what I share! But doing it I wanted to assure that I wasn't tracking you. In others words, that the data gathered couldn't identify or being associated to you. To do so I started using the self-hosted version of [Fathom](https://github.com/usefathom/fathom/).
+Although page views aren't my immediate concern when I write on this blog, is good to know if someone is reading what I share! But doing it I wanted to assure that I wasn't tracking you. In others words, that the data gathered couldn't identify or being associated to you. To do so I started by using the self-hosted version of [Fathom](https://github.com/usefathom/fathom/).
 
-Unfortunately, some time ago the developers of Fathom decided change their business model. They develop a new version of Fathom, closed source, only for paid customers, named [Fathom PRO](https://usefathom.com/) and renamed the original Fathom as Fathom Lite. Since then the development of this first version seems to had come to an end, as its lastest release is from November 2018.
+Unfortunately, some time ago the developers of Fathom decided change their business model. They developed a new version of Fathom, closed source, only for paid customers, named [Fathom PRO](https://usefathom.com/) and renamed the original Fathom as Fathom Lite. Since then the development of this first version seems to had come to an end, as its lastest release is from November 2018.
 
 I then started looking for alternatives and that's when I found [this discussion on Lobsters](https://lobste.rs/s/gzkue1/what_is_your_preferred_web_traffic/) and met GoatCounter. A recent project of an [open source](https://github.com/zgoat/goatcounter/) and privacy-aware web statistics platform.
 
@@ -32,10 +32,10 @@ So what data does GoatHunter collect?
 - Country name based on IP address;
 - A hash of the IP address, User-Agent, and random number.
   
-The script that by default you need to add to your site so GoatCounter can do is job is lightweight (~1.5kB). And there's a no-JavaScript image-based tracker option, or you can use it from your application's middleware.
+The script that by default you need to add to your site so GoatCounter can do its job is lightweight (~1.5kB), and there's a no-JavaScript image-based tracker option, or you can use it from your application's middleware.
 
-There's an [hosted version](https://goatcounter.com/) of GoatCounter that includes a free plan for non-commercial use or you can host it yourself. In either case, if you're going to use it for free, don't forget to, as you can, donate to the developer so he can pay is bills and continue support this project.
+There's an [hosted version](https://goatcounter.com/) of GoatCounter that includes a free plan for non-commercial use or you can host it yourself. In either case, if you're going to use it for free, don't forget to, as you can, donate to the developer so he can pay his bills and continue support this project.
 
-The [issues tracking](https://github.com/zgoat/goatcounter/issues/) is done on GitHub and you can join the [Telegram group](https://t.me/goatcounter) dedicated to this project.
+The [issues tracking](https://github.com/zgoat/goatcounter/issues/) is done on GitHub and you can join the project's [Telegram group](https://t.me/goatcounter).
 
 [^1]: [GoatCounter privacy policy](https://www.goatcounter.com/privacy/)
