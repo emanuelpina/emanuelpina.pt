@@ -6,6 +6,7 @@ thumbnail: v1567799486/2019/nextcloud.png
 categories: [Privacy, SysAdmin]
 tags: [Cloud Storage, Nextcloud]
 readmore: 
+summarize: true
 ---
 
 Since a few years now I started to get concern with how much of my data was being gathered and how it was being used.
@@ -14,7 +15,7 @@ Nowdays we spend a big part of our lives online and over the years companies hav
 
 Let's face it, Google Search was a revolution, and Gmail, OneDrive, iCloud, Facebook or Youtube are excellent products in terms of usability and features. And best of all they're free, you would say. Are they?
 
-<!--readmore-->
+<!--more-->
 
 So, how can this companies create and mantain such great products, give them free and be profitable? More than been profitable, all those are now in the [top 10 list of the most values companies](https://fxssi.com/top-10-most-valuable-companies-in-the-world/). How?
 

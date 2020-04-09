@@ -6,6 +6,7 @@ thumbnail: v1568214075/2019/Vultr.png
 categories: [SysAdmin]
 tags: [Cloud Storage, Nextcloud, VPS, Vultr]
 readmore: 
+summarize: true
 ---
 
 In the process of self-hosting Nextcloud the first step was to choose a VPS provider. It wasn't a straightforward choice and in the process I ended up experiencing, by this order, Hetzner, DigitalOcean and Vultr.
@@ -14,7 +15,7 @@ In the process of self-hosting Nextcloud the first step was to choose a VPS prov
 But, first of all, let me advise you that this isn't intended to be a factual analysis, supported by quantifiable and specific data. It is rather a subjective assessment based on my use case. Therefore, I believe that your experience with these providers could be completely different. If you are into more technical and detailed analyses you can go [here](https://www.vpsbenchmarks.com/) and [here](https://community.centminmod.com/threads/13-way-vps-server-benchmark-comparison-tests-upcloud-vs-digitalocean-vs-linode-vs-vultr-vs-hetzner.17742/), for example.
 {{< /marker >}}
 
-<!--readmore-->
+<!--more-->
 
 So my first choice was [Hetzner](https://www.hetzner.com/cloud/). A company with a high reputation and a very inviting features/price ratio. A VPS with 1vCPU, 2GB RAM, 20GB Disk and 20TB Traffic for €2.49 ($2.75) looks great. It seemed a logical choice. So I proceeded with the installation and configuration of Nextcloud and uploaded my files to the server. Everything was going well, until I started to browse through Nextcloud and tried to open some of my videos. The server crashed. I thought it was a one-time event, but I repeated the process always with the same outcome. According to Hetzner's console the culprit seemed to be the CPU. On idle it remained arround 30% and very often reached 100%. So I upgraded the VPS to 2vCPU, 4GB RAM and 40GB Disk for €4.90 ($5.41) and it all started to work like a charm.
 
