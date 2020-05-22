@@ -33,9 +33,6 @@
     {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
     <script src="{{ $jquery.RelPermalink }}"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $js.RelPermalink }}"></script> 
-    {{ if not .Site.IsServer }}
-      <script data-goatcounter="https://emanuelpina.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    {{ end }}
+    <script src="{{ $js.RelPermalink }}"></script>
   </body>
 </html>
