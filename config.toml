@@ -25,7 +25,7 @@ enableEmoji = true
   thumbnail = "v1568177166/mugshot_xl.jpg"
   readmore = "Read more"
   paginationpath = "page"
-  imagecdn = "https://img.mnlpn.xyz/"
+  imagecdn = "https://img.emanuelpina.pt/"
 
 [permalinks]
   posts = "/:title/"
