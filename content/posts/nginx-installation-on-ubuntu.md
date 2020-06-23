@@ -78,7 +78,7 @@ We plan to use TLS/SSL so choose the profile **Nginx Full** to open both ports:
 
 Visiting your IP address on a browser will now show the Nginx's default page, like bellow.
 
-![Nginx Default Page](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570212267/2019/nginx-installation-one.jpg)
+![Nginx Default Page](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570212267/2019/nginx-installation-one.jpg)
 
 ### Set Up a Server Block
 
@@ -145,13 +145,13 @@ If there aren’t any problems, restart Nginx to enable the changes:
 
 Visiting your domain address on a browser will now show the content of the `index.html` file you've created.
 
-![Your index.html Page](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570214982/2019/nginx-installation-two.jpg)
+![Your index.html Page](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570214982/2019/nginx-installation-two.jpg)
 
 ### Enable SSL
 
 At this point you have set Nginx to serve your site, but notice that the browser is connecting to the server through a unencrypted/non-secure connection.
 
-![Non-secure Connection](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-three.jpg)
+![Non-secure Connection](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-three.jpg)
 
 To enable the browser to use a encrypted/secure connection you've to install an SSL certificate. You can obtain a free SSL certificate using Let’s Encrypt. To easily do this you can use a open source software called [Certbot](https://certbot.eff.org/about/). To install Certbot and its Nginx package run the following command:
 ```plain
@@ -194,13 +194,13 @@ Type `2` and press `ENTER` to make all requests redirect to secure HTTPS access.
 
 Now, visiting your domain address on a browser we can notice that a encrypted/secure connection is being used.
 
-![Secure Connection](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-four.jpg)
+![Secure Connection](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-four.jpg)
 
 ### Enable HSTS
 
 Let's run your domain on [this SSL Server Test](https://www.ssllabs.com/ssltest/) from SSL Labs. The test takes a couple of minutes...
 
-![SSL Labs First Test Result](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-five.jpg)
+![SSL Labs First Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-five.jpg)
 
 
 You got an **A**. Not bad, but [we can do better](https://invidio.us/watch?v=m-lSlJc_5NE/)! To do so we'll enable HSTS and TLS 1.3.
@@ -293,7 +293,7 @@ And if there aren’t any problems, restart Nginx to enable the changes:
 
 Now let's run again the [SSL Server Test](https://www.ssllabs.com/ssltest/) from SSL Labs.
 
-![SSL Labs Final Test Result](https://img.mnlpn.xyz/c_fit,f_auto,q_auto,w_700/v1570219492/2019/nginx-installation-six.jpg)
+![SSL Labs Final Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570219492/2019/nginx-installation-six.jpg)
 
 And that's it. TLS 1.3 and HSTS are enabled and you got an **A+**!
 
