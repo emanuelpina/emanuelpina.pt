@@ -11,26 +11,21 @@ $tabletscr: 800px
 $phonescr: 400px
 
 //Colors
-$base: #111111 //Base color
-$links: #E74C3C //Links color
-$hover: #212121 //Hover color
-$grey9: #0A0A0A
-$grey8: #212121
-$grey7: #424242
-$grey6: #616161
-$grey5: #757575
-$grey4: #9E9E9E
-$grey3: #BDBDBD
-$grey2: #E0E0E0
-$grey1: #EEEEEE
-$grey0: #F5F5F5
+////Base
+$bgcolor: #ffffff
+$subcolor: #e3e3e3
+$textcolor: #222222
+$subtextcolor: #555555
+$accentcolor: #e74c3c
+////NavBar
+$navbardark: #111111
 
 a
-    color: $links
+    color: $accentcolor
     text-decoration: none
     transition: all 200ms ease-in-out
     &:hover
-        color: $hover
+        color: $textcolor
 
 //Typography
 $phi: 1.61803398875 //Golden Ratio
@@ -49,7 +44,9 @@ html
     font-family: 'Muli', sans-serif
     font-size: $fs
     line-height: $lh
-    color: $base
+    color: $textcolor
+    fill: $textcolor
+    background-color: $bgcolor
 
 h1, h2, h3, h4
     font-family: 'Poppins', sans-serif
@@ -86,10 +83,10 @@ blockquote
 code
     font-family: 'Cascadia Code', monospace
     font-size: 0.8rem
-    background-color: $grey2
+    background-color: $subcolor
     padding: 2px 4px 4px 4px
     border-radius: 2px
-    color: $grey7
+    color: $subtextcolor
 
 .highlight
     margin-top: $halflh
@@ -105,7 +102,7 @@ code
             display: inline-block
             padding: 0 10px
             background-color: #272822
-            color: $grey0
+            color: $bgcolor
 
 hr
     border: 1px solid #666
@@ -131,7 +128,6 @@ sup
     color: #888
     &:before
         content: 'Footnotes'
-        //font-size: 0.7rem
     hr
         border: 1px solid #888
     ol
@@ -196,7 +192,7 @@ figure
     &.grey
         background-color: #eee
         border: 1px solid #ddd
-        color: $grey7
+        color: $subtextcolor
     &.cfc
         margin: round(2*$lh) 0.5%
         margin-bottom: 0
@@ -226,9 +222,9 @@ figure
     z-index: 1
     position: sticky
     top: 0
-    background-color: #fff
+    background-color: $bgcolor
     padding: 20px 0
-    transition: all 400ms ease-in-out, height 0ms
+    transition: all 200ms ease-in-out
     .navbar
         display: flex
         flex-wrap: wrap
@@ -254,9 +250,9 @@ figure
             @media screen and (max-width: $phonescr)
                 margin-left: 15px
     a
-        color: $grey7
+        color: $textcolor
         &:hover
-            color: $grey8
+            color: $subtextcolor
 .navbar-menu
     position: fixed
     top: 0
@@ -265,21 +261,17 @@ figure
     left: 0
     overflow: auto
 .scroll
-    background-color: $grey9
+    background-color: $navbardark
     padding: 10px 0
     a
-        color: $grey3
+        color: $subcolor
         &:hover
-            color: $grey1
+            color: $bgcolor
     .menu-trigger
         svg
-            fill: $grey3
+            fill: $subcolor
             &:hover
-                fill: $grey1
-    @media screen and (min-width: $tabletscr)
-        .navmenu-child
-            a
-                color: $grey7
+                fill: $bgcolor
 
 //Navmenu
 .menu-trigger
@@ -296,11 +288,11 @@ figure
         width: 22px
         height: 22px
     svg
-        fill: $grey7
+        fill: $textcolor
         vertical-align: -3px
         transition: fill 200ms ease-in-out
         &:hover
-            fill: $grey8
+            fill: $subtextcolor
 .menu-triggered
     position: sticky
     top: 6px
@@ -338,7 +330,7 @@ figure
                 position: absolute
                 right: 0
                 white-space: nowrap
-                background-color: $grey1
+                background-color: $subcolor
                 margin: 4px 8px 0 0
                 padding: 6px 18px
                 border-radius: 2px
@@ -348,8 +340,11 @@ figure
                 transition: all 400ms ease-in-out
                 a
                     display: block
+                    color: $subtextcolor
+                    @media screen and (max-width: $tabletscr)
+                        color: $bgcolor
                     &:hover
-                        color: $links
+                        color: $accentcolor
                 @media screen and (max-width: $tabletscr)
                     visibility: visible
                     opacity: 1
@@ -379,36 +374,36 @@ figure
     line-height: round($lh*$phi)
     margin: 0
     a
-        color: $grey8
+        color: $textcolor
         &:hover
-            color: $links
+            color: $accentcolor
 .post-details
     .post-date, .post-readingtime
         font-size: 0.9rem
-        color: $grey5
+        color: $subtextcolor
         margin-right: 10px
     .post-categories, .post-tags, .post-readingtime, .post-edit
         white-space: nowrap
         margin-right: 10px
         a
             font-size: 0.9rem
-            color: $grey5
+            color: $subtextcolor
             &:after
                 content: ", "
-                color: $grey5
+                color: $subtextcolor
             &:last-child:after
                 content: ""
             &:hover
-                color: $grey7
+                color: $textcolor
         svg
-            fill: $grey5
+            fill: $subtextcolor
             width: 16px
             height: 16px
             vertical-align: -2px
             margin-right: 4px
             transition: fill 200ms ease-in-out
         &:hover svg
-            fill: $grey7
+            fill: $textcolor
     .post-featureimage
             display: block
             margin: $lh auto
@@ -420,7 +415,6 @@ figure
     text-align: justify
     .post-heading-link
         display: none
-        color: $grey4
         font-size: 1.1rem
         font-weight: 400
         line-height: $h3
@@ -428,10 +422,10 @@ figure
         svg
             width: 16px
             height: 16px
-            fill: $grey4
+            fill: $subtextcolor
             transition: all 200ms ease-in-out
             &:hover
-                fill: $hover
+                fill: $textcolor
     h3:hover > .post-heading-link
         display: inline
     .post-read-more
@@ -471,13 +465,12 @@ figure
                 display: none
             a
                 font-size: 0.8rem
-                background-color: $grey2
+                background-color: $subcolor
                 padding: 4px 8px
                 border-radius: 2px
-                color: $grey7
+                color: $subtextcolor
                 &:hover
-                    background-color: $grey1
-                    color: $grey6
+                    opacity: 0.8
                 &:after
                     content: ""
     .post-content
@@ -525,20 +518,22 @@ figure
         font-size: 1rem
         line-height: $lh
         padding: 4px 12px
-        border: 1px solid $grey2
+        border: none
         border-radius: 2px
+        background-color: $subcolor
+        color: $subtextcolor
         transition: all 200ms ease-in-out
         &::placeholder
-            color: $grey3
+            color: $subtextcolor
         &:hover
-            background-color: $grey1
+            background-color: $subcolor
             &::placeholder
-                color: $grey4
+                color: $textcolor
         &:focus
-            background-color: $grey1
-            border-color: $grey1
+            background-color: $subtextcolor
+            color: $bgcolor
             &::placeholder
-                visibility: hidden
+                color: $subtextcolor
     .contact-form-website
         display: none
     .contact-form-message-wrap
@@ -557,18 +552,16 @@ figure
         line-height: round(0.8*$lh)
         .contact-form-gdpr-box
             display: none
-            &:hover + .contact-form-gdpr-icon
-                border-color: $grey3
             &:checked + .contact-form-gdpr-icon
                 border-color: #4caf50
                 background-color: #4caf50
             &:checked + .contact-form-gdpr-icon > svg
                 opacity: 1
-                fill: #fff
+                fill: #ffffff
     .contact-form-gdpr-icon
         position: relative
         display: inline-block
-        border: 1px solid $grey2
+        border: 1px solid $subtextcolor
         border-radius: 4px
         width: 16px
         height: 16px
@@ -588,18 +581,13 @@ figure
     .unchecked
         background-color: #ffcdd2
         border-radius: 2px
-        .contact-form-gdpr-icon
-            border-color: $grey6
-        .contact-form-gdpr-box
-            &:hover + .contact-form-gdpr-icon
-                border-color: $grey6
     .contact-form-submit
         cursor: pointer
         text-transform: uppercase
         font-family: 'Muli', sans-serif
         font-size: 0.9rem
         letter-spacing: 1px
-        color: #fff
+        color: #ffffff
         border: 0
         border-radius: 2px
         background-color: #4caf50
@@ -616,26 +604,24 @@ figure
     div
         display: inline
         font-size: 1rem
-        background-color: $grey1
+        background-color: $subcolor
         svg
             width: 20px
             height: 20px
             vertical-align: -4px
-            fill: $grey6
+            fill: $subtextcolor
             transition: fill 200ms ease-in-out
         a
             display: inline
-            background-color: $grey1
+            background-color: $subcolor
             padding: 8px 12px
-            &:hover
-                background-color: $grey2
             &:hover svg
-                fill: $grey7
+                fill: $textcolor
     .previous-page a, .previous-page-empty
         border-radius: 4px 0 0 4px
     .actual-page
         padding: 8px 12px
-        color: $grey6
+        color: $subtextcolor
     .next-page a, .next-page-empty
         border-radius: 0 4px 4px 0
     .previous-page-empty, .next-page-empty
@@ -647,36 +633,32 @@ figure
     margin-top: round(3*$lh)
     div
         display: inline
-        background-color: $grey1
         svg
             width: 20px
             height: 20px
             vertical-align: -4px
-            fill: $grey6
+            fill: $subtextcolor
             transition: fill 200ms ease-in-out
         a
             position: relative
             display: inline
-            background-color: $grey1
+            background-color: $subcolor
             padding: 8px 12px
             border-radius: 4px
-            color: $grey6
-            &:hover
-                background-color: $grey2
-                &:before
-                    content: attr(alt)
-                    position: absolute
-                    bottom: round(1.5*$lh)
-                    left: 0
-                    width: max-content
-                    max-width: 300px
-                    background-color: $grey8
-                    color: $grey2
-                    font-size: 0.9rem
-                    padding: 2px 8px
-                    border-radius: 2px
             &:hover svg
-                fill: $grey7
+                fill: $textcolor
+            &:hover:before
+                content: attr(alt)
+                position: absolute
+                bottom: round(1.5*$lh)
+                left: 0
+                width: max-content
+                max-width: 300px
+                background-color: $textcolor
+                color: $bgcolor
+                font-size: 0.9rem
+                padding: 2px 8px
+                border-radius: 2px
     .next-post
         float: left
     .previous-post
@@ -699,7 +681,7 @@ figure
         height: 22px
         margin: 0 4px
         vertical-align: middle
-        fill: $grey4
+        fill: $subtextcolor
         transition: fill 200ms ease-in-out
     .icon-twitter:hover
         fill: #1da1f2
@@ -787,26 +769,25 @@ figure
     .fourohfour-title
         font-size: 6rem
         line-height: round(6*$lh)
-        color: $links
+        color: $accentcolor
     .fourohfour-return
         margin: round(2*$lh) 0
         a
-            color: $grey6
-            background-color: $grey1
+            color: $subtextcolor
+            background-color: $subcolor
             border-radius: 4px
             padding: 8px 12px
             &:hover
-                background-color: $grey2
-                color: $grey7
+                color: $textcolor
             svg
                 width: 22px
                 height: 22px
                 vertical-align: -5px
                 margin-right: 6px
-                fill: $grey6
+                fill: $subtextcolor
                 transition: fill 200ms ease-in-out
             &:hover svg
-                fill: $grey7
+                fill: $textcolor
 
 //Scroll up button with progress indication
 .scroll-up
@@ -821,9 +802,9 @@ figure
         width: 100%
         height: 100%
         circle
-            stroke: $links
+            stroke: $accentcolor
             stroke-width: 25%
-            fill: $links
+            fill: $accentcolor
     .scroll-up-arrow
         position: absolute
         bottom: 25%
@@ -831,4 +812,5 @@ figure
         width: 50%
         height: 50%
         path
-            fill: $grey0
+            fill: $bgcolor
+            
