@@ -122,6 +122,9 @@ table
 sup
     font-size: 0.6rem
 
+.footnote-ref
+    font-weight: bold
+
 .footnotes
     margin-top: $lh
     font-size: 0.8rem
@@ -134,11 +137,12 @@ sup
         margin-top: round(0.25*$lh)
     p
         margin-top: 0
-    sup
+    .footnote-backref
         font-size: 0
         &:after
-            font-size: 1rem
+            font-size: 1.2rem
             content: '\2934'
+            vertical-align: -6%
 
 p img
     width: 100%
