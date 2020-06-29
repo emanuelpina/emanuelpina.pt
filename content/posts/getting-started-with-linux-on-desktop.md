@@ -6,7 +6,7 @@ thumbnail: v1593027920/2020/linux-manjaro-gnome.png
 categories: [Linux]
 tags: [Gnome, Manjaro]
 readmore: 
-summarize: false
+summarize: true
 ---
 
 At the beginning of March, I bought a laptop and decided to finally embrace Linux as my daily drive desktop. Till that day I had only used Linux, more precisely Ubuntu, on servers. So, obviously it was my first choice, but I faced a lot of issues, just to find out that the 3rd generation AMD Ryzen CPU on my laptop wasn't yet supported by the kernel version (5.3) used on Ubuntu 19.10. I wasn't able to use any Ubuntu based distro. At first it sucked, but now I'm glad that happen!
