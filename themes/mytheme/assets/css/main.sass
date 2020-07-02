@@ -80,8 +80,8 @@ ul, ol
 
 blockquote
     padding-left: 1rem
-    border-left: 7px solid #ddd
-    color: #777
+    border-left: 7px solid $subcolor
+    color: $subtextcolor
 
 code
     font-family: 'Cascadia Code', monospace
@@ -125,6 +125,9 @@ table
 sup
     font-size: 0.6rem
 
+.footnote-ref
+    font-weight: bold
+
 .footnotes
     margin-top: $lh
     font-size: 0.8rem
@@ -138,11 +141,12 @@ sup
         margin-top: round(0.25*$lh)
     p
         margin-top: 0
-    sup
+    .footnote-backref
         font-size: 0
         &:after
-            font-size: 1rem
+            font-size: 1.2rem
             content: '\2934'
+            vertical-align: -6%
 
 p img
     width: 100%
@@ -178,25 +182,20 @@ figure
 .box
     padding: $halflh
     margin-top: $lh
-    border-radius: 2px
     p:first-child
         margin-top: 0
     &.yellow
         background-color: #fcf8e3
-        border: 1px solid #faebcc
         color: #8a6d3b
     &.blue
         background-color: #d9edf7
-        border: 1px solid #bce8f1
         color: #31708f
     &.red
         background-color: #f2dede
-        border: 1px solid #ebccd1
         color: #a94442
     &.grey
         background-color: #eee
-        border: 1px solid #ddd
-        color: $grey7
+        color: $subtextcolor
     &.cfc
         margin: round(2*$lh) 0.5%
         margin-bottom: 0
@@ -204,7 +203,7 @@ figure
         padding: 4px 10px
 
 .marker
-    padding: 0 2px 2px 2px
+    padding: 4px 0
     &.yellow
         background-color: #ffffb3
     &.green
@@ -233,7 +232,7 @@ figure
         display: flex
         flex-wrap: wrap
         justify-content: space-between
-        max-width: 1000px
+        max-width: 800px
         margin: 0 auto
         .mugshot
             align-self: center
@@ -254,9 +253,9 @@ figure
             @media screen and (max-width: $phonescr)
                 margin-left: 15px
     a
-        color: $grey7
+        color: $subtextcolor
         &:hover
-            color: $grey8
+            color: $textcolor
 .navbar-menu
     position: fixed
     top: 0
@@ -296,11 +295,11 @@ figure
         width: 22px
         height: 22px
     svg
-        fill: $grey7
+        fill: $subtextcolor
         vertical-align: -3px
         transition: fill 200ms ease-in-out
         &:hover
-            fill: $grey8
+            fill: $textcolor
 .menu-triggered
     position: sticky
     top: 6px
@@ -366,7 +365,7 @@ figure
 .content
     padding: round(2*$lh) $lh $lh $lh
     width: 100%
-    max-width: 1000px
+    max-width: 800px
     min-width: 0
     align-self: center
 
@@ -413,7 +412,6 @@ figure
             display: block
             margin: $lh auto
             width: 100%
-            max-width: 800px
             border-radius: 2px
 .post-content
     margin-top: $lh
@@ -508,7 +506,6 @@ figure
         display: none
         max-width: 400px
         background-color: #dff0d8
-        border: 1px solid #d6e9c6
         border-radius: 2px
         color: #3c763d
         padding: 12px 16px
@@ -535,10 +532,10 @@ figure
             &::placeholder
                 color: $grey4
         &:focus
-            background-color: $grey1
-            border-color: $grey1
+            background-color: $subcolor
+            color: $subtextcolor
             &::placeholder
-                visibility: hidden
+                color: $subcolor
     .contact-form-website
         display: none
     .contact-form-message-wrap
