@@ -9,14 +9,16 @@
 <h4><svg class="icon-email"><use xlink:href="#email"></use></svg>Email</h4>
 <p>Use the form bellow to send me an email.<br>You can encrypt your message using this <a href="https://keybase.io/emanuelpina/key.asc" target="_blank" title="My PGP public key hosted on keybase.io">PGP key</a>.</p>
 <div class="contact-form-container">
-    <form class="contact-form" name="Contact" method="POST" netlify-honeypot="Website" action="/contact/#success" netlify>
-        <p><input class="contact-form-name" type="text" name="Name" placeholder="Name" required/></p>
-        <p><input class="contact-form-email" type="email" name="Email" placeholder="Email" required/></p>
-        <p><input class="contact-form-website" type="text" name="Website" placeholder="Website" /></p>
-        <p><input class="contact-form-subject" type="text" name="Subject" placeholder="Subject" required/></p>
-        <p class="contact-form-message-wrap"><textarea class="contact-form-message" name="Message" placeholder="Message" required></textarea></p>
+    <form class="contact-form" name="Contact" method="POST"  action="https://forms.emanuelpina.pt">
+        <input type="hidden" name="_formName" value="emanuelpina.pt">
+        <input type="hidden" name="_redirectTo" value="{{.Permalink}}#success">
+        <p><input class="contact-form-name" type="text" name="_name" placeholder="Name" required/></p>
+        <p><input class="contact-form-email" type="email" name="_replyTo" placeholder="Email" required/></p>
+        <p><input class="contact-form-website" type="text" name="_website" placeholder="Website" /></p>
+        <p><input class="contact-form-subject" type="text" name="_subject" placeholder="Subject" required/></p>
+        <p class="contact-form-message-wrap"><textarea class="contact-form-message" name="_message" placeholder="Message" required></textarea></p>
         <p class="contact-form-pgp-key">PGP Key: <a href="https://keybase.io/emanuelpina/key.asc" target="_blank" title="My PGP public key hosted on keybase.io">D82A 5145 67C6 F63C 1E24 C4A7 B61E 197D 56C2 07EB</a></p>
-        <p class="contact-form-gdpr-wrap"><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="DataRetention" value="Authorized" /><span class="contact-form-gdpr-icon"><svg><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#check"></use></svg></span><span class="contact-form-gdpr-label">I authorize my data to be saved by the time needed to answer my request.</span></label></p>
+        <p class="contact-form-gdpr-wrap"><label class="contact-form-gdpr"><input class="contact-form-gdpr-box" type="checkbox" name="_gdpr" value="Authorized" /><span class="contact-form-gdpr-icon"><svg><use xlink:href="{{ .Site.BaseURL }}images/sprite.svg#check"></use></svg></span><span class="contact-form-gdpr-label">I authorize my data to be saved by the time needed to answer my request.</span></label></p>
         <p><button class="contact-form-submit" type="submit">Send</button></p>
     </form>
     <div id="success" class="contact-form-success">
