@@ -1,9 +1,0 @@
-{{define "main"}}
-<h2 class="taxonomie-title">Tags</h2>
-<ul class="taxonomie-list">
-{{range $key, $value := .Site.Taxonomies.tags}}
-{{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
-	<li><a href="/tags/{{$key | urlize}}">{{$key | humanize}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
-{{end}}
-</ul>
-{{end}}

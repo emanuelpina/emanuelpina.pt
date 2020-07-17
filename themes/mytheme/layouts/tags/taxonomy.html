@@ -1,19 +1,9 @@
 {{define "main"}}
-<span class="list-title">Posts with tag <h3>{{.Title}}</h3></span>
-<section class="range">
-    {{range (.Paginator 10).Pages}}
-        <article class="post">
-            <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
-            <header class="post-details">
-                <time class="post-date">{{.Date.Format "Jan 2, 2006"}}</time>
-                {{- partial "categories.html" . -}}
-            </header>
-            <div class="post-content">
-                {{.Summary | plainify | htmlUnescape}}
-                {{if .Truncated}}<span class="post-read-more"><a href="{{ .RelPermalink }}">{{if or (not .Params.readmore) (eq .Params.readmore "")}}{{.Site.Params.readmore}}...{{else}}{{.Params.readmore}}...{{end}}</a></span>{{end}}
-            </div>
-        </article>
-    {{end}}
-    {{- partial "pagination.html" . -}}
-</section>
+<h2 class="taxonomie-title">Tags</h2>
+<ul class="taxonomie-list">
+{{range $key, $value := .Site.Taxonomies.tags}}
+{{$posts := len $value}} <!-- To translate $value to number of posts per taxonomie-->
+	<li><a href="/tags/{{$key | urlize}}">{{$key | humanize}}</a> - {{$posts}} {{if gt $posts "1"}} posts{{else}} post{{end}}</li>
+{{end}}
+</ul>
 {{end}}
