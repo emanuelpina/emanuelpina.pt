@@ -7,8 +7,9 @@ trigger:
 
 steps:
 - name: build
-  image: quay.io/emanuelpina/hugo:0.74.1
+  image: quay.io/emanuelpina/hugo:0.74.2
   commands:
+  - hugo version
   - hugo --minify
 
 - name: deploy
