@@ -1,0 +1,53 @@
+kind: pipeline
+type: docker
+name: production
+trigger:
+  branch:
+    - master
+
+steps:
+- name: build
+  image: quay.io/emanuelpina/hugo:0.74.1
+  commands:
+  - hugo version
+  - hugo --minify
+
+- name: deploy
+  image: quay.io/emanuelpina/alpine:latest
+  environment:
+    SSH_KEY:
+      from_secret: drone_ssh_key
+    HOST:
+      from_secret: host
+  commands:
+  - eval `ssh-agent -s`
+  - echo "$SSH_KEY" | ssh-add -
+  - mkdir -p ~/.ssh
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - rsync -rvh -e "ssh -p 22" /drone/src/public/ drone@$HOST:/var/www/blog/ --checksum
+  - rm -rf /drone/src/*
+
+- name: purge cdn
+  image: quay.io/emanuelpina/alpine:latest
+  environment:
+    CDN_TOKEN:
+      from_secret: cdn_token
+    CDN_PULLZONE:
+      from_secret: cdn_pullzone
+  commands:
+  - "curl -d -v --include --request POST --header \"Content-Type: application/json\" --header \"Accept: application/json\" --header \"AccessKey: $CDN_TOKEN\" \"https://bunnycdn.com/api/pullzone/$CDN_PULLZONE/purgeCache\""
+
+- name: notify
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: telegram_token
+    to:
+      from_secret: telegram_user
+    format: markdown
+    message: >
+      #{{build.number}}. {{commit.message}}
+      [Build succeeded!]({{build.link}})
+  when:
+    status:
+    - success
