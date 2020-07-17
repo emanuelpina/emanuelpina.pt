@@ -9,7 +9,6 @@ steps:
 - name: build
   image: quay.io/emanuelpina/hugo:0.74.1
   commands:
-  - hugo version
   - hugo --minify
 
 - name: deploy
