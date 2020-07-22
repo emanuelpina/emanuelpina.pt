@@ -1,9 +1,3 @@
-// Embed svg sprite
-$.get('/images/sprite.svg', function(data) {
-    var sprite = new XMLSerializer().serializeToString(data.documentElement);
-    $('body').append(sprite);
-  });
-
 // Add/remove class to navbar on scroll
 $(window).scroll(function() {    
     var scroll = $(window).scrollTop();
