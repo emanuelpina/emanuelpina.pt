@@ -1,4 +1,8 @@
 <span class="post-readingtime">
-    <svg class="icon-time"><use xlink:href="#time"></use></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-time" width="16px" height="16px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+    </svg>
     {{.ReadingTime}}{{if ge .ReadingTime 2}} minutes{{else}} minute{{end}}
 </span>

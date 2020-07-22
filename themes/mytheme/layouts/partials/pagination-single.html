@@ -1,6 +1,28 @@
 {{if or .NextInSection .PrevInSection}}
 <div class="pagination-single">
-    {{if .NextInSection}}{{with .NextInSection}}<div class="next-post"><a href="{{.RelPermalink}}" alt="{{.Title}}"><svg class="icon-left"><use xlink:href="#left"></use></svg></a></div>{{end}}{{end}}
-    {{if .PrevInSection}}{{with .PrevInSection}}<div class="previous-post"><a href="{{.RelPermalink}}" alt="{{.Title}}"> <svg class="icon-left"><use xlink:href="#right"></use></svg></a></div>{{end}}{{end}}
+    {{if .NextInSection}}{{with .NextInSection}}
+    <div class="next-post">
+        <a href="{{.RelPermalink}}" alt="{{.Title}}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-left" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z"/>
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1="5" y1="12" x2="11" y2="18" />
+                <line x1="5" y1="12" x2="11" y2="6" />
+            </svg>
+        </a>
+    </div>
+    {{end}}{{end}}
+    {{if .PrevInSection}}{{with .PrevInSection}}
+    <div class="previous-post">
+        <a href="{{.RelPermalink}}" alt="{{.Title}}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-right" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z"/>
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1="13" y1="18" x2="19" y2="12" />
+                <line x1="13" y1="6" x2="19" y2="12" />
+            </svg>
+        </a>
+    </div>
+    {{end}}{{end}}
 </div>
 {{end}}

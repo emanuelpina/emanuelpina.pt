@@ -1,6 +1,10 @@
 {{if .Params.tags}}
 <span class="post-tags">
-     <svg class="icon-tags"><use xlink:href="#tags"></use></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-tags" width="17px" height="17px" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z"/>
+        <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+        <circle cx="9" cy="9" r="2" />
+    </svg>
 {{range .Params.tags}}
     <a href="/tags/{{. | urlize | lower}}/">{{.}}</a>
 {{end}}

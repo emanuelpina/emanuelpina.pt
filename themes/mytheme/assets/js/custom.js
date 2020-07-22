@@ -15,16 +15,18 @@ $(window).scroll(function() {
 });
 
 // Menu on small screens
+var iconmenu = '<svg xmlns="http://www.w3.org/2000/svg" class="icon-close" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>'
+var iconclose = '<svg xmlns="http://www.w3.org/2000/svg" class="icon-menu" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="4" y1="8" x2="20" y2="8" /><line x1="4" y1="16" x2="20" y2="16" /></svg>'
 $(document).on('click', '.menu-trigger', function() {
     $('body').addClass('noscroll');
     $('.navmenu').addClass('navmenu-show');
     $('.navbar-wrap').addClass('scroll');
     $('.navbar-wrap').addClass('navbar-menu');
     $('.menu-trigger').addClass('menu-triggered');
-    $('.menu-triggered > .icon-menu').replaceWith('<svg class="icon-close"><use xlink:href="#close"></use></svg>');
+    $('.menu-triggered > .icon-menu').replaceWith(iconmenu);
 });
 $(document).on('click', '.menu-triggered', function() {
-    $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
+    $('.menu-triggered > .icon-close').replaceWith(iconclose);
     $('.menu-trigger').removeClass('menu-triggered');
     $('.navbar-wrap').removeClass('navbar-menu');
     $('.navbar-wrap').removeClass('scroll');
@@ -45,7 +47,7 @@ $(window).on('resize', function(){
         scroll = $(window).scrollTop();
     if ($('body').hasClass('noscroll') && (windowWidth > tabletscr)){
         $('.navmenu').removeClass('navmenu-show');
-        $('.menu-triggered > .icon-close').replaceWith('<svg class="icon-menu"><use xlink:href="#menu"></use></svg>');
+        $('.menu-triggered > .icon-close').replaceWith(iconclose);
         $('.menu-trigger').removeClass('menu-triggered');
         $('.navbar-wrap').removeClass('navbar-menu');
         $('body').removeClass('noscroll');
@@ -78,17 +80,6 @@ $('.twitch').each(function(){
   $(document).on('click', '[data-embed=' + twitchembed + ']', function() {
   	$('[data-embed=' + twitchembed + '] > .play').replaceWith('<iframe src="https://player.twitch.tv/?autoplay=true&video=v' + twitchembed + '&t=0h0m0s" frameborder="0" allowfullscreen="true" scrolling="no" ></iframe>');
   });
-});
-
-// GDPR box checker
-$( '.contact-form' ).submit(function( event ) {
-    if($('.contact-form-gdpr-box').prop('checked') == false){
-        $('.contact-form-gdpr-wrap').addClass('unchecked');
-        event.preventDefault();
-    }
-    $('.contact-form-gdpr').on('click', function(){
-        $('.contact-form-gdpr-wrap').removeClass('unchecked');
-    });
 });
 
 // Click on site title to scroll up

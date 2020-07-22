@@ -45,7 +45,6 @@ html
     font-size: $fs
     line-height: $lh
     color: $textcolor
-    fill: $textcolor
     background-color: $bgcolor
 
 h1, h2, h3, h4
@@ -268,9 +267,9 @@ figure
             color: $bgcolor
     .menu-trigger
         svg
-            fill: $subcolor
+            stroke: $subcolor
             &:hover
-                fill: $bgcolor
+                stroke: $bgcolor
 
 //Navmenu
 .menu-trigger
@@ -278,20 +277,15 @@ figure
     display: none
     margin: 0 15px
     cursor: pointer
+    height: 24px
     @media screen and (max-width: $tabletscr)
         display: block
-    .icon-menu
-        width: 20px
-        height: 20px
-    .icon-close
-        width: 22px
-        height: 22px
     svg
-        fill: $subtextcolor
-        vertical-align: -3px
-        transition: fill 200ms ease-in-out
+        fill: none
+        stroke: $subtextcolor
+        transition: stroke 200ms ease-in-out
         &:hover
-            fill: $textcolor
+            stroke: $textcolor
 .menu-triggered
     position: sticky
     top: 6px
@@ -395,14 +389,13 @@ figure
             &:hover
                 color: $textcolor
         svg
-            fill: $subtextcolor
-            width: 16px
-            height: 16px
-            vertical-align: -2px
-            margin-right: 4px
-            transition: fill 200ms ease-in-out
+            fill: none
+            stroke: $subtextcolor
+            vertical-align: sub
+            margin-right: 3px
+            transition: stroke 200ms ease-in-out
         &:hover svg
-            fill: $textcolor
+            stroke: $textcolor
     .post-featureimage
             display: block
             margin: $lh auto
@@ -490,9 +483,13 @@ figure
 .contact
     h4
         svg
-            width: 20px
-            height: 20px
             margin-right: 3px
+        .icon-keybase, .icon-mastodon
+            fill: $textcolor
+        .icon-email
+            fill: none
+            stroke: $textcolor
+            vertical-align: -5px
     .contact-form-title
         margin-top: 0
     .contact-form-success
@@ -544,40 +541,11 @@ figure
         a
             font-size: 0.6rem
     .contact-form-gdpr
-        cursor: pointer
         font-size: 0.8rem
-        line-height: round(0.8*$lh)
-        .contact-form-gdpr-box
-            display: none
-            &:checked + .contact-form-gdpr-icon
-                border-color: #4caf50
-                background-color: #4caf50
-            &:checked + .contact-form-gdpr-icon > svg
-                opacity: 1
-                fill: #ffffff
-    .contact-form-gdpr-icon
-        position: relative
-        display: inline-block
-        border: 1px solid $subtextcolor
-        border-radius: 4px
-        width: 16px
-        height: 16px
-        vertical-align: -12%
-        margin-right: 6px
-        transition: all 200ms ease-in-out
-        svg
-            position: absolute
-            opacity: 0
-            width: 14px
-            height: 14px
-            transition: all 200ms ease-in-out
-    .contact-form-gdpr-wrap
-        padding: 0 6px
-        transition: all 400ms ease-in-out
-        margin-top: round(0.7*$lh)
-    .unchecked
-        background-color: #ffcdd2
-        border-radius: 2px
+        input
+            width: min-content
+            vertical-align: -10%
+            margin-right: 4px
     .contact-form-submit
         cursor: pointer
         text-transform: uppercase
@@ -603,17 +571,16 @@ figure
         font-size: 1rem
         background-color: $subcolor
         svg
-            width: 20px
-            height: 20px
-            vertical-align: -4px
-            fill: $subtextcolor
-            transition: fill 200ms ease-in-out
+            vertical-align: -5px
+            fill: none
+            stroke: $subtextcolor
+            transition: stroke 200ms ease-in-out
         a
             display: inline
             background-color: $subcolor
-            padding: 8px 12px
+            padding: 8px 10px
             &:hover svg
-                fill: $textcolor
+                stroke: $textcolor
     .previous-page a, .previous-page-empty
         border-radius: 4px 0 0 4px
     .actual-page
@@ -631,19 +598,18 @@ figure
     div
         display: inline
         svg
-            width: 20px
-            height: 20px
-            vertical-align: -4px
-            fill: $subtextcolor
-            transition: fill 200ms ease-in-out
+            vertical-align: -5px
+            fill: none
+            stroke: $subtextcolor
+            transition: stroke 200ms ease-in-out
         a
             position: relative
             display: inline
             background-color: $subcolor
-            padding: 8px 12px
+            padding: 8px 10px
             border-radius: 4px
             &:hover svg
-                fill: $textcolor
+                stroke: $textcolor
             &:hover:before
                 content: attr(alt)
                 position: absolute
@@ -674,28 +640,22 @@ figure
 //Social links
 .social-links
     svg
-        width: 22px
-        height: 22px
+        //width: 22px
+        //height: 22px
         margin: 0 4px
         vertical-align: middle
         fill: $subtextcolor
         transition: fill 200ms ease-in-out
     .icon-twitter:hover
         fill: #1da1f2
-    .icon-mastodon
-        width: 20px
-        height: 20px
-        &:hover
-            fill: #2b90d9
+    .icon-mastodon:hover
+        fill: #2b90d9
     .icon-instagram:hover
         fill: #5851db
     .icon-github:hover
         fill: #6e5494
-    .icon-keybase
-        width: 20px
-        height: 20px
-        &:hover
-            fill: #33a0ff
+    .icon-keybase:hover
+        fill: #33a0ff
 
 //Youtube and Twitch lazyload
 .youtube, .twitch
@@ -777,11 +737,9 @@ figure
             &:hover
                 color: $textcolor
             svg
-                width: 22px
-                height: 22px
-                vertical-align: -5px
                 margin-right: 6px
                 fill: $subtextcolor
+                vertical-align: -1px
                 transition: fill 200ms ease-in-out
             &:hover svg
                 fill: $textcolor
