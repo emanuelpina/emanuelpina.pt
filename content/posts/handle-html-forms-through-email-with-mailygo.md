@@ -1,5 +1,5 @@
 ---
-title: "Handle Html Forms Through Email With MailyGo"
+title: "Handle HTML Forms Through Email With MailyGo"
 date: 2020-07-30T22:28:28+01:00
 draft: false
 thumbnail: v1596144141/2020/mailygo.png
