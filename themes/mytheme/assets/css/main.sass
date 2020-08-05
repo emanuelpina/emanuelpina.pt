@@ -23,7 +23,7 @@ $navbardark: #111111
 a
     color: $accentcolor
     text-decoration: none
-    transition: color 200ms ease-in-out
+    transition: all 200ms ease-in-out
     &:hover
         color: $textcolor
 
@@ -66,16 +66,6 @@ h4
 
 p
     margin-top: $lh
-    a
-        text-decoration: none
-        color: $textcolor
-        border-bottom-width: 2px
-        border-bottom-style: solid
-        border-bottom-color: $accentcolor
-        padding-bottom: 1px
-        transition: border-bottom-color 200ms ease-out
-        &:hover
-            border-bottom-color: $subcolor
 
 ul, ol
     margin-left: 2rem
@@ -146,17 +136,12 @@ sup
         margin-top: round(0.25*$lh)
     p
         margin-top: 0
-        a
-            border-bottom: none
-            color: $subtextcolor
-            transition: color 200ms ease-in-out
-            &:hover
-                color: $textcolor
     .footnote-backref
         font-size: 0
         &:after
             font-size: 1.2rem
             content: '\2934'
+            vertical-align: -6%
 
 p img
     width: 100%
