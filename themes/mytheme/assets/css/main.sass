@@ -502,9 +502,9 @@ figure
     h4
         svg
             margin-right: 3px
-        .icon-keybase, .icon-mastodon
+        .icon-mastodon
             fill: $textcolor
-        .icon-email
+        .icon-telegram, .icon-email
             fill: none
             stroke: $textcolor
             vertical-align: -5px
@@ -553,11 +553,14 @@ figure
         .contact-form-message
             height: 200px
     .contact-form-pgp-key
-        font-size: 0.7rem
+        font-size: 0.66rem
         padding: 0 3px
         margin-top: 0
         a
-            font-size: 0.6rem
+            background: none
+            color: $accentcolor
+            &:hover
+                color: $textcolor
     .contact-form-gdpr
         font-size: 0.8rem
         input
