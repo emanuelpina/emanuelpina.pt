@@ -20,11 +20,8 @@ I just needed to tailor it a little bit to my use case. A good challenge as this
 So, there's the list of changes I made:
 
 - [Created the ability to add text to the beginning and end of the email message](https://codeberg.org/emanuelpina/mailygo/commit/cc8d366d96bae3208292b9459cf4e5a65905f11c);
-  
 - [Created the ability to send an email to the submitter too](https://codeberg.org/emanuelpina/mailygo/commit/3fb966fe2773e2b586aee7e13fd6056498aa7fbe);
-  
 - [Created the ability to add text to the beginning and end of the email message sent to the submitter](https://codeberg.org/emanuelpina/mailygo/commit/90986863c8655174e31badf8b8f4db2f496a56bc);
-  
 - [Created the ability to use specifics fields for Name, Subject and Message](https://codeberg.org/emanuelpina/mailygo/commit/896d055b53f03b0cd1cc733642e423dbb5684747).
   
 
