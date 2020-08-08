@@ -438,8 +438,9 @@ figure
     h3:hover > .post-heading-link
         display: inline
     .post-read-more
-        margin-top: $halflh
+        margin-top: round($lh - 6px)
         display: inline-block
+        font-size: 1.1rem
         font-weight: bold
 
 //List Pages
@@ -453,6 +454,7 @@ figure
     .post-content
         margin-top: $halflh
         .post-read-more
+            font-size: unset
             display: unset
 
 //Single Pages
