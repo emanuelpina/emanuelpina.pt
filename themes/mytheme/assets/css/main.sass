@@ -77,14 +77,10 @@ ul, ol
 p, ul, ol
     a
         color: $textcolor
-        background: linear-gradient(to bottom,lighten($accentcolor, 10%) 0%,lighten($accentcolor, 10%) 100%)
-        background-repeat: repeat-x
-        background-size: 2px 2px
-        background-position: 0 100%
-        padding: 3px 2px
-        border-radius: 2px
+        background: linear-gradient(transparent 85%,lighten($accentcolor, 10%) 0%)
+        font-weight: 700
         &:hover
-            background-size: 4px 100%
+            background: linear-gradient(transparent 85%,$accentcolor 0%)
 
 blockquote
     padding-left: 1rem
@@ -151,6 +147,7 @@ sup
         a
             background: none
             color: $subtextcolor
+            font-weight: unset
             &:hover
                 color: $textcolor
     .footnote-backref
@@ -267,8 +264,10 @@ figure
     a
         color: $subtextcolor
         background: none
+        font-weight: unset
         &:hover
             color: $textcolor
+            background: none
 .navbar-menu
     position: fixed
     top: 0
@@ -501,6 +500,7 @@ figure
         font-weight: bold
         line-height: round(1.5*$lh)
         &:hover
+            background: none
             color: $textcolor
 
 //Contact Page
