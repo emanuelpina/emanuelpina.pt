@@ -660,29 +660,17 @@ figure
 //Footer
 .footer
     width: 100%
-    max-width: 1000px
-    margin: $halflh auto
-    margin-top: $lh
+    margin: $lh auto
     text-align: center
-//Social links
-.social-links
-    svg
-        //width: 22px
-        //height: 22px
-        margin: 0 4px
-        vertical-align: middle
-        fill: $subtextcolor
-        transition: fill 200ms ease-in-out
-    .icon-twitter:hover
-        fill: #1da1f2
-    .icon-mastodon:hover
-        fill: #2b90d9
-    .icon-instagram:hover
-        fill: #5851db
-    .icon-github:hover
-        fill: #6e5494
-    .icon-keybase:hover
-        fill: #33a0ff
+    p
+        margin: 0
+        color: $subtextcolor
+        font-size: 0.8rem
+        a
+            background: none
+            font-weight: unset
+            &:hover
+                color: $accentcolor
 
 //Youtube and Twitch lazyload
 .youtube, .twitch
