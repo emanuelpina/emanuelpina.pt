@@ -22,7 +22,7 @@
     <meta property="og:image" content="{{if .IsPage }}{{ if .Params.thumbnail }}{{ .Site.Params.imagecdn }}c_crop,f_auto,g_auto,q_auto,h_600,w_600/{{ .Params.thumbnail }}{{ end }}{{ else }}{{ .Site.Params.imagecdn }}c_scale,f_auto,q_auto,w_600/{{ .Site.Params.thumbnail }}{{ end }}">
   </head>
     <body>
-    <div class="container">
+    <div id="top" class="container">
         {{- partial "navbar.html" . -}}
         <main class="content {{.Type}}">
         {{- block "main" . }}{{- end }}
