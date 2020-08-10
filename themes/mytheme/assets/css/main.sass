@@ -437,10 +437,16 @@ figure
     h3:hover > .post-heading-link
         display: inline
     .post-read-more
-        margin-top: round($lh - 6px)
-        display: inline-block
-        font-size: 1.1rem
-        font-weight: bold
+        margin-top: round($lh + 6px)
+        display: block
+        a
+            background-color: $accentcolor
+            color: $bgcolor
+            font-weight: bold
+            padding: 8px 12px
+            border-radius: 2px
+            &:hover
+                background-color: $textcolor
 
 //List Pages
 .list-title
@@ -453,9 +459,7 @@ figure
     .post-content
         margin-top: $halflh
         .post-read-more
-            font-size: unset
-            display: unset
-
+            margin-top: $lh
 //Single Pages
 .posts
     .post-title
