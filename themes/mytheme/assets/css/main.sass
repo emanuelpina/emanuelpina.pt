@@ -265,7 +265,7 @@ figure
                         visibility: visible
                         opacity: 1
                     a
-                        background: none
+                        background: linear-gradient(transparent 85%,$subtextcolor 0%)
                         &:hover
                             background: linear-gradient(transparent 85%,$accentcolor 0%)
                     .navmenu-child
@@ -286,6 +286,7 @@ figure
                             a
                                 display: block
                                 color: $subtextcolor
+                                background: none
                                 font-weight: normal
                                 &:hover
                                     background: none
@@ -293,7 +294,7 @@ figure
     
 //Content
 .content
-    padding: $lh
+    padding: round(2*$lh) $lh $lh $lh
     width: 100%
     max-width: 800px
     min-width: 0
@@ -303,7 +304,7 @@ figure
 .post
     margin-top: round(4*$lh)
     &:first-child
-        margin-top: round(2*$lh)
+        margin-top: 0
 .post-title
     line-height: round($lh*$phi)
     margin: 0
