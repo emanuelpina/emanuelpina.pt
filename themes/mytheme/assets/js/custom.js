@@ -1,54 +1,9 @@
-// Add/remove class to navbar on scroll
-$(window).scroll(function() {    
-    var scroll = $(window).scrollTop();
-    if (scroll > 0) {
-        $('.navbar-wrap').addClass('scroll');
-    } else {
-        $('.navbar-wrap').removeClass('scroll');
-    }
-});
-
-// Menu on small screens
-var iconmenu = '<svg xmlns="http://www.w3.org/2000/svg" class="icon-close" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>'
-var iconclose = '<svg xmlns="http://www.w3.org/2000/svg" class="icon-menu" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="4" y1="8" x2="20" y2="8" /><line x1="4" y1="16" x2="20" y2="16" /></svg>'
-$(document).on('click', '.menu-trigger', function() {
-    $('body').addClass('noscroll');
-    $('.navmenu').addClass('navmenu-show');
-    $('.navbar-wrap').addClass('scroll');
-    $('.navbar-wrap').addClass('navbar-menu');
-    $('.menu-trigger').addClass('menu-triggered');
-    $('.menu-triggered > .icon-menu').replaceWith(iconmenu);
-});
-$(document).on('click', '.menu-triggered', function() {
-    $('.menu-triggered > .icon-close').replaceWith(iconclose);
-    $('.menu-trigger').removeClass('menu-triggered');
-    $('.navbar-wrap').removeClass('navbar-menu');
-    $('.navbar-wrap').removeClass('scroll');
-    $('.navmenu').removeClass('navmenu-show');
-    $('body').removeClass('noscroll');
-});
-$(document).on('click', '.has-children > a', function(e) {
-    var isTouch = ('ontouchstart' in document.documentElement),
-        windowWidth = $(window).outerWidth(),
-        tabletscr = 800; // Media queries: screen trigger width
-    if ((windowWidth > tabletscr) && isTouch){
+// Prevent default action on click on menus with childrens if touch screen
+$('.has-children > a').on('click',function(e){
+    var isTouch = ('ontouchstart' in document.documentElement);
+    if( isTouch ){
         e.preventDefault();
     }
-});
-$(window).on('resize', function(){
-    var windowWidth = $(window).outerWidth();
-        tabletscr = 800, // Media queries: screen trigger width
-        scroll = $(window).scrollTop();
-    if ($('body').hasClass('noscroll') && (windowWidth > tabletscr)){
-        $('.navmenu').removeClass('navmenu-show');
-        $('.menu-triggered > .icon-close').replaceWith(iconclose);
-        $('.menu-trigger').removeClass('menu-triggered');
-        $('.navbar-wrap').removeClass('navbar-menu');
-        $('body').removeClass('noscroll');
-        if (scroll == 0) {
-            $('.navbar-wrap').removeClass('scroll');
-        }
-    }    
 });
 
 // Lazyload and responsive Youtube videos
@@ -75,22 +30,6 @@ $('.twitch').each(function(){
   	$('[data-embed=' + twitchembed + '] > .play').replaceWith('<iframe src="https://player.twitch.tv/?autoplay=true&video=v' + twitchembed + '&t=0h0m0s" frameborder="0" allowfullscreen="true" scrolling="no" ></iframe>');
   });
 });
-
-// Click on site title to scroll up
-$(window).scroll(function() {    
-    var scroll = $(window).scrollTop();
-        if (scroll > 200) {
-            $('.site-title > a').addClass('to_top');
-        } else {
-            $('.site-title > a').removeClass('to_top');
-        }
-});
-$(document).on('click', '.to_top', function(e) {
-    var scroll = $(window).scrollTop(),
-        scrollspeed = (scroll * 0.133); // scroll 7500px per second
-    e.preventDefault();
-    $("html, body").animate({scrollTop: 0}, scrollspeed);
- });
 
 // Add a link tag to each h3 heading on post-content
 $('.post-content > h3').each(function(){
