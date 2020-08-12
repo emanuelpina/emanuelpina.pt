@@ -1,7 +1,8 @@
 <nav class="navmenu">
     <ul class="navmenu-list">
-        <li class="navmenu-item"><a href="/contact/" alt="Contact">Contact</a></li>
-        <li class="navmenu-item has-children"><a href="/categories/" alt="Categorias">Categories</a>
+        <li class="navmenu-item"><a href="/contact/">Contact</a></li>
+        <li class="navmenu-item"><a href="/links/">Links</a></li>
+        <li class="navmenu-item has-children"><a href="/categories/">Categories</a>
             <ul class="navmenu-child">
                 {{range $key, $value := .Site.Taxonomies.categories}}
                 {{$cat_alias := index $.Site.Data.categories $key}} <!--Search /data/categories.yaml for an alias name for the category-->

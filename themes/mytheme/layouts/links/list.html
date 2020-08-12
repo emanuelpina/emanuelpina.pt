@@ -1,0 +1,16 @@
+{{define "main"}}
+<h2 id="links" class="links-title">Links</h2>
+<p>A list of other places online where you can find me.</p>
+<ul class="links">
+    {{range sort .Site.Data.links "Order" "asc"}}
+        <li><a href="https://{{.URL}}" target="_blank">{{.Name}}</a></li>
+    {{end}}
+    </ul>
+<h2 id="blogroll">Blogroll</h2>
+<p>Overtime I found people writting about the same things that interests me and with which I end up learning a lot. Here's the list of blogs I keep on my reading list.</p>
+<ul class="blogroll">
+{{range .Site.Data.blogroll}}
+    <li><a href="https://{{.URL}}" title="{{.Name}} {{if .Author}}by {{.Author}}{{end}}" target="_blank">{{.Name}}</a>{{if .Author}} by {{.Author}}{{end}}</li>
+{{end}}
+</ul>
+{{end}}

@@ -294,7 +294,7 @@ figure
     
 //Content
 .content
-    padding: round(2*$lh) $lh $lh $lh
+    padding: round(2*$lh) $lh
     width: 100%
     max-width: 800px
     min-width: 0
@@ -509,6 +509,20 @@ figure
         &:hover
             background-color: $textcolor
 
+//Links
+.links
+    a
+        background: none
+        line-height: round(1.2*$lh)
+        &:hover
+            background: none
+            color: $accentcolor
+    .links-title
+        margin-top: 0
+    .links
+        list-style: none
+        margin-left: 1rem
+
 //Pagination
 .pagination
     font-size: 0
@@ -581,7 +595,7 @@ figure
 //Footer
 .footer
     width: 100%
-    margin: $lh auto
+    margin: $lh 0
     text-align: center
     p
         margin: unset

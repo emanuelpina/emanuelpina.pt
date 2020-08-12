@@ -1,0 +1,24 @@
+mastodon:
+  Name: Mastodon
+  URL: mastodon.emanuelpina.pt/@emanuel
+  Order: 1
+
+pixelfed:
+  Name: Pixelfed
+  URL: pixelfed.social/emanuel
+  Order: 2
+
+github:
+  Name: GitHub
+  URL: github.com/emanuelpina
+  Order: 3
+
+lobsters:
+  Name: Lobsters
+  URL: lobste.rs/u/emanuelpina
+  Order: 4
+
+reddit:
+  Name: Reddit
+  URL: reddit.com/u/emanuelpina
+  Order: 5
