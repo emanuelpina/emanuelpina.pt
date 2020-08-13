@@ -3,7 +3,7 @@
 <p>A list of other places online where you can find me.</p>
 <ul class="links">
     {{range sort .Site.Data.links "Order" "asc"}}
-        <li><a href="https://{{.URL}}" target="_blank">{{.Name}}</a></li>
+        <li><a href="https://{{.URL}}" target="_blank">{{.Icon | safeHTML}}{{.Name}}</a></li>
     {{end}}
     </ul>
 <h2 id="blogroll">Blogroll</h2>
