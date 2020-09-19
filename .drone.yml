@@ -46,8 +46,7 @@ steps:
       from_secret: telegram_user
     format: markdown
     message: >
-      #{{build.number}}. {{commit.message}}
-      [Build succeeded!]({{build.link}})
+      #{{build.number}}. {{commit.message}} [Build succeeded!]({{build.link}})
   when:
     status:
     - success
