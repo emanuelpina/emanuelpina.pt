@@ -24,7 +24,7 @@ steps:
   - echo "$SSH_KEY" | ssh-add -
   - mkdir -p ~/.ssh
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  - rsync -rvh -e "ssh -p 22" /drone/src/public/ drone@$HOST:/var/www/blog/ --checksum
+  - rsync -rvh -e "ssh -p 22" /drone/src/public/ emanuel@$HOST:~/blog/ --checksum
   - rm -rf /drone/src/*
 
 - name: purge cdn
