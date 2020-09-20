@@ -26,7 +26,7 @@ enableEmoji = true
   readmore = "Read more"
   paginationpath = "page"
   imagecdn = "https://img.emanuelpina.pt/"
-  git = "https://github.com/emanuelpina/blog/"
+  gitsource = "https://codeberg.org/emanuelpina/emanuelpina.pt/src/branch/"
 
 [permalinks]
   posts = "/:title/"
