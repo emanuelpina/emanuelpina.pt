@@ -6,7 +6,7 @@
         <polyline points="4 12 12 16 20 12" />
         <polyline points="4 16 12 20 20 16" />
     </svg>
-{{range .Params.categories}}
+{{range sort .Params.categories}}
     <a href="/categories/{{. | urlize | lower}}/">{{.}}</a>
 {{end}}
 </span>
