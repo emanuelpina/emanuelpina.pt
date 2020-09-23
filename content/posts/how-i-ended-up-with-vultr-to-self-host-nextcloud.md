@@ -7,6 +7,7 @@ categories: [SysAdmin]
 tags: [Cloud Storage, Nextcloud, VPS, Vultr]
 readmore: 
 summarize: true
+update: "I've recently written a post on using [Hetzner to self host Nextcloud](/using-hetzner-to-self-host-nextcloud/) that's an update to this one."
 ---
 
 In the process of self-hosting Nextcloud the first step was to choose a VPS provider. It wasn't a straightforward choice and in the process I ended up experiencing, by this order, Hetzner, DigitalOcean and Vultr.
