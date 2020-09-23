@@ -8,6 +8,7 @@
         {{- partial "edit.html" . -}}
         {{if .Params.thumbnail }}<img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}">{{end}}
         {{- partial "tags.html" . -}}
+        {{if .Params.update}}<span class="post-update {{if ne .Params.update true}}with-note{{end}}">Last updated on {{.Lastmod.Format "02/01/2006"}}{{if ne .Params.update true}} - {{.Params.update | markdownify}}{{end}}</span>{{end}}
     </header>
     <div class="post-content">
         {{.Content}}

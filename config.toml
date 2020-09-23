@@ -2,14 +2,11 @@ baseURL = "https://emanuelpina.pt/"
 languageCode = "en-gb"
 title = "Emanuel Pina"
 theme = "mytheme"
-
 metaDataFormat = "yaml"
-
 enableRobotsTXT = true
-
 paginatePath = "page"
-
 enableEmoji = true
+enableGitInfo = true
 
 [markup]
   [markup.highlight]
