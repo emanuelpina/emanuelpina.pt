@@ -1,0 +1,5 @@
+{{if .Params.update}}
+    <span class="post-update {{if ne .Params.update true}}with-note{{end}}">
+        Last updated on {{.Lastmod.Format "02/01/2006"}}{{if ne .Params.update true}} - {{.Params.update | markdownify}}{{end}}
+    </span>
+{{end}}
