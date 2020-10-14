@@ -7,13 +7,14 @@ categories: [SysAdmin]
 tags: [PHP, Ubuntu, VPS]
 readmore: Read the tutorial
 summarize: true
+update: true
 ---
 
 On the way to install Nextcloud we've already completed the [initial setup of our VPS](/ubuntu-server-initial-setup/), the [installation of Nginx](/nginx-installation-on-ubuntu/) and [the installation of PostgreSQL](/postgresql-installation-on-ubuntu/).
 
-I will now cover the installation of PHP 7.3.
+I will now cover the installation of PHP 7.4.
 
-I’m currently using Ubuntu 18.04, but these instructions are equally valid for other Ubuntu versions.
+I’m currently using Ubuntu 20.04, but these instructions are equally valid for other Ubuntu versions.
 
 <!--more-->
 
@@ -21,7 +22,7 @@ I’m currently using Ubuntu 18.04, but these instructions are equally valid for
 
 PHP (recursive acronym for _PHP: Hypertext Preprocessor_) is an open source server side scripting language, widely used to create dynamic interactive web pages.
 
-To be able to install PHP 7.3 you first need to add a third party repository. You may not have the add-apt-repository command available, so we'll install software-properties-common first. To do both of these things, run the following commands:
+To be able to install PHP 7.4 you first need to add a third party repository. You may not have the add-apt-repository command available, so we'll install software-properties-common first. To do both of these things, run the following commands:
 ```plain
 # sudo apt-get install software-properties-common
 # sudo add-apt-repository ppa:ondrej/php
@@ -32,20 +33,20 @@ With the new repository added, update the package index:
 # sudo apt update
 ```
 
-You can now install PHP 7.3 along with some of it most common extensions:
+You can now install PHP 7.4 along with some of it most common extensions:
 ```plain
-# sudo apt install php7.3 php7.3-fpm php7.3-pgsql php-common php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-readline php7.3-mbstring php7.3-xml php7.3-gd php7.3-curl
+# sudo apt install php7.4 php7.4-fpm php7.4-pgsql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline php7.4-mbstring php7.4-xml php7.4-gd php7.4-curl
 ```
 
-After the installation is concluded, start the PHP 7.3 service and enable it to auto-start on boot:
+After the installation is concluded, start the PHP 7.4 service and enable it to auto-start on boot:
 ```plain
-# sudo systemctl start php7.3-fpm
-# sudo systemctl enable php7.3-fpm
+# sudo systemctl start php7.4-fpm
+# sudo systemctl enable php7.4-fpm
 ```
 
-At any moment you can check the PHP 7.3 service status running:
+At any moment you can check the PHP 7.4 service status running:
 ```plain
-# systemctl status php7.3-fpm
+# systemctl status php7.4-fpm
 ```
 
 ### Test PHP Processing
@@ -74,7 +75,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
     }
     
     location ~ /\.ht {
@@ -129,12 +130,12 @@ When determining how much memory you can dedicate to PHP, keep in mind that the 
 
 Finally, to get a general idea on how much memory each PHP process is consuming, run:
 ```plain
-ps --no-headers -o "rss,cmd" -C php-fpm7.3 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
+# ps --no-headers -o "rss,cmd" -C php-fpm7.4 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
 ```
 
 The settigns you need to change are all in the `www.conf` file. To edit it, run:
 ```plain
-# sudo nano /etc/php/7.3/fpm/pool.d/www.conf
+# sudo nano /etc/php/7.4/fpm/pool.d/www.conf
 ```
 
 Search for each one of the following settings and change it accordingly.
@@ -156,7 +157,7 @@ So, set pm.max_start_servers to 8. The same used before for pm.start_servers.
 
 To finish, just restart the PHP-FPM service:
 ```plain
-# sudo systemctl restart php7.3-fpm
+# sudo systemctl restart php7.4-fpm
 ```
 
 And that's all :grinning:

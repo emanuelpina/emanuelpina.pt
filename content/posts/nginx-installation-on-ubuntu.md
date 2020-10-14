@@ -7,13 +7,14 @@ categories: [SysAdmin]
 tags: [Nginx, Ubuntu, VPS]
 readmore: "Read the tutorial"
 summarize: true
+update: true
 ---
 
 This is the second post on the road to self-host Nextcloud. At this point we have already [choosed a provider and deployed a VPS](/how-i-ended-up-with-vultr-to-self-host-nextcloud/) and [completed its initial setup](/ubuntu-server-initial-setup/).
 
 Now, we're going to cover the installation of Nginx, the use of Let's Encrypt SSL certificates and the configuration of the web server to use HTTP Strict Transport Security (HSTS) and TLS 1.3.
 
-I’m currently using Ubuntu 18.04, but these instructions are equally valid for other Ubuntu versions.
+I’m currently using Ubuntu 20.04, but these instructions are equally valid for other Ubuntu versions.
 
 <!--more-->
 
@@ -155,7 +156,7 @@ At this point you have set Nginx to serve your site, but notice that the browser
 
 To enable the browser to use a encrypted/secure connection you've to install an SSL certificate. You can obtain a free SSL certificate using Let’s Encrypt. To easily do this you can use a open source software called [Certbot](https://certbot.eff.org/about/). To install Certbot and its Nginx package run the following command:
 ```plain
-# sudo apt install certbot python-certbot-nginx
+# sudo apt install certbot python3-certbot-nginx
 ```
 
 You can now use Certbot to obtaining an SSL certificate typing:
