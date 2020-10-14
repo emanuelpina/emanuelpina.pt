@@ -29,3 +29,6 @@ enableGitInfo = true
   posts = "/:title/"
   categories = "/categories/:title/"
   tags = "/tags/:title/"
+
+[frontmatter]
+  lastmod = ["lastmod", "publishDate", ":git", "date"]

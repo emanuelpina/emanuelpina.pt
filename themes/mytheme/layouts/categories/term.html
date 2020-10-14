@@ -1,12 +1,13 @@
 {{define "main"}}
 <span class="list-title">Posts in category <h3>{{.Title}}</h3></span>
 <section class="range">
-    {{range (.Paginator 10).Pages}}
+    {{range (.Paginator 10).Pages.ByPublishDate.Reverse}}
         <article class="post">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
             <header class="post-details">
-                <time class="post-date">{{.Date.Format "Jan 2, 2006"}}</time>
+                <time class="post-date">{{.PublishDate.Format "Jan 2, 2006"}}</time>
                 {{- partial "tags.html" . -}}
+                {{- partial "update.html" . -}}
             </header>
             <div class="post-content">
                 {{.Summary | plainify | htmlUnescape}}

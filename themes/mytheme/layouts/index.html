@@ -1,13 +1,14 @@
 {{define "main"}}
 <section class="range">
-{{$paginator := .Paginate (where .Site.RegularPages "Type" "posts") 5}}
+{{$paginator := .Paginate (sort .Site.RegularPages "PublishDate" "desc") 5}}
 {{range $paginator.Pages}}
 <article class="post">
   <h1 class="post-title"><a href="{{.RelPermalink}}">{{.Title}}</a></h1>
   <header class="post-details">
-    <time class="post-date">{{.Date.Format "Jan 2, 2006"}}</time>
+    <time class="post-date">{{.PublishDate.Format "Jan 2, 2006"}}</time>
     {{- partial "categories.html" . -}}
     {{if .Params.thumbnail}}<a href="{{ .RelPermalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}"></a>{{end}}
+    {{- partial "update.html" . -}}
   </header>
   <div class="post-content">
     {{if .Params.summarize}}
