@@ -1,3 +1,5 @@
 ---
-Title: "Contact"
+title: "Contact"
+aliases:
+    - /contacto/
 ---
