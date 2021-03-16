@@ -1,6 +1,8 @@
-{{if or .NextInSection .PrevInSection}}
+{{$prev := .Site.RegularPages.ByPublishDate.Prev .}}
+{{$next := .Site.RegularPages.ByPublishDate.Next .}}
+{{if or $prev $next}}
 <div class="pagination-single">
-    {{if .NextInSection}}{{with .NextInSection}}
+    {{if $next}}{{with $next}}
     <div class="next-post">
         <a href="{{.RelPermalink}}" alt="{{.Title}}">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-left" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -12,7 +14,7 @@
         </a>
     </div>
     {{end}}{{end}}
-    {{if .PrevInSection}}{{with .PrevInSection}}
+    {{if $prev}}{{with $prev}}
     <div class="previous-post">
         <a href="{{.RelPermalink}}" alt="{{.Title}}">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-right" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -24,5 +26,4 @@
         </a>
     </div>
     {{end}}{{end}}
-</div>
-{{end}}
+{{ end }}
