@@ -22,29 +22,12 @@ I’m currently using Ubuntu 20.04, but these instructions are equally valid for
 
 PHP (recursive acronym for _PHP: Hypertext Preprocessor_) is an open source server side scripting language, widely used to create dynamic interactive web pages.
 
-To be able to install PHP 7.4 you first need to add a third party repository. You may not have the add-apt-repository command available, so we'll install software-properties-common first. To do both of these things, run the following commands:
+To install PHP 7.4 along with some of it most common extensions run the following command:
 ```plain
-# sudo apt-get install software-properties-common
-# sudo add-apt-repository ppa:ondrej/php
+# sudo apt install php7.4 php7.4-common php7.4-fpm php7.4-pgsql
 ```
 
-With the new repository added, update the package index:
-```plain
-# sudo apt update
-```
-
-You can now install PHP 7.4 along with some of it most common extensions:
-```plain
-# sudo apt install php7.4 php7.4-fpm php7.4-pgsql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline php7.4-mbstring php7.4-xml php7.4-gd php7.4-curl
-```
-
-After the installation is concluded, start the PHP 7.4 service and enable it to auto-start on boot:
-```plain
-# sudo systemctl start php7.4-fpm
-# sudo systemctl enable php7.4-fpm
-```
-
-At any moment you can check the PHP 7.4 service status running:
+And that's it. At any moment you can check the PHP 7.4 service status running:
 ```plain
 # systemctl status php7.4-fpm
 ```
