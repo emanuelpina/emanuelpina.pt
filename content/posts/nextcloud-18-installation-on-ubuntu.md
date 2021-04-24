@@ -1,16 +1,17 @@
 ---
-title: "Nextcloud 20 Installation on Ubuntu"
+title: "Nextcloud 21 Installation on Ubuntu"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2020-10-21T20:08:11+01:00
+publishDate: 2021-04-24T19:23:13+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
 tags: [Nextcloud, Ubuntu, VPS]
 readmore: "Read the tutorial"
 summarize: true
-update: With the release of [Nextcloud 20](https://nextcloud.com/blog/nextcloud-hub-20-debuts-dashboard-unifies-search-and-notifications-integrates-with-other-technologies/), I decided to update this tutorial to reflect its instalation on the latest version of Ubuntu LTS (20.04)
+update: With the release of the first update to [Nextcloud 21](https://nextcloud.com/blog/first-21-update-is-out-as-are-minor-20-and-19-releases/), I decided to rewrite this tutorial to reflect its instalation
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
+    - /nextcloud-20-installation-on-ubuntu/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Ubuntu!
@@ -25,18 +26,18 @@ I'm currently using Ubuntu 20.04, but these instructions are equally valid for o
 
 <!--more-->
 
-### Download Nextcloud 20
+### Download Nextcloud 21
 
-To download Nextcloud 20, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 21, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
-# wget https://download.nextcloud.com/server/releases/nextcloud-20.0.0.zip
+# wget https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip
 ```
 
 With the archive downloaded, now unzip it. We’ll also attempt to install `unzip`, in case you don’t have it installed already. The `-d` switch specifies the target directory, so the archive will be extracted to `/var/www/nextcloud`:
 ```plain
 # sudo apt install unzip
-# sudo unzip nextcloud-20.0.0.zip -d /var/www
+# sudo unzip nextcloud-21.0.1.zip -d /var/www
 ```
 
 Now you’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
@@ -48,7 +49,7 @@ Now you’ll have to change the owner of `/var/www/nextcloud` so Nginx can write
 
 Beyond the ones we [installed previously](/php-installation-on-ubuntu/#install-php), Nextcloud requires some additional PHP modules. To install them, run the following command:
 ```plain
-# sudo apt install php-imagick php7.4-zip php7.4-bz2 php7.4-intl php-smbclient php7.4-bcmath php7.4-gmp
+# sudo apt install php7.4-curl php7.4-dom php7.4-gd php7.4-mbstring php7.4-simplexml php7.4-xmlreader php7.4-xmlwriter php7.4-zip php7.4-bz2 php7.4-intl php7.4-ldap  php7.4-imap php7.4-bcmath php7.4-gmp php7.4-apcu php7.4-imagick
 ```
 
 ### Configure PHP
@@ -250,7 +251,7 @@ server {
     # will add the domain to a hardcoded list that is shipped
     # in all major browsers and getting removed from this list
     # could take several months.
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header Strict-Transport-Security            "max-age=31536000; includeSubDomains"   always;
 
     # set max upload size
     client_max_body_size 512M;
@@ -269,13 +270,21 @@ server {
     #pagespeed off;
 
     # HTTP response headers borrowed from Nextcloud `.htaccess`
-    add_header Referrer-Policy                      "no-referrer"   always;
-    add_header X-Content-Type-Options               "nosniff"       always;
-    add_header X-Download-Options                   "noopen"        always;
-    add_header X-Frame-Options                      "SAMEORIGIN"    always;
-    add_header X-Permitted-Cross-Domain-Policies    "none"          always;
-    add_header X-Robots-Tag                         "none"          always;
-    add_header X-XSS-Protection                     "1; mode=block" always;
+    add_header Referrer-Policy                      "no-referrer"           always;
+    add_header X-Content-Type-Options               "nosniff"               always;
+    add_header X-Download-Options                   "noopen"                always;
+    add_header X-Frame-Options                      "SAMEORIGIN"            always;
+    add_header X-Permitted-Cross-Domain-Policies    "none"                  always;
+    add_header X-Robots-Tag                         "none"                  always;
+    add_header X-XSS-Protection                     "1; mode=block"         always;
+
+    # Opt out of Google Chrome tracking everything you do.
+    # Note: if you’re reading this, stop using Google Chrome.
+    # It is ridiculous for web servers to essentially have to ask
+    # “please do not violate the privacy of the people who are viewing
+    # this site” with every request.
+    # For more info, see: https://plausible.io/blog/google-floc
+    add_header Permissions-Policy                   "interest-cohort=()"    always;
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
@@ -294,9 +303,6 @@ server {
     # `try_files $uri $uri/ /index.php$request_uri`
     # always provides the desired behaviour.
     index index.php index.html /index.php$request_uri;
-
-    # Default Cache-Control policy
-    expires 1m;
 
     # Rule borrowed from `.htaccess` to handle Microsoft DAV clients
     location = / {
@@ -318,13 +324,10 @@ server {
     location ^~ /.well-known {
         # The following 6 rules are borrowed from `.htaccess`
 
-        rewrite ^/\.well-known/host-meta\.json  /public.php?service=host-meta-json  last;
-        rewrite ^/\.well-known/host-meta        /public.php?service=host-meta       last;
-        rewrite ^/\.well-known/webfinger        /public.php?service=webfinger       last;
-        rewrite ^/\.well-known/nodeinfo         /public.php?service=nodeinfo        last;
-
         location = /.well-known/carddav     { return 301 /remote.php/dav/; }
         location = /.well-known/caldav      { return 301 /remote.php/dav/; }
+        # Anything else is dynamically handled by Nextcloud
+        location ^~ /.well-known            { return 301 /index.php$uri; }
 
         try_files $uri $uri/ =404;
     }
@@ -388,56 +391,45 @@ If there aren’t any issues, restart Nginx to enable the changes:
 
 Now, to complete Nextcloud installation, in your browser visit the domain address you chosed and you will be presented with a form to fill.
 
-On this form on **"Create an admin account"** you should chose a **username** and **password** for your admin account. And on **"Configure Database"** you should fill it with the **username**, **password** and **database name** you chosed above.
+On this form on **"Create an admin account"** you should chose a **username** and **password** for your admin account. And on **"Configure Database"** you should fill it with the **username**, **password** and **database name** you defined [above](#create-user-and-database-for-nextcloud).
 
 After you fill the form just click on `Finish setup` and wait for the installation to complete. At the end you'll be redirected to your Nextcloud!
 
-### Enable Caching
+### Enable Memory Caching
 
-Nextcloud can be very slow if you don’t configure a caching solution. I'll now cover two of them:
-+ **PHP OPcache**: a PHP inbuilt cache solution that speeds up scripts execution;
-+ **Redis Server**: a fast in-memory key-value store that speeds up everything in NextCloud.
+{{< marker yellow >}}Configuring memory caching is not required and you may safely ignore this section, however it can significantly improve the perfomance of your Nextcloud.{{< /marker >}} The recommend solutions to implement should be based on the size and propose of your Nextcloud. For a small instance with a single server the recommended configuration is APCu for local memcache and Redis for everything else:[^1]
++ **APCu**: an in-memory key-value store for PHP;
++ **Redis**: an excellent modern memcache to use for distributed caching, and as a key-value store for Transactional File Locking.
 
-To install **OPcache**, go back to your terminal and run the following commands:
+To install **APCu**, go back to your terminal and run the following commands:
 ```plain
-# sudo apt update
-# sudo apt install php7.4-opcache
+# sudo apt install php-apcu
 ```
 
-Then you need to edit a file named **10-opcache.ini**. To do so, run:
-```plain
-# sudo nano /etc/php/7.4/fpm/conf.d/10-opcache.ini
-```
+{{< box red >}}
+APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure you set `apc.enable_cli` to `1` on `/etc/php/7.4/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
+{{< /box >}}
 
-Add the missing lines to the file so it look like this:
-```php
-; configuration for php opcache module
-; priority=10
-zend_extension=opcache.so
-opcache.enable=1
-opcache.enable_cli=1
-opcache.interned_strings_buffer=8
-opcache.max_accelerated_files=10000
-opcache.memory_consumption=128
-opcache.save_comments=1
-opcache.revalidate_freq=1
-```
-
-To install **Redis Server**, run:
+And to install **Redis**, run:
 ```plain
 # sudo apt install redis-server php-redis
 ```
 
-Now you need to configure Nextcloud to use Redis. To do so you need to edit the Nextcloud configuration file:
+Then restart Nginx:
+```plain
+# sudo systemctl reload nginx
+```
+
+Now you need to configure Nextcloud to use both APCu and Redis. To do so let's edit the Nextcloud configuration file:
 ```plain
 # sudo nano /var/www/nextcloud/config/config.php
 ```
 
-Add the following lines just bellow `'installed' => true,`:
+And add the following lines just bellow `'installed' => true,`:
 ```php
+'memcache.local' => '\OC\Memcache\APCu',
 'memcache.locking' => '\OC\Memcache\Redis',
 'memcache.distributed' => '\OC\Memcache\Redis',
-'memcache.local' => '\OC\Memcache\Redis',
 'redis' => [
     'host' => 'localhost',
     'port' => 6379,
@@ -445,13 +437,12 @@ Add the following lines just bellow `'installed' => true,`:
 ],
 ```
 
-For this changes to take effect you need to restart PHP:
-```plain
-# sudo systemctl restart php7.4-fpm
-```
+That's it!
 
 #### Congratulations :tada:
 
 You now have your self-hosted cloud storage solution and are one step closer to [be the owner of your data](/be-the-owner-of-your-data-with-nextcloud/)!
 
 {{< call-for-contribution >}}
+
+[^1]: [Nextcloud documentation - Memory caching: Recommendations based on type of deployment](https://docs.nextcloud.com/server/21/admin_manual/configuration_server/caching_configuration.html?highlight=cache#recommendations-based-on-type-of-deployment)
