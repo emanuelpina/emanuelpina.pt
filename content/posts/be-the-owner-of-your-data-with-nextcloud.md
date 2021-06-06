@@ -11,7 +11,7 @@ summarize: true
 
 Since a few years now I started to get concern with how much of my data was being gathered and how it was being used.
 
-Nowdays we spend a big part of our lives online and over the years companies have grown basing their business on tracking our actions. The searches we made, the sites and pages we visit, the time you spent on them... and so on.
+Nowadays we spend a big part of our lives online and over the years companies have grown basing their business on tracking our actions. The searches we made, the sites and pages we visit, the time you spent on them... and so on.
 
 Let's face it, Google Search was a revolution, and Gmail, OneDrive, iCloud, Facebook or Youtube are excellent products in terms of usability and features. And best of all they're free, you would say. Are they?
 
@@ -19,7 +19,7 @@ Let's face it, Google Search was a revolution, and Gmail, OneDrive, iCloud, Face
 
 So, how can this companies create and mantain such great products, give them free and be profitable? More than been profitable, all those are now in the [top 10 list of the most values companies](https://fxssi.com/top-10-most-valuable-companies-in-the-world/). How?
 
-Because data is nowdays the most profitable resource. The metadata those companies gather of us can be used, for instance, to place ads or shape what we see when we do a search on Google or view our timeline on Facebook or Youtube. In the end, they can condition us to buy a product or to vote in a certain politic. Do you think I'm being dramatic? Take a look at Netflix documentary [*The Great Hack*](https://www.netflix.com/Title/80117542/) about Facebook and Cambridge Analytica actions during Trump and Brexit campaigns.
+Because data is nowadays the most profitable resource. The metadata those companies gather of us can be used, for instance, to place ads or shape what we see when we do a search on Google or view our timeline on Facebook or Youtube. In the end, they can condition us to buy a product or to vote in a certain politic. Do you think I'm being dramatic? Take a look at Netflix documentary [*The Great Hack*](https://www.netflix.com/Title/80117542/) about Facebook and Cambridge Analytica actions during Trump and Brexit campaigns.
 
 One question that came up in that documentary and made me think was *"how much of Facebook's profits come from the use of its users' data?"* The answer is all. All of the more than $400 billion dollars that Facebook worth are result of how much of our data they gather and own. That's disturbing.
 
