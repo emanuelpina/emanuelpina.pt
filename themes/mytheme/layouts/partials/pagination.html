@@ -2,7 +2,7 @@
 <div class="pagination">
     {{if .Paginator.HasPrev}}
     <div class="previous-page">
-        <a href="{{.RelPermalink}}{{if ne .Paginator.PageNumber 2}}{{.Site.Params.paginationpath}}/{{sub .Paginator.PageNumber 1}}{{end}}">
+        <a href="{{.RelPermalink}}{{if ne .Paginator.PageNumber 2}}{{.Site.Params.paginationpath}}/{{sub .Paginator.PageNumber 1}}/{{end}}">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-left" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z"/>
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -15,7 +15,7 @@
     <div class="actual-page">{{.Paginator.PageNumber}} / {{.Paginator.TotalPages}}</div>
     {{if .Paginator.HasNext}}
     <div class="next-page">
-        <a href="{{.RelPermalink}}{{.Site.Params.paginationpath}}/{{add .Paginator.PageNumber 1}}">
+        <a href="{{.RelPermalink}}{{.Site.Params.paginationpath}}/{{add .Paginator.PageNumber 1}}/">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-right" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z"/>
                 <line x1="5" y1="12" x2="19" y2="12" />
