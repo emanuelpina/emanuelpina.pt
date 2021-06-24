@@ -35,7 +35,7 @@
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ if not .Site.IsServer }}
-        <script async defer data-website-id="3e465301-4413-4b8c-80b5-990cf042d236" src="https://analytics.mnlpn.xyz/count.js"></script>
+        <script async defer data-website-id="3e465301-4413-4b8c-80b5-990cf042d236" src="https://analytics.mnlpn.xyz/cntr.js"></script>
     {{ end }}
   </body>
 </html>
