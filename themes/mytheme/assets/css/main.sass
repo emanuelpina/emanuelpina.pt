@@ -622,66 +622,28 @@ figure
             &:hover
                 color: $accentcolor
 
-//Youtube and Twitch lazyload
-.youtube, .twitch
+//Videos integration
+.video, .youtube
     position: relative
-    background: #000
-    border-radius: 2px
+    border-radius: 4px
     padding-top: 56.25%
-    margin-bottom: $lh
+    margin-top: $lh
     overflow: hidden
-    cursor: pointer
-    img
-        position: absolute
-        width: 100%
-        top: -16.5%
-        opacity: 0.7
     iframe
         position: absolute
         width: 100%
         height: 100%
         top: 0
         left: 0
-.youtube
-    .icon-play
-        position: absolute
-        width: 80px
-        top: 50%
-        left: 50%
-        transform: translate3d(-50%, -50%, 0)
-        fill: #f00
-        opacity: 0.8
-        transition: opacity 200ms ease-in-out
-    &:hover .icon-play
-        opacity: 1
-.twitch
-    .play
-        position: absolute
-        width: 120px
-        top: 50%
-        left: 50%
-        transform: translate3d(-50%, -50%, 0)
-    .icon-play
-        fill: #fff
-        opacity: 0.8
-        transition: all 200ms ease-in-out
-    &:hover .icon-play
-        fill: #b9a3e3
-        opacity: 1
+        border: none
 
-//Youtube and Twitch videos aspect ratios
+//Videos aspect ratios
 .ratio21-9
-    padding-top: 42.6%
-    img
-        top: -38.1%
+    padding-top: 42%
 .ratio2-1
     padding-top: 50%
-    img
-        top: -25%
 .ratio4-3
     padding-top: 75%
-    img
-        top: 0
 
 //404 page
 .fourohfour

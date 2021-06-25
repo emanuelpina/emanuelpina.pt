@@ -23,6 +23,7 @@ enableGitInfo = true
   readmore = "Read more"
   paginationpath = "page"
   imagecdn = "https://img.emanuelpina.pt/"
+  videocdn = "https://iframe.mediadelivery.net/embed/1163/"
   gitsource = "https://codeberg.org/emanuelpina/emanuelpina.pt/src/branch/"
 
 [permalinks]
