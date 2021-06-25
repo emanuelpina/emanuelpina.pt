@@ -36,7 +36,7 @@
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ if not .Site.IsServer }}
         {{ $count := resources.Get "js/count.js" | resources.Minify | resources.Fingerprint }}
-        <script data-goatcounter="https://stats.mnlpn.xyz/count" async src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
+        <script data-goatcounter="https://stats.emanuelpina.pt/count" async src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ end }}
   </body>
 </html>
