@@ -30,8 +30,6 @@
         {{- partial "footer.html" . -}}
         {{- partial "scroll-up.html" . -}}
     </div>
-    {{ $jquery := resources.Get "js/jquery.min.js" | resources.Fingerprint }}
-    <script src="{{ $jquery.RelPermalink }}" integrity="{{ $jquery.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ if not .Site.IsServer }}

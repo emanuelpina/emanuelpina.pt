@@ -375,7 +375,8 @@ figure
     h4:hover > .post-heading-link
         display: inline
     @media (hover: none)
-        display: inline
+        .post-heading-link
+            display: inline
 
     .post-read-more
         margin-top: round($lh + 6px)
@@ -682,6 +683,7 @@ figure
     position: fixed
     bottom: 20px
     right: 20px
+    opacity: 1
     a
         display: block
         background-color: $accentcolor
