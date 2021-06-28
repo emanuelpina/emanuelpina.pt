@@ -11,7 +11,7 @@
         {{- partial "update.html" . -}}
     </header>
     <div class="post-content">
-        {{.Content}}
+        {{- partial "addHeadingsLinks.html" .Content -}}
     </div>
 </article>
 {{- partial "pagination-single.html" . -}}

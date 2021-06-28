@@ -39,6 +39,7 @@ $halflh: round($lh / 2) //Half the size of line height
 
 html
     scroll-padding-top: $lh
+    scroll-behavior: smooth
     font-family: 'Muli', sans-serif
     font-size: $fs
     line-height: $lh
@@ -369,8 +370,13 @@ figure
             transition: all 200ms ease-in-out
             &:hover
                 fill: $textcolor
-    h3:hover > .post-heading-link
+    h2:hover > .post-heading-link,
+    h3:hover > .post-heading-link,         
+    h4:hover > .post-heading-link
         display: inline
+    @media (hover: none)
+        display: inline
+
     .post-read-more
         margin-top: round($lh + 6px)
         display: block
