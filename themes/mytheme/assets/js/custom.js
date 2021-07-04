@@ -22,10 +22,8 @@ function handleScroll() {
       opacity = (windowScrollTop / (bodyHeight - windowHeight)) * 4
     
     if (bodyHeight > trigger) {
-        console.log(opacity);
         scrollToTopBtn.style.opacity = opacity;
     } else {
-        console.log("no scroll button")
         scrollToTopBtn.style.display = "none";
     }
 }
