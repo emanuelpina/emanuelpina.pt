@@ -7,7 +7,7 @@
   <header class="post-details">
     <time class="post-date">{{.PublishDate.Format "Jan 2, 2006"}}</time>
     {{- partial "categories.html" . -}}
-    {{if .Params.thumbnail}}<a href="{{ .RelPermalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}"></a>{{end}}
+    {{if .Params.thumbnail}}<a href="{{ .RelPermalink }}" alt="{{ .Title }}"><img class="post-featureimage" src="{{.Site.Params.imagecdn}}c_fill,f_auto,q_auto,w_800/{{.Params.thumbnail}}" alt="{{ .Title }}" loading="lazy"></a>{{end}}
     {{- partial "update.html" . -}}
   </header>
   <div class="post-content">
