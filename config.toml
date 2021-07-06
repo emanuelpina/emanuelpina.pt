@@ -25,6 +25,7 @@ enableGitInfo = true
   imagecdn = "https://img.emanuelpina.pt/"
   videocdn = "https://iframe.mediadelivery.net/embed/1163/"
   gitsource = "https://codeberg.org/emanuelpina/emanuelpina.pt/src/branch/"
+  pgpkeyfingerprint = "52DD0B5CF4F6AB67ADC78D7F2E479ED0E3BA5D22"
 
 [permalinks]
   posts = "/:title/"
