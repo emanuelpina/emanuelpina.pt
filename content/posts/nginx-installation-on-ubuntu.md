@@ -1,24 +1,27 @@
 ---
-title: "Nginx Installation on Ubuntu"
+title: "Nginx Installation on Debian"
 date: 2019-10-05T03:45:57+01:00
 draft: false
 thumbnail: v1570238190/2019/nginx_webserver.jpg
 categories: [SysAdmin]
-tags: [Nginx, Ubuntu, VPS]
+tags: [Debian, Nginx, VPS]
 readmore: "Read the tutorial"
+tableofcontents: true
 summarize: true
 update: true
+aliases:
+    - /nginx-installation-on-ubuntu/
 ---
 
-This is the second post on the road to self-host Nextcloud. At this point we have already [choosed a provider and deployed a VPS](/how-i-ended-up-with-vultr-to-self-host-nextcloud/) and [completed its initial setup](/ubuntu-server-initial-setup/).
+This is the second post on the road to self-host Nextcloud. At this point we have already [choosed a provider and deployed a VPS](/using-hetzner-to-self-host-nextcloud/) and [completed its initial setup](/debian-server-initial-setup/).
 
-Now, we're going to cover the installation of Nginx, the use of Let's Encrypt SSL certificates and the configuration of the web server to use HTTP Strict Transport Security (HSTS) and TLS 1.3.
+Now, we're going to cover the installation of Nginx, the use of Let's Encrypt SSL certificates and the configuration of the web server to use HTTP Strict Transport Security (HSTS).
 
-I’m currently using Ubuntu 20.04, but these instructions are equally valid for other Ubuntu versions.
+I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
-### Install Nginx
+## Install Nginx
 
 First, let's update the package lists from the repositories:
 ```plain
@@ -30,12 +33,12 @@ Then, install Nginx:
 # sudo apt install nginx
 ```
 
-You can check if it’s working by typing:
+We can check if it’s working by running:
 ```plain
 # sudo systemctl status nginx
 ```
 
-If all went well, you should get something like this:
+If all went well, we should get something like this:
 ```plain
 ● nginx.service - A high performance web server and a reverse proxy server
    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
@@ -48,7 +51,7 @@ If all went well, you should get something like this:
            └─17676 nginx: worker process
 ```
 
-### Adjust the Firewall
+## Adjust the Firewall
 
 Before using Nginx, the firewall needs to be adjusted to allow access to the service. Nginx registers itself as a service with **UFW** upon installation, making it straightforward to allow Nginx access.
 
@@ -57,7 +60,7 @@ List the application configurations that **UFW** knows how to work with by typin
 # sudo ufw app list
 ```
 
-You get a listing of the application profiles, like this:
+We get a listing of the application profiles, like this:
 ```plain
 Available applications:
   Nginx Full
@@ -66,7 +69,7 @@ Available applications:
   OpenSSH
 ```
 
-As you can see, there are three profiles available for Nginx:
+There are three profiles available for Nginx:
 
 - **Nginx Full:** This profile opens both port 80 (normal, unencrypted web traffic) and port 443 (TLS/SSL encrypted traffic);
 - **Nginx HTTP:** This profile opens only port 80 (normal, unencrypted web traffic);
@@ -77,17 +80,17 @@ We plan to use TLS/SSL so choose the profile **Nginx Full** to open both ports:
 # sudo ufw allow 'Nginx Full'
 ```
 
-Visiting your IP address on a browser will now show the Nginx's default page, like bellow.
+Visiting our IP address on a browser will now show the Nginx's default page, like bellow.
 
 ![Nginx Default Page](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570212267/2019/nginx-installation-one.jpg)
 
-### Set Up a Server Block
+## Set Up a Server Block
 
 When using the Nginx web server, _server blocks_ can be used to encapsulate configuration details and host more than one domain from a single server. We will set up a domain called **emanuelpina.ml**, but you should **replace this with your own domain name**.
 
 On this example the content of our site will be stored in the folder `/var/www/html`, change this to match your preferences.
 
-Let's create a `index.html` file for our site using [Nano](https://help.ubuntu.com/community/Nano/) or your favorite editor:
+Let's create a `index.html` file for our site using [Nano](https://help.ubuntu.com/community/Nano/) or use your favorite editor:
 ```plain
 # sudo nano /var/www/html/index.html
 ```
@@ -106,12 +109,12 @@ Add the following HTML to the file:
 ```
 Save and close the file when you're finished.
 
-In order for Nginx to serve this content, you need to create a _server block_ with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one. We'll name it **emanuelpina.ml** but you can name it whatever you like:
+In order for Nginx to serve this content, we need to create a _server block_ with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one. We'll name it **emanuelpina.ml** but you can name it whatever you like:
 ```plain
 # sudo nano /etc/nginx/sites-available/emanuelpina.ml
 ```
 
-Paste in the following configuration block, which is similar to the default, but updated for your new directory and domain name:
+Paste in the following configuration block, which is similar to the default, but updated for our new directory and domain name:
 ```nginx
 server {
     listen 80;
@@ -127,7 +130,7 @@ server {
     }
 }
 ```
-Notice that we’ve updated the **root** configuration to your site directory, and the **server_name** to your domain name.
+{{< marker yellow p >}}Notice that we’ve updated the **root** configuration to our site directory, and the **server_name** to our domain name.{{< /marker >}}
 
 Next, let’s enable the site by creating a link from this file to the `sites-enabled` directory, which Nginx reads from during startup:
 ```plain
@@ -144,29 +147,29 @@ If there aren’t any problems, restart Nginx to enable the changes:
 # sudo systemctl reload nginx
 ```
 
-Visiting your domain address on a browser will now show the content of the `index.html` file you've created.
+Visiting our domain address on a browser will now show the content of the `index.html` file we've created.
 
 ![Your index.html Page](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570214982/2019/nginx-installation-two.jpg)
 
-### Enable SSL
+## Enable SSL
 
-At this point you have set Nginx to serve your site, but notice that the browser is connecting to the server through a unencrypted/non-secure connection.
+At this point we have set Nginx to serve our site, but notice that the browser is connecting to the server through a unencrypted/non-secure connection.
 
 ![Non-secure Connection](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-three.jpg)
 
-To enable the browser to use a encrypted/secure connection you've to install an SSL certificate. You can obtain a free SSL certificate using Let’s Encrypt. To easily do this you can use a open source software called [Certbot](https://certbot.eff.org/about/). To install Certbot and its Nginx package run the following command:
+To enable the browser to use a encrypted/secure connection we've to install an SSL certificate. We can obtain a free SSL certificate using Let’s Encrypt. To easily do this we can use a open source software called [Certbot](https://certbot.eff.org/about/). To install Certbot and its Nginx package run the following command:
 ```plain
 # sudo apt install certbot python3-certbot-nginx
 ```
 
-You can now use Certbot to obtaining an SSL certificate typing:
+We can now use Certbot to obtaining an SSL certificate typing:
 ```plain
 # sudo certbot --nginx
 ```
 
-If this is your first time running Certbot, you'll be prompted to enter an email address, agree to the terms of service and authorise or not EEF (the entity that mantains Certbot) to send emails to you.
+At first time we run Certbot, we'll be prompted to enter an email address, agree to the terms of service and authorise or not EEF (the entity that mantains Certbot) to send emails to us.
 
-You'll then be presented with a list of all domains enabled on your server:
+We'll then be presented with a list of all domains enabled on our server:
 ```plain
 Which names would you like to activate HTTPS for?
 -------------------------------------------------------------------------------
@@ -177,40 +180,28 @@ Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel):
 ```
 
-Select the appropriate numbers for the domains you want to obtain a certificate separated with a `,` (for our example type `1,2`) and press `ENTER`. After doing so, Certbot will communicate with the Let’s Encrypt server, then run a challenge to verify that you control the domain you’re requesting a certificate for.
+Select the appropriate numbers for the domains you want to obtain a certificate separated with a `,` (for our example type `1,2`) and press `ENTER`. After doing so, Certbot will communicate with the Let’s Encrypt server, then run a challenge to verify that we control the domain we’re requesting a certificate for.
 
-If that’s successful, Certbot will ask how you’d like to configure the HTTPS settings:
-```plain
-Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
--------------------------------------------------------------------------------
-1: No redirect - Make no further changes to the webserver configuration.
-2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
-new sites, or if you're confident your site works on HTTPS. You can undo this
-change by editing your web server's configuration.
--------------------------------------------------------------------------------
-Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
-```
+If that’s successful, Certbot will update the _server block_ and Nginx will reload to pick up the new settings.
 
-Type `2` and press `ENTER` to make all requests redirect to secure HTTPS access. The _server block_ will be updated, and Nginx will reload to pick up the new settings.
-
-Now, visiting your domain address on a browser we can notice that a encrypted/secure connection is being used.
+Now, visiting our domain address on a browser we can notice that a encrypted/secure connection is being used.
 
 ![Secure Connection](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-four.jpg)
 
-### Enable HSTS
+## Enable HSTS
 
-Let's run your domain on [this SSL Server Test](https://www.ssllabs.com/ssltest/) from SSL Labs. The test takes a couple of minutes...
+Let's run our domain on [this SSL Server Test](https://www.ssllabs.com/ssltest/) from SSL Labs. The test takes a couple of minutes...
 
-![SSL Labs First Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2019/nginx-installation-five.jpg)
+![SSL Labs First Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2021/nginx-installation-five.png)
 
 
-You got an **A**. Not bad, but [we can do better](https://invidio.us/watch?v=m-lSlJc_5NE/)! To do so we'll enable HSTS and TLS 1.3.
+We got an **A**. Not bad, but [we can do better](https://invidio.us/watch?v=m-lSlJc_5NE/)! To do so we'll enable HSTS.
 
 HSTS stands for [HTTP Strict Transport Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security/) and is a response header that informs the browser that it should never load a site using HTTP and should automatically convert all attempts to access it to HTTPS requests instead.
 
-Enabling HSTS is as easy as editting your _server block_:
+Enabling HSTS is as easy as editting our _server block_:
 ```plain
-# sudo nano /etc/nginx/sites-availabe/emanuelpina.ml
+# sudo nano /etc/nginx/sites-available/emanuelpina.ml
 ```
 
 And adding `add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;` just bellow the **server_name**, like this:
@@ -226,63 +217,7 @@ server {
 }
 ```
 
-Test to make sure that there are no syntax errors in your Nginx files:
-```plain
-# sudo nginx -t
-```
-
-And if there aren’t any problems, restart Nginx to enable the changes:
-```plain
-# sudo systemctl reload nginx
-```
-
-### Enable TLS 1.3
-
-TLS stands for Transport Layer Security and provides secure communication between web browsers and servers. The final version of its most recent update (1.3) was published on August 2018 with [enhanced security and improved speed](https://kinsta.com/blog/tls-1-3/#tls-1.3-vs-tls-1.2/). Since then it has been increasingly adopted as it will be the standard for the years to come.
-
-To enable TLS 1.3 you need to make a few changes both in `nginx.conf` and `options-ssl-nginx.conf` files.
-
-Let's start with `nginx.conf` typing:
-```plain
-# sudo nano /etc/nginx/nginx.conf
-```
-
-Find the line `ssl_protocols TLSv1 TLSv1.1 TLSv1.2;` and replace it with:
-```plain
-ssl_protocols TLSv1.2 TLSv1.3;
-```
-
-Then, if not already present, add the following line:
-```plain
-ssl_prefer_server_ciphers on;
-```
-
-Finally, we have to add the cipher suite. I use the following, recommended by Stanislas Lange [^1]:
-```plain
-ssl_ciphers TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-256-GCM-SHA384:TLS13-AES-128-GCM-SHA256:EECDH+CHACHA20:EECDH+AESGCM:EECDH+AES;
-```
-
-At the end, our changes will look like this:
-```nginx
-http {
-    ###
-    
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-256-GCM-SHA384:TLS13-AES-128-GCM-SHA256:EECDH+CHACHA20:EECDH+AESGCM:EECDH+AES;
-
-    ###
-}
-```
-Save and close the file when you're finished.
-
-As you're usign Let's Encrypt SSL certificates you need to make the exact same changes on `options-ssl-nginx.conf`. To edit that file run:
-```plain
-# sudo nano /etc/letsencrypt/options-ssl-nginx.conf
-```
-Make the changes as above. Save and close the file when you're finished.
-
-At last, test to make sure that there are no syntax errors in your Nginx files:
+Test to make sure that there are no syntax errors in our Nginx files:
 ```plain
 # sudo nginx -t
 ```
@@ -294,14 +229,12 @@ And if there aren’t any problems, restart Nginx to enable the changes:
 
 Now let's run again the [SSL Server Test](https://www.ssllabs.com/ssltest/) from SSL Labs.
 
-![SSL Labs Final Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570219492/2019/nginx-installation-six.jpg)
+![SSL Labs Final Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570219492/2021/nginx-installation-six.png)
 
-And that's it. TLS 1.3 and HSTS are enabled and you got an **A+**!
+And that's it. HSTS is enabled and we got an **A+**!
 
-### What's next?
+## What's next?
 
-Now that you've connected your server to the Internet, to run Nextcloud you still need PHP and PostgreSQL. That's what I'll cover in a [following post](/postgresql-installation-on-ubuntu/).
+Now that we've connected our server to the Internet, to run Nextcloud we still need PHP and PostgreSQL. That's what I'll cover in a [following post](/postgresql-installation-on-debian/).
 
 {{< call-for-contribution >}}
-
-[^1]: [How to enable TLS 1.3 on Nginx](https://angristan.xyz/how-to-enable-tls-13-nginx/) 
