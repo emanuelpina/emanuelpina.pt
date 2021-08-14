@@ -544,6 +544,27 @@ figure
         list-style: none
         margin-left: 1rem
 
+// Tabel of Contents
+#TOC
+    margin-left: $halflh
+    width: max-content
+    font-size: 0.9rem    
+    #TableOfContents
+        line-height: round(1.1*$lh)
+        border-top: 2px solid $subcolor
+        border-bottom: 2px solid $subcolor
+        padding-bottom: 8px
+        a
+            background: none
+            &:hover
+                color: $subtextcolor
+        ul
+            list-style: none
+            margin-left: $halflh
+            li ul
+                margin-left: 0.5rem
+                a
+                    font-weight: normal
 //Pagination
 .pagination
     font-size: 0

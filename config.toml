@@ -11,6 +11,9 @@ enableGitInfo = true
 [markup]
   [markup.highlight]
     noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
 
 [sitemap]
     changefreq = "weekly"

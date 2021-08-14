@@ -5,7 +5,9 @@ draft: true
 thumbnail: 
 categories: []
 tags: []
-readmore: 
-summarize: 
+readmore:
+tableofcontents:
+summarize:
 ---
 
+<!--more-->

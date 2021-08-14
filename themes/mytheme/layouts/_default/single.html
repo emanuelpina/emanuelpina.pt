@@ -11,7 +11,15 @@
         {{- partial "update.html" . -}}
     </header>
     <div class="post-content">
-        {{- partial "addHeadingsLinks.html" .Content -}}
+        {{ .Summary }}
+        {{if .Params.tableofcontents}}
+        <aside id="TOC">
+            <h4>Table Of Contents</h4>
+            {{ .TableOfContents }}
+        </aside>
+        {{end}}
+        {{ $body := replace .Content .Summary "" | safeHTML }}
+        {{- partial "addHeadingsLinks.html" $body -}}
     </div>
 </article>
 {{- partial "pagination-single.html" . -}}
