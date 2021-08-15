@@ -16,6 +16,6 @@ Debian is one of oldest Linux distributions, notorious for been stable and relia
 
 Debian sees a new release each two years (more or less) and in conjunction with their [Long Term Support](https://wiki.debian.org/LTS) team, they promise at least 5 years of extended support for the each stable release.
 
-I was waiting with special anticipation for this release, after recently decided to stop relying on enterprise developed distributions.
+I was waiting with special anticipation for this release, after recently [decided to stop relying on enterprise developed distributions](/my-first-year-with-linux-on-desktop/).
 
 I'll now migrate my server from Ubuntu 20.04 to Debian 11 and, therefore, it was only logic that my first step should be update the tutorials on this blog. From the [initial server setup](/debian-server-initial-setup/), to install [Nginx](/nginx-installation-on-debian/), [PostgreSQL](/postgresql-installation-on-debian/) and [PHP](/php-installation-on-debian/), and finally installing [Nextcloud](/nextcloud-22-installation-on-debian/), all were updated to reflect the use of Debian 11.
