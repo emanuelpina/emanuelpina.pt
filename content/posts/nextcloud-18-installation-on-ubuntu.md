@@ -470,7 +470,7 @@ Additional, we can add support for SVG and video files, installing those package
 # sudo apt install libmagickcore-6.q16-6-extra ffmpeg
 ```
 
-To add support for PDF files, we need to install `ghostscript`:
+To add support for PDF files, we must install `ghostscript`:
 ```plain
 # sudo apt install ghostscript
 ```
