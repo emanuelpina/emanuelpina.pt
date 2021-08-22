@@ -470,7 +470,12 @@ Additional, we can add support for SVG and video files, installing those package
 # sudo apt install libmagickcore-6.q16-6-extra ffmpeg
 ```
 
-To add support for PDF files, we need to tweak ImageMagick's security policy:
+To add support for PDF files, we need to install `ghostscript`:
+```plain
+# sudo apt install ghostscript
+```
+
+And tweak ImageMagick's security policy:
 ```plain
 # sudo nano /etc/ImageMagick-6/policy.xml
 ```
