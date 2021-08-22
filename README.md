@@ -1,6 +1,6 @@
 # emanuelpina.pt  
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Build Status](https://drone.mnlpn.xyz/api/badges/emanuelpina/emanuelpina.pt/status.svg)](https://drone.mnlpn.xyz/emanuelpina/emanuelpina.pt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Netlify Status](https://api.netlify.com/api/v1/badges/ea3120aa-2483-4ed3-94cc-44834e7fb3eb/deploy-status)](https://app.netlify.com/sites/emanuelpina/deploys)
 
 This is the source of my blog built following the [JAMStack](https://jamstack.org/) philosophy with [Hugo](https://gohugo.io/).
 
