@@ -7,3 +7,9 @@
         X-Frame-Options = "SAMEORIGIN"
         X-XSS-Protection = "1; mode=block"
         Permissions-Policy = "interest-cohort=()"
+
+[[redirects]]
+    from = "https://emanuelpina.netlify.app/*"
+    to = "https://emanuelpina.pt/:slapt"
+    status = 301
+    force = true
