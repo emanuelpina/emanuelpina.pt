@@ -10,6 +10,6 @@
 
 [[redirects]]
     from = "https://emanuelpina.netlify.app/*"
-    to = "https://emanuelpina.pt/:slapt"
+    to = "https://emanuelpina.pt/:splat"
     status = 301
     force = true
