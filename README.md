@@ -1,6 +1,6 @@
 # emanuelpina.pt  
 
-[![Build Status](https://drone.mnlpn.xyz/api/badges/emanuelpina/emanuelpina.pt/status.svg?ref=refs/heads/main)](https://drone.mnlpn.xyz/emanuelpina/emanuelpina.pt)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f542927f-f221-416b-837c-626e1b156eb5/deploy-status)](https://app.netlify.com/sites/emanuelpina/deploys)
 
 This is the source of my blog built following the [JAMStack](https://jamstack.org/) philosophy with [Hugo](https://gohugo.io/).
 
