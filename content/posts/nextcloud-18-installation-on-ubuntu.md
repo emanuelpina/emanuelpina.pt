@@ -1,7 +1,7 @@
 ---
-title: "Nextcloud 22 Installation on Debian"
+title: "Nextcloud 23 Installation on Debian"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2021-08-14T16:03:13+01:00
+publishDate: 2021-12-29T20:49:13+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
@@ -9,11 +9,12 @@ tags: [Nextcloud, Debian, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: With the release of [Debian 11](https://www.debian.org/releases/bullseye/releasenotes), I decided to rewrite this tutorial to reflect the instalation of [Nextcloud 22](https://nextcloud.com/blog/nextcloud-hub-22-introduces-approval-workflows-integrated-knowledge-management-and-decentralized-group-administration/) on it. Now including instructions to some additional configurations.
+update: A month ago the [Nextcloud Hub II](https://nextcloud.com/blog/nextcloud-hub-2-brings-major-overhaul-introducing-nextcloud-office-p2p-backup-and-more/) (a.k.a. version 23) was released and this tutorial is now updated to reflect its installation on Debian 11.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
     - /nextcloud-21-installation-on-ubuntu/
+    - /nextcloud-22-installation-on-debian/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Debian!
@@ -28,18 +29,18 @@ I’m currently using Debian 11, but these instructions may be equally valid for
 
 <!--more-->
 
-## Download Nextcloud 22
+## Download Nextcloud 23
 
-To download Nextcloud 22, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 23, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
-# wget https://download.nextcloud.com/server/releases/nextcloud-22.1.0.zip
+# wget https://download.nextcloud.com/server/releases/nextcloud-23.0.0.zip
 ```
 
 With the archive downloaded, now unzip it. We’ll also attempt to install `unzip`, in case we don’t have it installed already. The `-d` switch specifies the target directory, so the archive will be extracted to `/var/www/nextcloud`:
 ```plain
 # sudo apt install unzip
-# sudo unzip nextcloud-22.1.0.zip -d /var/www
+# sudo unzip nextcloud-23.0.0.zip -d /var/www
 ```
 
 Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
@@ -238,6 +239,7 @@ server {
 
     # set max upload size
     client_max_body_size 512M;
+    client_body_timeout 300s;
     fastcgi_buffers 64 4K;
 
     # Enable gzip but do not remove ETag headers
@@ -328,6 +330,9 @@ server {
     # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
     # to the URI, resulting in a HTTP 500 error response.
     location ~ \.php(?:$|/) {
+        # Required for legacy support
+        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy) /index.php$request_uri;
+
         fastcgi_split_path_info ^(.+?\.php)(/.*)$;
         set $path_info $fastcgi_path_info;
 
@@ -346,16 +351,25 @@ server {
         fastcgi_request_buffering off;
     }
 
-    location ~ \.(?:css|js|svg|gif)$ {
+    location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)$ {
         try_files $uri /index.php$request_uri;
         expires 6M;         # Cache-Control policy borrowed from `.htaccess`
         access_log off;     # Optional: Don't log access to assets
+
+        location ~ \.wasm$ {
+            default_type application/wasm;
+        }
     }
 
     location ~ \.woff2?$ {
         try_files $uri /index.php$request_uri;
         expires 7d;         # Cache-Control policy borrowed from `.htaccess`
         access_log off;     # Optional: Don't log access to assets
+    }
+
+    # Rule borrowed from `.htaccess`
+    location /remote {
+        return 301 /remote.php$request_uri;
     }
 
     location / {
