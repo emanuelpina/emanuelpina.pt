@@ -1,248 +1,143 @@
-// GoatCounter: https://www.goatcounter.com
-// This file (and *only* this file) is released under the ISC license:
-// https://opensource.org/licenses/ISC
-;(function() {
-	'use strict';
-
-	if (window.goatcounter && window.goatcounter.vars)  // Compatibility with very old version; do not use.
-		window.goatcounter = window.goatcounter.vars
-	else
-		window.goatcounter = window.goatcounter || {}
-
-	// Load settings from data-goatcounter-settings.
-	var s = document.querySelector('script[data-goatcounter]')
-	if (s && s.dataset.goatcounterSettings) {
-		try         { var set = JSON.parse(s.dataset.goatcounterSettings) }
-		catch (err) { console.error('invalid JSON in data-goatcounter-settings: ' + err) }
-		for (var k in set)
-			if (['no_onload', 'no_events', 'allow_local', 'allow_frame', 'path', 'title', 'referrer', 'event'].indexOf(k) > -1)
-				window.goatcounter[k] = set[k]
-	}
-
-	// Get all data we're going to send off to the counter endpoint.
-	var get_data = function(vars) {
-		var data = {
-			p: (vars.path     === undefined ? goatcounter.path     : vars.path),
-			r: (vars.referrer === undefined ? goatcounter.referrer : vars.referrer),
-			t: (vars.title    === undefined ? goatcounter.title    : vars.title),
-			e: !!(vars.event || goatcounter.event),
-			s: [window.screen.width, window.screen.height, (window.devicePixelRatio || 1)],
-			b: is_bot(),
-			q: location.search,
-		}
-
-		var rcb, pcb, tcb  // Save callbacks to apply later.
-		if (typeof(data.r) === 'function') rcb = data.r
-		if (typeof(data.t) === 'function') tcb = data.t
-		if (typeof(data.p) === 'function') pcb = data.p
-
-		if (is_empty(data.r)) data.r = document.referrer
-		if (is_empty(data.t)) data.t = document.title
-		if (is_empty(data.p)) data.p = get_path()
-
-		if (rcb) data.r = rcb(data.r)
-		if (tcb) data.t = tcb(data.t)
-		if (pcb) data.p = pcb(data.p)
-		return data
-	}
-
-	// Check if a value is "empty" for the purpose of get_data().
-	var is_empty = function(v) { return v === null || v === undefined || typeof(v) === 'function' }
-
-	// See if this looks like a bot; there is some additional filtering on the
-	// backend, but these properties can't be fetched from there.
-	var is_bot = function() {
-		// Headless browsers are probably a bot.
-		var w = window, d = document
-		if (w.callPhantom || w._phantom || w.phantom)
-			return 150
-		if (w.__nightmare)
-			return 151
-		if (d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate)
-			return 152
-		if (navigator.webdriver)
-			return 153
-		return 0
-	}
-
-	// Object to urlencoded string, starting with a ?.
-	var urlencode = function(obj) {
-		var p = []
-		for (var k in obj)
-			if (obj[k] !== '' && obj[k] !== null && obj[k] !== undefined && obj[k] !== false)
-				p.push(encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]))
-		return '?' + p.join('&')
-	}
-
-	// Show a warning in the console.
-	var warn = function(msg) {
-		if (console && 'warn' in console)
-			console.warn('goatcounter: ' + msg)
-	}
-
-	// Get the endpoint to send requests to.
-	var get_endpoint = function() {
-		var s = document.querySelector('script[data-goatcounter]')
-		if (s && s.dataset.goatcounter)
-			return s.dataset.goatcounter
-		return (goatcounter.endpoint || window.counter)  // counter is for compat; don't use.
-	}
-
-	// Get current path.
-	var get_path = function() {
-		var loc = location,
-			c = document.querySelector('link[rel="canonical"][href]')
-		if (c) {  // May be relative or point to different domain.
-			var a = document.createElement('a')
-			a.href = c.href
-			if (a.hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''))
-				loc = a
-		}
-		return (loc.pathname + loc.search) || '/'
-	}
-
-	// Run function after DOM is loaded.
-	var on_load = function(f) {
-		if (document.body === null)
-			document.addEventListener('DOMContentLoaded', function() { f() }, false)
-		else
-			f()
-	}
-
-	// Filter some requests that we (probably) don't want to count.
-	goatcounter.filter = function() {
-		if ('visibilityState' in document && (document.visibilityState === 'prerender' || document.visibilityState === 'hidden'))
-			return 'visibilityState'
-		if (!goatcounter.allow_frame && location !== parent.location)
-			return 'frame'
-		if (!goatcounter.allow_local && location.hostname.match(/(localhost$|^127\.|^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\.)/))
-			return 'localhost'
-		if (!goatcounter.allow_local && location.protocol === 'file:')
-			return 'localfile'
-		if (localStorage && localStorage.getItem('skipgc') === 't')
-			return 'disabled with #toggle-goatcounter'
-		return false
-	}
-
-	// Get URL to send to GoatCounter.
-	window.goatcounter.url = function(vars) {
-		var data = get_data(vars || {})
-		if (data.p === null)  // null from user callback.
-			return
-		data.rnd = Math.random().toString(36).substr(2, 5)  // Browsers don't always listen to Cache-Control.
-
-		var endpoint = get_endpoint()
-		if (!endpoint)
-			return warn('no endpoint found')
-
-		return endpoint + urlencode(data)
-	}
-
-	// Count a hit.
-	window.goatcounter.count = function(vars) {
-		var f = goatcounter.filter()
-		if (f)
-			return warn('not counting because of: ' + f)
-
-		var url = goatcounter.url(vars)
-		if (!url)
-			return warn('not counting because path callback returned null')
-
-		var img = document.createElement('img')
-		img.src = url
-		img.style.position = 'absolute'  // Affect layout less.
-		img.setAttribute('alt', '')
-		img.setAttribute('aria-hidden', 'true')
-
-		var rm = function() { if (img && img.parentNode) img.parentNode.removeChild(img) }
-		setTimeout(rm, 10000)  // In case the onload isn't triggered.
-		img.addEventListener('load', rm, false)
-		document.body.appendChild(img)
-	}
-
-	// Get a query parameter.
-	window.goatcounter.get_query = function(name) {
-		var s = location.search.substr(1).split('&')
-		for (var i = 0; i < s.length; i++)
-			if (s[i].toLowerCase().indexOf(name.toLowerCase() + '=') === 0)
-				return s[i].substr(name.length + 1)
-	}
-
-	// Track click events.
-	window.goatcounter.bind_events = function() {
-		if (!document.querySelectorAll)  // Just in case someone uses an ancient browser.
-			return
-
-		var send = function(elem) {
-			return function() {
-				goatcounter.count({
-					event:    true,
-					path:     (elem.dataset.goatcounterClick || elem.name || elem.id || ''),
-					title:    (elem.dataset.goatcounterTitle || elem.title || (elem.innerHTML || '').substr(0, 200) || ''),
-					referrer: (elem.dataset.goatcounterReferrer || elem.dataset.goatcounterReferral || ''),
-				})
-			}
-		}
-
-		Array.prototype.slice.call(document.querySelectorAll("*[data-goatcounter-click]")).forEach(function(elem) {
-			if (elem.dataset.goatcounterBound)
-				return
-			var f = send(elem)
-			elem.addEventListener('click', f, false)
-			elem.addEventListener('auxclick', f, false)  // Middle click.
-			elem.dataset.goatcounterBound = 'true'
-		})
-	}
-
-	// Add a "visitor counter" frame or image.
-	window.goatcounter.visit_count = function(opt) {
-		on_load(function() {
-			opt        = opt        || {}
-			opt.type   = opt.type   || 'html'
-			opt.append = opt.append || 'body'
-			opt.path   = opt.path   || get_path()
-			opt.attr   = opt.attr   || {width: '200', height: (opt.no_branding ? '60' : '80')}
-
-			opt.attr['src'] = get_endpoint() + 'er/' + encodeURIComponent(opt.path) + '.' + opt.type + '?'
-			if (opt.no_branding) opt.attr['src'] += '&no_branding=1'
-			if (opt.style)       opt.attr['src'] += '&style=' + encodeURIComponent(opt.style)
-
-			var tag = {png: 'img', svg: 'img', html: 'iframe'}[opt.type]
-			if (!tag)
-				return warn('visit_count: unknown type: ' + opt.type)
-
-			if (opt.type === 'html') {
-				opt.attr['frameborder'] = '0'
-				opt.attr['scrolling']   = 'no'
-			}
-
-			var d = document.createElement(tag)
-			for (var k in opt.attr)
-				d.setAttribute(k, opt.attr[k])
-
-			var p = document.querySelector(opt.append)
-			if (!p)
-				return warn('visit_count: append not found: ' + opt.append)
-			p.appendChild(d)
-		})
-	}
-
-	// Make it easy to skip your own views.
-	if (location.hash === '#toggle-goatcounter') {
-		if (localStorage.getItem('skipgc') === 't') {
-			localStorage.removeItem('skipgc', 't')
-			alert('GoatCounter tracking is now ENABLED in this browser.')
-		}
-		else {
-			localStorage.setItem('skipgc', 't')
-			alert('GoatCounter tracking is now DISABLED in this browser until ' + location + ' is loaded again.')
-		}
-	}
-
-	if (!goatcounter.no_onload)
-		on_load(function() {
-			goatcounter.count()
-			if (!goatcounter.no_events)
-				goatcounter.bind_events()
-		})
+!(function () {
+    "use strict";
+    var t = function (t, e, n) {
+            var a = t[e];
+            return function () {
+                for (var e = [], i = arguments.length; i--; ) e[i] = arguments[i];
+                return n.apply(null, e), a.apply(t, e);
+            };
+        },
+        e = function () {
+            var t = window.doNotTrack,
+                e = window.navigator,
+                n = window.external,
+                a = "msTrackingProtectionEnabled",
+                i = t || e.doNotTrack || e.msDoNotTrack || (n && a in n && n[a]());
+            return "1" == i || "yes" === i;
+        };
+    !(function (n) {
+        var a = n.screen,
+            i = a.width,
+            r = a.height,
+            o = n.navigator.language,
+            c = n.location,
+            s = c.hostname,
+            u = c.pathname,
+            l = c.search,
+            d = n.localStorage,
+            f = n.document,
+            v = n.history,
+            p = f.querySelector("script[data-website-id]");
+        if (p) {
+            var m,
+                g,
+                h = p.getAttribute.bind(p),
+                y = h("data-website-id"),
+                w = h("data-host-url"),
+                b = "false" !== h("data-auto-track"),
+                S = h("data-do-not-track"),
+                k = "false" !== h("data-css-events"),
+                E = h("data-domains") || "",
+                N = E.split(",").map(function (t) {
+                    return t.trim();
+                }),
+                T = /^umami--([a-z]+)--([\w]+[\w-]*)$/,
+                q = "[class*='umami--']",
+                A = function () {
+                    return (d && d.getItem("umami.disabled")) || (S && e()) || (E && !N.includes(s));
+                },
+                O = w ? ((m = w) && m.length > 1 && m.endsWith("/") ? m.slice(0, -1) : m) : p.src.split("/").slice(0, -1).join("/"),
+                j = i + "x" + r,
+                L = {},
+                _ = "" + u + l,
+                x = f.referrer,
+                H = function () {
+                    return { website: y, hostname: s, screen: j, language: o, url: _ };
+                },
+                R = function (t, e) {
+                    return (
+                        Object.keys(e).forEach(function (n) {
+                            t[n] = e[n];
+                        }),
+                        t
+                    );
+                },
+                J = function (t, e) {
+                    A() ||
+                        (function (t, e, n) {
+                            var a = new XMLHttpRequest();
+                            a.open("POST", t, !0),
+                                a.setRequestHeader("Content-Type", "application/json"),
+                                g && a.setRequestHeader("x-umami-cache", g),
+                                (a.onreadystatechange = function () {
+                                    4 === a.readyState && n(a.response);
+                                }),
+                                a.send(JSON.stringify(e));
+                        })(O + "/api/collect", { type: t, payload: e }, function (t) {
+                            return (g = t);
+                        });
+                },
+                M = function (t, e, n) {
+                    void 0 === t && (t = _), void 0 === e && (e = x), void 0 === n && (n = y), J("pageview", R(H(), { website: n, url: t, referrer: e }));
+                },
+                P = function (t, e, n, a) {
+                    void 0 === e && (e = "custom"), void 0 === n && (n = _), void 0 === a && (a = y), J("event", R(H(), { website: a, url: n, event_type: e, event_value: t }));
+                },
+                z = function (t) {
+                    var e = t.querySelectorAll(q);
+                    Array.prototype.forEach.call(e, B);
+                },
+                B = function (t) {
+                    (t.getAttribute("class") || "").split(" ").forEach(function (e) {
+                        if (T.test(e)) {
+                            var n = e.split("--"),
+                                a = n[1],
+                                i = n[2],
+                                r = L[e]
+                                    ? L[e]
+                                    : (L[e] = function () {
+                                          "A" === t.tagName
+                                              ? (function (t, e) {
+                                                    var n = H();
+                                                    (n.event_type = e), (n.event_value = t);
+                                                    var a = JSON.stringify({ type: "event", payload: n });
+                                                    navigator.sendBeacon(O + "/api/collect", a);
+                                                })(i, a)
+                                              : P(i, a);
+                                      });
+                            t.addEventListener(a, r, !0);
+                        }
+                    });
+                },
+                C = function (t, e, n) {
+                    if (n) {
+                        x = _;
+                        var a = n.toString();
+                        (_ = "http" === a.substring(0, 4) ? "/" + a.split("/").splice(3).join("/") : a) !== x && M();
+                    }
+                };
+            if (!n.umami) {
+                var D = function (t) {
+                    return P(t);
+                };
+                (D.trackView = M), (D.trackEvent = P), (n.umami = D);
+            }
+            if (b && !A()) {
+                (v.pushState = t(v, "pushState", C)), (v.replaceState = t(v, "replaceState", C));
+                var I = function () {
+                    "complete" === f.readyState &&
+                        (M(),
+                        k &&
+                            (z(f),
+                            new MutationObserver(function (t) {
+                                t.forEach(function (t) {
+                                    var e = t.target;
+                                    B(e), z(e);
+                                });
+                            }).observe(f, { childList: !0, subtree: !0 })));
+                };
+                f.addEventListener("readystatechange", I, !0), I();
+            }
+        }
+    })(window);
 })();

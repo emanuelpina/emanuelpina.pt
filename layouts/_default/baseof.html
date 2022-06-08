@@ -33,8 +33,8 @@
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ if not .Site.IsServer }}
-        {{ $count := resources.Get "js/count.js" | resources.Minify | resources.Fingerprint }}
-        <script data-goatcounter="https://stats.emanuelpina.pt/count" async src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
+      {{ $count := resources.Get "js/count.js" | resources.Minify | resources.Fingerprint }}
+      <script async defer data-host-url="https://stats.emanuelpina.pt" data-website-id="fb55129a-4d89-4084-8bef-0bf480e120ab" src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ end }}
-  </body>
+    </body>
 </html>
