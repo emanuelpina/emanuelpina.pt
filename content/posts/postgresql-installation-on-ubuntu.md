@@ -69,4 +69,4 @@ Now that we've installed a webserver and a database management system, all that'
 
 {{< call-for-contribution >}}
 
-[^1]: [Nextcloud 22 system requirements](https://docs.nextcloud.com/server/22/admin_manual/installation/system_requirements.html#system-requirements)
+[^1]: [Nextcloud system requirements](https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html#system-requirements)
