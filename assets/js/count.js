@@ -21,8 +21,8 @@
             r = a.height,
             o = n.navigator.language,
             c = n.location,
-            s = c.hostname,
-            u = c.pathname,
+            u = c.hostname,
+            s = c.pathname,
             l = c.search,
             d = n.localStorage,
             f = n.document,
@@ -30,31 +30,31 @@
             p = f.querySelector("script[data-website-id]");
         if (p) {
             var m,
-                g,
-                h = p.getAttribute.bind(p),
-                y = h("data-website-id"),
-                w = h("data-host-url"),
-                b = "false" !== h("data-auto-track"),
-                S = h("data-do-not-track"),
-                k = "false" !== h("data-css-events"),
-                E = h("data-domains") || "",
-                N = E.split(",").map(function (t) {
+                h,
+                g = p.getAttribute.bind(p),
+                y = g("data-website-id"),
+                w = g("data-host-url"),
+                b = "false" !== g("data-auto-track"),
+                S = g("data-do-not-track"),
+                k = "false" !== g("data-css-events"),
+                E = g("data-domains") || "",
+                T = E.split(",").map(function (t) {
                     return t.trim();
                 }),
-                T = /^umami--([a-z]+)--([\w]+[\w-]*)$/,
-                q = "[class*='umami--']",
-                A = function () {
-                    return (d && d.getItem("umami.disabled")) || (S && e()) || (E && !N.includes(s));
+                N = /^umami--([a-z]+)--([\w]+[\w-]*)$/,
+                O = "[class*='umami--']",
+                q = function () {
+                    return (d && d.getItem("umami.disabled")) || (S && e()) || (E && !T.includes(u));
                 },
-                O = w ? ((m = w) && m.length > 1 && m.endsWith("/") ? m.slice(0, -1) : m) : p.src.split("/").slice(0, -1).join("/"),
+                A = w ? ((m = w) && m.length > 1 && m.endsWith("/") ? m.slice(0, -1) : m) : p.src.split("/").slice(0, -1).join("/"),
                 j = i + "x" + r,
                 L = {},
-                _ = "" + u + l,
+                _ = "" + s + l,
                 x = f.referrer,
                 H = function () {
-                    return { website: y, hostname: s, screen: j, language: o, url: _ };
+                    return { website: y, hostname: u, screen: j, language: o, url: _ };
                 },
-                R = function (t, e) {
+                P = function (t, e) {
                     return (
                         Object.keys(e).forEach(function (n) {
                             t[n] = e[n];
@@ -62,34 +62,34 @@
                         t
                     );
                 },
-                J = function (t, e) {
-                    A() ||
+                R = function (t, e) {
+                    q() ||
                         (function (t, e, n) {
                             var a = new XMLHttpRequest();
                             a.open("POST", t, !0),
                                 a.setRequestHeader("Content-Type", "application/json"),
-                                g && a.setRequestHeader("x-umami-cache", g),
+                                h && a.setRequestHeader("x-umami-cache", h),
                                 (a.onreadystatechange = function () {
                                     4 === a.readyState && n(a.response);
                                 }),
                                 a.send(JSON.stringify(e));
-                        })(O + "/api/collect", { type: t, payload: e }, function (t) {
-                            return (g = t);
+                        })(A + "/api/collect", { type: t, payload: e }, function (t) {
+                            return (h = t);
                         });
                 },
-                M = function (t, e, n) {
-                    void 0 === t && (t = _), void 0 === e && (e = x), void 0 === n && (n = y), J("pageview", R(H(), { website: n, url: t, referrer: e }));
+                J = function (t, e, n) {
+                    void 0 === t && (t = _), void 0 === e && (e = x), void 0 === n && (n = y), R("pageview", P(H(), { website: n, url: t, referrer: e }));
                 },
-                P = function (t, e, n, a) {
-                    void 0 === e && (e = "custom"), void 0 === n && (n = _), void 0 === a && (a = y), J("event", R(H(), { website: a, url: n, event_type: e, event_value: t }));
+                M = function (t, e, n, a) {
+                    void 0 === e && (e = "custom"), void 0 === n && (n = _), void 0 === a && (a = y), R("event", P(H(), { website: a, url: n, event_type: e, event_value: t }));
                 },
                 z = function (t) {
-                    var e = t.querySelectorAll(q);
-                    Array.prototype.forEach.call(e, B);
+                    var e = t.querySelectorAll(O);
+                    Array.prototype.forEach.call(e, C);
                 },
-                B = function (t) {
+                C = function (t) {
                     (t.getAttribute("class") || "").split(" ").forEach(function (e) {
-                        if (T.test(e)) {
+                        if (N.test(e)) {
                             var n = e.split("--"),
                                 a = n[1],
                                 i = n[2],
@@ -101,42 +101,42 @@
                                                     var n = H();
                                                     (n.event_type = e), (n.event_value = t);
                                                     var a = JSON.stringify({ type: "event", payload: n });
-                                                    navigator.sendBeacon(O + "/api/collect", a);
+                                                    fetch(A + "/api/collect", { method: "POST", body: a, keepalive: !0 });
                                                 })(i, a)
-                                              : P(i, a);
+                                              : M(i, a);
                                       });
                             t.addEventListener(a, r, !0);
                         }
                     });
                 },
-                C = function (t, e, n) {
+                D = function (t, e, n) {
                     if (n) {
                         x = _;
                         var a = n.toString();
-                        (_ = "http" === a.substring(0, 4) ? "/" + a.split("/").splice(3).join("/") : a) !== x && M();
+                        (_ = "http" === a.substring(0, 4) ? "/" + a.split("/").splice(3).join("/") : a) !== x && J();
                     }
                 };
             if (!n.umami) {
-                var D = function (t) {
-                    return P(t);
+                var I = function (t) {
+                    return M(t);
                 };
-                (D.trackView = M), (D.trackEvent = P), (n.umami = D);
+                (I.trackView = J), (I.trackEvent = M), (n.umami = I);
             }
-            if (b && !A()) {
-                (v.pushState = t(v, "pushState", C)), (v.replaceState = t(v, "replaceState", C));
-                var I = function () {
+            if (b && !q()) {
+                (v.pushState = t(v, "pushState", D)), (v.replaceState = t(v, "replaceState", D));
+                var V = function () {
                     "complete" === f.readyState &&
-                        (M(),
+                        (J(),
                         k &&
                             (z(f),
                             new MutationObserver(function (t) {
                                 t.forEach(function (t) {
                                     var e = t.target;
-                                    B(e), z(e);
+                                    C(e), z(e);
                                 });
                             }).observe(f, { childList: !0, subtree: !0 })));
                 };
-                f.addEventListener("readystatechange", I, !0), I();
+                f.addEventListener("readystatechange", V, !0), V();
             }
         }
     })(window);
