@@ -17,7 +17,7 @@ On the way to install Nextcloud we've already completed the [initial setup of ou
 
 I will now cover the installation of PHP 8.0.
 
-Why PHP 8.0? PHP version 7.4 has no longer active support and will have its security support ending in November 2022.[^1] And more, PHP 8.0 is the recommended version to run Nextcloud 24.[^2]
+Why PHP 8.0? Because, PHP 7.4 has no longer active support and will have its security support ending in November 2022.[^1] And, PHP 8.0 is the recommended version to run Nextcloud 24.[^2]
 
 I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
@@ -29,7 +29,7 @@ PHP (recursive acronym for _PHP: Hypertext Preprocessor_) is an open source serv
 
 The PHP version on Debian 11 repositories is the 7.4. So, to install PHP 8.0, we first need to add the repository [deb.sury.org](https://deb.sury.org/), maintained by Ondřej Surý.
 
-To do so, first run the following command to be sure, some required dependencies are installed:
+To do so, first run the following command to be sure the required dependencies are installed:
 ```plain
 # sudo apt update
 # sudo apt install apt-transport-https lsb-release ca-certificates curl
@@ -40,18 +40,18 @@ Then, import deb.sury.org's GPG key:
 # sudo curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
 ```
 
-And finally add the repository to APT's source list:
+And finally, add the repository to APT's source list:
 ```plain
 # sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 ```
 
-Let's than install PHP 8.0 along with some of it most common extensions run the following commands:
+Let's than install PHP 8.0 along with some of it most common extensions with the following commands:
 ```plain
 # sudo apt update
 # sudo apt install php8.0 php8.0-common php8.0-fpm php8.0-pgsql
 ```
 
-And that's it. At any moment we can check the PHP 8.0 service status running:
+And that's it. At any moment you can check the PHP 8.0 service status running:
 ```plain
 # systemctl status php8.0-fpm
 ```
