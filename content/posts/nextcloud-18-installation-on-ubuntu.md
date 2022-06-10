@@ -1,7 +1,7 @@
 ---
-title: "Nextcloud 23 Installation on Debian"
+title: "Nextcloud 24 Installation on Debian"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2021-12-29T20:49:13+01:00
+publishDate: 2022-06-10T20:15:52+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
@@ -9,12 +9,13 @@ tags: [Nextcloud, Debian, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: A month ago the [Nextcloud Hub II](https://nextcloud.com/blog/nextcloud-hub-2-brings-major-overhaul-introducing-nextcloud-office-p2p-backup-and-more/) (a.k.a. version 23) was released and this tutorial is now updated to reflect its installation on Debian 11.
+update: A month ago the [Nextcloud Hub 24](https://nextcloud.com/blog/nextcloud-hub-24-is-here/) was released and this tutorial is now updated to reflect its installation on Debian 11.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
     - /nextcloud-21-installation-on-ubuntu/
     - /nextcloud-22-installation-on-debian/
+    - /nextcloud-23-installation-on-debian/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Debian!
@@ -23,24 +24,24 @@ At this point, is expected that you already had:
 + Choose a VPS provider and [concluded the initial setup of your Debian server](/debian-server-initial-setup/);
 + Installed [Nginx](/nginx-installation-on-debian/);
 + Installed [PostgreSQL](/postgresql-installation-on-debian/);
-+ Installed [PHP 7.4](/php-installation-on-debian/).
++ Installed [PHP 8.0](/php-installation-on-debian/).
 
 I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
-## Download Nextcloud 23
+## Download Nextcloud 24
 
-To download Nextcloud 23, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 24, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
-# wget https://download.nextcloud.com/server/releases/nextcloud-23.0.0.zip
+# wget https://download.nextcloud.com/server/releases/nextcloud-24.0.1.zip
 ```
 
 With the archive downloaded, now unzip it. We’ll also attempt to install `unzip`, in case we don’t have it installed already. The `-d` switch specifies the target directory, so the archive will be extracted to `/var/www/nextcloud`:
 ```plain
 # sudo apt install unzip
-# sudo unzip nextcloud-23.0.0.zip -d /var/www
+# sudo unzip nextcloud-24.0.1.zip -d /var/www
 ```
 
 Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
@@ -52,14 +53,14 @@ Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write 
 
 Beyond the ones we [installed previously](/php-installation-on-debian/#install-php), Nextcloud requires some additional PHP modules. To install them, run the following command:
 ```plain
-# sudo apt install php7.4-curl php7.4-dom php7.4-gd php7.4-mbstring php7.4-simplexml php7.4-xmlreader php7.4-xmlwriter php7.4-zip php7.4-bz2 php7.4-intl php7.4-ldap php7.4-imap php7.4-bcmath php7.4-gmp php7.4-imagick
+# sudo apt install php8.0-curl php8.0-dom php8.0-gd php8.0-mbstring php8.0-simplexml php8.0-xmlreader php8.0-xmlwriter php8.0-zip php8.0-bz2 php8.0-intl php8.0-ldap php8.0-smbclient php8.0-imap php8.0-bcmath php8.0-gmp php8.0-imagick
 ```
 
 ### Configure PHP
 
 To meet the requirements of Nextcloud we need to make some changes in PHP configuration. The first one is changing the `memory_limit`. This setting is in **php.ini**, we can edit it running:
 ```plain
-# sudo nano /etc/php/7.4/fpm/php.ini
+# sudo nano /etc/php/8.0/fpm/php.ini
 ```
 
 Search for `memory_limit` and change it to `512M`.
@@ -68,7 +69,7 @@ Search for `memory_limit` and change it to `512M`.
 
 Another thing is that as we're using `php-fpm`, system environment variables like PATH, TMP or others are not automatically populated. A PHP call like `getenv('PATH');` can therefore return an empty result. So we need to manually configure the environment variables in **www.conf**. To edit this file run:
 ```plain
-# sudo nano /etc/php/7.4/fpm/pool.d/www.conf
+# sudo nano /etc/php/8.0/fpm/pool.d/www.conf
 ```
 
 Usually, near the bottom of the file, we will find some or all of the environment variables already, but commented out like this:
@@ -90,7 +91,7 @@ env[TMP] = /tmp
 
 With this changes done, restart the PHP service:
 ```plain
-# sudo systemctl restart php7.4-fpm
+# sudo systemctl restart php8.0-fpm
 ```
 
 ## Create PostgreSQL User and Database
@@ -206,16 +207,25 @@ Now, edit the Nextcloud's _server block_:
 
 And replace its content with the following code. {{< marker yellow >}}Don't forget to change the *server_name* from **box.emanuelpina.ml** to the domain address you want and **update the locations to the SSL certificate and key**{{< /marker >}}:
 
-```nginx {hl_lines=[9,18,"20-21"]}
+```nginx {hl_lines=[15,27,"32-33"]}
 upstream php-handler {
     #server 127.0.0.1:9000;
-    server unix:/var/run/php/php7.4-fpm.sock;
+    server unix:/var/run/php/php8.0-fpm.sock;
+}
+
+# Set the `immutable` cache control options only for assets with a cache busting `v` argument
+map $arg_v $asset_immutable {
+    "" "";
+    default "immutable";
 }
 
 server {
     listen 80;
     listen [::]:80;
     server_name box.emanuelpina.ml;
+
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
 
     # Enforce HTTPS
     return 301 https://$server_name$request_uri;
@@ -226,8 +236,14 @@ server {
     listen [::]:443 ssl http2;
     server_name box.emanuelpina.ml;
 
+    # Path to the root of your installation
+    root /var/www/nextcloud;
+
     ssl_certificate /etc/letsencrypt/live/box.emanuelpina.ml/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/box.emanuelpina.ml/privkey.pem;
+
+    # Prevent nginx HTTP Server Detection
+    server_tokens off;
 
     # HSTS settings
     # WARNING: Only add the preload option once you read about
@@ -235,9 +251,9 @@ server {
     # will add the domain to a hardcoded list that is shipped
     # in all major browsers and getting removed from this list
     # could take several months.
-    add_header Strict-Transport-Security            "max-age=31536000; includeSubDomains"   always;
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;" always;
 
-    # set max upload size
+    # set max upload size and increase upload timeout:
     client_max_body_size 512M;
     client_body_timeout 300s;
     fastcgi_buffers 64 4K;
@@ -248,20 +264,20 @@ server {
     gzip_comp_level 4;
     gzip_min_length 256;
     gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
     # Pagespeed is not supported by Nextcloud, so if your server is built
     # with the `ngx_pagespeed` module, uncomment this line to disable it.
     #pagespeed off;
 
     # HTTP response headers borrowed from Nextcloud `.htaccess`
-    add_header Referrer-Policy                      "no-referrer"           always;
-    add_header X-Content-Type-Options               "nosniff"               always;
-    add_header X-Download-Options                   "noopen"                always;
-    add_header X-Frame-Options                      "SAMEORIGIN"            always;
-    add_header X-Permitted-Cross-Domain-Policies    "none"                  always;
-    add_header X-Robots-Tag                         "none"                  always;
-    add_header X-XSS-Protection                     "1; mode=block"         always;
+    add_header Referrer-Policy                      "no-referrer"   always;
+    add_header X-Content-Type-Options               "nosniff"       always;
+    add_header X-Download-Options                   "noopen"        always;
+    add_header X-Frame-Options                      "SAMEORIGIN"    always;
+    add_header X-Permitted-Cross-Domain-Policies    "none"          always;
+    add_header X-Robots-Tag                         "none"          always;
+    add_header X-XSS-Protection                     "1; mode=block" always;
 
     # Opt out of Google Chrome tracking everything you do.
     # Note: if you’re reading this, stop using Google Chrome.
@@ -273,9 +289,6 @@ server {
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
-
-    # Path to the root of your installation
-    root /var/www/nextcloud;
 
     # Specify how to handle directories -- specifying `/index.php$request_uri`
     # here as the fallback means that Nginx always exhibits the desired behaviour
@@ -323,7 +336,7 @@ server {
 
     # Rules borrowed from `.htaccess` to hide certain paths from clients
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
-    location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)              { return 404; }
+    location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
     # Ensure this block, which passes PHP files to the PHP process, is above the blocks
     # which handle static assets (as seen below). If this block is not declared first,
@@ -349,11 +362,13 @@ server {
 
         fastcgi_intercept_errors on;
         fastcgi_request_buffering off;
+
+        fastcgi_max_temp_file_size 0;
     }
 
-    location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite)$ {
+    location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
         try_files $uri /index.php$request_uri;
-        expires 6M;         # Cache-Control policy borrowed from `.htaccess`
+        add_header Cache-Control "public, max-age=15778463, $asset_immutable";
         access_log off;     # Optional: Don't log access to assets
 
         location ~ \.wasm$ {
@@ -410,16 +425,16 @@ Enabling memory caching can significantly improve the perfomance of your Nextclo
 
 To install **APCu**, go back to your terminal and run the following commands:
 ```plain
-# sudo apt install php-apcu
+# sudo apt install php8.0-apcu
 ```
 
 {{< box red >}}
-APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/7.4/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
+APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/8.0/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
 {{< /box >}}
 
 And to install **Redis**, run:
 ```plain
-# sudo apt install redis-server php-redis
+# sudo apt install redis-server php8.0-redis
 ```
 
 Then restart Nginx:
