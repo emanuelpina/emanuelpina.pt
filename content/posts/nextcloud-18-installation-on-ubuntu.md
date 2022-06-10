@@ -407,7 +407,7 @@ If there aren’t any issues, restart Nginx to enable the changes:
 
 Now, to complete Nextcloud installation, in a browser visit the domain address you chosed and you will be presented with a form to fill.
 
-On this form on **"Create an admin account"** we should chose a **username** and **password** for our admin account. And on **"Configure Database"** we should fill it with the **username**, **password** and **database name** defined [above](#create-user-and-database-for-nextcloud).
+On this form on **"Create an admin account"** we should chose a **username** and **password** for our admin account. And on **"Configure Database"** we should fill it with the **username**, **password** and **database name** defined [above](#create-postgresql-user-and-database).
 
 After filling the form just click on `Finish setup` and wait for the installation to complete. At the end we'll be redirected to our dashboard.
 
