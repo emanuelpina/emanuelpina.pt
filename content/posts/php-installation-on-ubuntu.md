@@ -15,7 +15,9 @@ aliases:
 
 On the way to install Nextcloud we've already completed the [initial setup of our VPS](/debian-server-initial-setup/), the [installation of Nginx](/nginx-installation-on-debian/) and [the installation of PostgreSQL](/postgresql-installation-on-debian/).
 
-I will now cover the installation of PHP 7.4.
+I will now cover the installation of PHP 8.0.
+
+Why PHP 8.0? PHP version 7.4 has no longer active support and will have its security support ending in November 2022.[^1] And more, PHP 8.0 is the recommended version to run Nextcloud 24.[^2]
 
 I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
@@ -25,15 +27,33 @@ I’m currently using Debian 11, but these instructions may be equally valid for
 
 PHP (recursive acronym for _PHP: Hypertext Preprocessor_) is an open source server side scripting language, widely used to create dynamic interactive web pages.
 
-To install PHP 7.4 along with some of it most common extensions run the following commands:
+The PHP version on Debian 11 repositories is the 7.4. So, to install PHP 8.0, we first need to add the repository [deb.sury.org](https://deb.sury.org/), maintained by Ondřej Surý.
+
+To do so, first run the following command to be sure, some required dependencies are installed:
 ```plain
 # sudo apt update
-# sudo apt install php7.4 php7.4-common php7.4-fpm php7.4-pgsql
+# sudo apt install apt-transport-https lsb-release ca-certificates curl
 ```
 
-And that's it. At any moment we can check the PHP 7.4 service status running:
+Then, import deb.sury.org's GPG key:
 ```plain
-# systemctl status php7.4-fpm
+# sudo curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+```
+
+And finally add the repository to APT's source list:
+```plain
+# sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+```
+
+Let's than install PHP 8.0 along with some of it most common extensions run the following commands:
+```plain
+# sudo apt update
+# sudo apt install php8.0 php8.0-common php8.0-fpm php8.0-pgsql
+```
+
+And that's it. At any moment we can check the PHP 8.0 service status running:
+```plain
+# systemctl status php8.0-fpm
 ```
 
 ## Test PHP Processing
@@ -54,7 +74,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
     }
     
     ###
@@ -95,7 +115,7 @@ This is imporant because it exposes important information about our server and c
 
 ## Tune PHP
 
-Similar to what we did with PostgreSQL, we can tune some PHP settings depending on the hardware at our disposale.[^1]
+Similar to what we did with PostgreSQL, we can tune some PHP settings depending on the hardware at our disposale.[^3]
 
 To proceed with this we need to know three things: how many CPU cores our server have; how much memory (RAM) we can dedicate to PHP; and how much memory the average PHP process consume.
 
@@ -107,12 +127,12 @@ When determining how much memory you can dedicate to PHP, keep in mind that the 
 
 Finally, to get a general idea on how much memory each PHP process is consuming, run:
 ```plain
-# ps --no-headers -o "rss,cmd" -C php-fpm7.4 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
+# ps --no-headers -o "rss,cmd" -C php-fpm8.0 | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
 ```
 
 The settigns you need to change are all in the `www.conf` file. To edit it, run:
 ```plain
-# sudo nano /etc/php/7.4/fpm/pool.d/www.conf
+# sudo nano /etc/php/8.0/fpm/pool.d/www.conf
 ```
 
 Search for each one of the following settings and change it accordingly.
@@ -134,7 +154,7 @@ So, set pm.max_start_servers to 8. The same used before for pm.start_servers.
 
 To finish, just restart the PHP-FPM service:
 ```plain
-# sudo systemctl restart php7.4-fpm
+# sudo systemctl restart php8.0-fpm
 ```
 
 And that's all :grinning:
@@ -145,4 +165,6 @@ With Nginx, PostgreSQL and PHP up and running we're now ready to [install Nextcl
 
 {{< call-for-contribution >}}
 
-[^1]: [PHP-FPM settings tutorial. max_servers, min_servers, etc.](https://thisinterestsme.com/php-fpm-settings/)
+[^1]: [PHP: Supported Versions](https://www.php.net/supported-versions.php)
+[^2]: [Nextcloud 24 System requirements](https://docs.nextcloud.com/server/24/admin_manual/installation/system_requirements.html)
+[^3]: [PHP-FPM settings tutorial. max_servers, min_servers, etc.](https://thisinterestsme.com/php-fpm-settings/)
