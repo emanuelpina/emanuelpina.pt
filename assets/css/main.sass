@@ -12,18 +12,26 @@ $phonescr: 400px
 
 //Colors
 ////Base
-$bgcolor: #ffffff
-$subcolor: #e3e3e3
-$textcolor: #222222
-$subtextcolor: #555555
 $accentcolor: #e74c3c
+\:root
+    --bgcolor: #ffffff
+    --subcolor: #e3e3e3
+    --textcolor: #222222
+    --subtextcolor: #555555
+
+@media (prefers-color-scheme: dark)
+    \:root
+        --bgcolor: #222222
+        --subcolor: #555555
+        --textcolor: #ffffff
+        --subtextcolor: #e3e3e3
 
 a
     color: $accentcolor
     text-decoration: none
     transition: all 200ms ease-in-out
     &:hover
-        color: $textcolor
+        color: var(--textcolor)
 
 //Typography
 $phi: 1.61803398875 //Golden Ratio
@@ -43,8 +51,8 @@ html
     font-family: 'Muli', sans-serif
     font-size: $fs
     line-height: $lh
-    color: $textcolor
-    background-color: $bgcolor
+    color: var(--textcolor)
+    background-color: var(--bgcolor)
 
 h1, h2, h3, h4
     font-family: 'Poppins', sans-serif
@@ -75,24 +83,26 @@ ul, ol
 
 p, ul, ol
     a
-        color: $textcolor
+        color: var(--textcolor)
         background: linear-gradient(transparent 85%,lighten($accentcolor, 10%) 0%)
         font-weight: 700
+        @media (prefers-color-scheme: dark)
+            background: linear-gradient(transparent 85%,desaturate($accentcolor, 25%) 0%)
         &:hover
             background: linear-gradient(transparent 85%,$accentcolor 0%)
 
 blockquote
     padding-left: 1rem
-    border-left: 7px solid $subcolor
-    color: $subtextcolor
+    border-left: 7px solid var(--subcolor)
+    color: var(--subtextcolor)
 
 code
     font-family: 'Cascadia Code', monospace
     font-size: 0.8rem
-    background-color: $subcolor
+    background-color: var(--subcolor)
     padding: 2px 4px 4px 4px
     border-radius: 2px
-    color: $subtextcolor
+    color: var(--subtextcolor)
 
 .highlight
     margin-top: $halflh
@@ -108,8 +118,10 @@ code
             display: inline-block
             padding: 0 10px
             background-color: #272822
-            color: $bgcolor
+            color: var(--bgcolor)
             min-width: 100%
+            @media (prefers-color-scheme: dark)
+                color: var(--textcolor)
 
 hr
     border: 1px solid #666
@@ -137,21 +149,21 @@ sup
 .footnotes
     margin-top: $lh
     font-size: 0.8rem
-    color: $subtextcolor
+    color: var(--subtextcolor)
     &:before
         content: 'Footnotes'
     hr
-        border: 1px solid $subtextcolor
+        border: 1px solid var(--subtextcolor)
     ol
         margin-top: round(0.25*$lh)
     p
         margin-top: 0
         a
             background: none
-            color: $subtextcolor
+            color: var(--subtextcolor)
             font-weight: unset
             &:hover
-                color: $textcolor
+                color: var(--textcolor)
     .footnote-backref
         font-size: 0
         &:after
@@ -197,15 +209,27 @@ figure
     &.yellow
         background-color: #fcf8e3
         color: #8a6d3b
+        @media (prefers-color-scheme: dark)
+            background-color: #8a6d3b
+            color: #fcf8e3
     &.blue
         background-color: #d9edf7
         color: #31708f
+        @media (prefers-color-scheme: dark)
+            background-color: #31708f
+            color: #d9edf7
     &.red
         background-color: #f2dede
         color: #a94442
+        @media (prefers-color-scheme: dark)
+            background-color: #a94442
+            color: #f2dede
     &.grey
         background-color: #eee
-        color: $subtextcolor
+        color: var(--subtextcolor)
+        @media (prefers-color-scheme: dark)
+            background-color: var(--subcolor)
+            color: #eee
     &.cfc
         margin: round(2*$lh) 0.5%
         margin-bottom: 0
@@ -216,14 +240,24 @@ figure
     padding: 4px 0
     &.yellow
         background-color: #ffffb3
+        @media (prefers-color-scheme: dark)
+            background: darken(#ffffb3, 75%)
     &.green
         background-color: #ccffcc
+        @media (prefers-color-scheme: dark)
+            background: darken(#ccffcc, 80%)
     &.blue
         background-color: #cceeff
+        @media (prefers-color-scheme: dark)
+            background: darken(#cceeff, 80%)
     &.red
         background-color: #ffcccc
+        @media (prefers-color-scheme: dark)
+            background: darken(#ffcccc, 80%)
     &.grey
         background-color: #e6e6e6
+        @media (prefers-color-scheme: dark)
+            background: darken(#e6e6e6, 80%)
 
 //Container
 .container
@@ -232,7 +266,9 @@ figure
 
 //Navbar
 .navbar-wrap
-    background-color: $textcolor
+    background-color: var(--textcolor)
+    @media (prefers-color-scheme: dark)
+        background-color: #141414
     .navbar
         max-width: 800px
         margin: 0 auto
@@ -242,9 +278,13 @@ figure
         justify-content: space-between
         padding: 10px 15px 0 15px
         a
-            color: $subcolor
+            color: var(--subcolor)
+            @media (prefers-color-scheme: dark)
+                color: var(--subtextcolor)
             &:hover
-                color: $bgcolor
+                color: var(--bgcolor)
+                @media (prefers-color-scheme: dark)
+                    color: var(--textcolor)
         .mugshot
             width: 40px
             border-radius: 50%
@@ -268,7 +308,9 @@ figure
                         visibility: visible
                         opacity: 1
                     a
-                        background: linear-gradient(transparent 85%,$subtextcolor 0%)
+                        background: linear-gradient(transparent 85%,var(--subtextcolor) 0%)
+                        @media (prefers-color-scheme: dark)
+                            background: linear-gradient(transparent 85%, var(--subcolor) 0%)
                         &:hover
                             background: linear-gradient(transparent 85%,$accentcolor 0%)
                     .navmenu-child
@@ -279,7 +321,7 @@ figure
                         right: 0
                         list-style: none
                         white-space: nowrap
-                        background-color: $subcolor
+                        background-color: var(--subcolor)
                         margin-left: 0
                         padding: 6px 0
                         border-radius: 2px
@@ -288,7 +330,7 @@ figure
                             padding: 6px 18px
                             a
                                 display: block
-                                color: $subtextcolor
+                                color: var(--subtextcolor)
                                 background: none
                                 font-weight: normal
                                 &:hover
@@ -312,35 +354,35 @@ figure
     line-height: round($lh*$phi)
     margin: 0
     a
-        color: $textcolor
+        color: var(--textcolor)
         &:hover
             color: $accentcolor
 .post-details
     .post-date, .post-readingtime
         font-size: 0.9rem
-        color: $subtextcolor
+        color: var(--subtextcolor)
         margin-right: 10px
     .post-categories, .post-tags, .post-readingtime, .post-edit
         white-space: nowrap
         margin-right: 10px
         a
             font-size: 0.9rem
-            color: $subtextcolor
+            color: var(--subtextcolor)
             &:after
                 content: ", "
-                color: $subtextcolor
+                color: var(--subtextcolor)
             &:last-child:after
                 content: ""
             &:hover
-                color: $textcolor
+                color: var(--textcolor)
         svg
             fill: none
-            stroke: $subtextcolor
+            stroke: var(--subtextcolor)
             vertical-align: sub
             margin-right: 3px
             transition: stroke 200ms ease-in-out
         &:hover svg
-            stroke: $textcolor
+            stroke: var(--textcolor)
     .post-featureimage
             display: block
             margin: $lh auto
@@ -350,9 +392,9 @@ figure
             display: block
             margin-top: $lh
             text-align: left
-            color: $subtextcolor
+            color: var(--subtextcolor)
             &.with-note
-                border-left: 3px solid $subcolor
+                border-left: 3px solid var(--subcolor)
                 padding-left: 4px
 .post-content
     margin-top: $lh
@@ -366,10 +408,10 @@ figure
         svg
             width: 16px
             height: 16px
-            fill: $subtextcolor
+            fill: var(--subtextcolor)
             transition: all 200ms ease-in-out
             &:hover
-                fill: $textcolor
+                fill: var(--textcolor)
     h2:hover > .post-heading-link,
     h3:hover > .post-heading-link,         
     h4:hover > .post-heading-link
@@ -383,12 +425,12 @@ figure
         display: block
         a
             background-color: $accentcolor
-            color: $bgcolor
+            color: var(--bgcolor)
             font-weight: bold
             padding: 8px 12px
             border-radius: 2px
             &:hover
-                background-color: $textcolor
+                background-color: var(--textcolor)
 
 //List Pages
 .list-title
@@ -421,10 +463,10 @@ figure
                 display: none
             a
                 font-size: 0.8rem
-                background-color: $subcolor
+                background-color: var(--subcolor)
                 padding: 4px 8px
                 border-radius: 2px
-                color: $subtextcolor
+                color: var(--subtextcolor)
                 &:hover
                     opacity: 0.8
                 &:after
@@ -447,7 +489,7 @@ figure
         line-height: round(1.5*$lh)
         &:hover
             background: none
-            color: $textcolor
+            color: var(--textcolor)
 
 //Contact Page
 .contact
@@ -455,10 +497,10 @@ figure
         svg
             margin-right: 3px
         .icon-mastodon
-            fill: $textcolor
+            fill: var(--textcolor)
         .icon-telegram, .icon-email
             fill: none
-            stroke: $textcolor
+            stroke: var(--textcolor)
             vertical-align: -5px
     .contact-form-title
         margin-top: 0
@@ -484,20 +526,20 @@ figure
         padding: 4px 12px
         border: none
         border-radius: 2px
-        background-color: $subcolor
-        color: $subtextcolor
+        background-color: var(--subcolor)
+        color: var(--subtextcolor)
         transition: all 200ms ease-in-out
         &::placeholder
-            color: $subtextcolor
+            color: var(--subtextcolor)
         &:hover
-            background-color: $subcolor
+            background-color: var(--subcolor)
             &::placeholder
-                color: $textcolor
+                color: var(--textcolor)
         &:focus
-            background-color: $subcolor
-            color: $subtextcolor
+            background-color: var(--subcolor)
+            color: var(--subtextcolor)
             &::placeholder
-                color: $subcolor
+                color: var(--subcolor)
     .contact-form-website
         display: none
     .contact-form-message-wrap
@@ -516,7 +558,7 @@ figure
         text-transform: uppercase
         font-family: 'Muli', sans-serif
         font-size: 0.8rem
-        color: $bgcolor
+        color: var(--bgcolor)
         font-weight: bold
         border: 0
         border-radius: 2px
@@ -524,14 +566,14 @@ figure
         padding: 8px 12px
         transition: background-color 200ms ease-in-out
         &:hover
-            background-color: $textcolor
+            background-color: var(--textcolor)
 
 //Links
 .links
     a
         background: none
         line-height: round(1.2*$lh)
-        fill: $textcolor
+        fill: var(--textcolor)
         &:hover
             background: none
             color: $accentcolor
@@ -551,13 +593,13 @@ figure
     font-size: 0.9rem    
     #TableOfContents
         line-height: round(1.1*$lh)
-        border-top: 2px solid $subcolor
-        border-bottom: 2px solid $subcolor
+        border-top: 2px solid var(--subcolor)
+        border-bottom: 2px solid var(--subcolor)
         padding-bottom: 8px
         a
             background: none
             &:hover
-                color: $subtextcolor
+                color: var(--subtextcolor)
         ul
             list-style: none
             margin-left: $halflh
@@ -573,23 +615,23 @@ figure
     div
         display: inline
         font-size: 1rem
-        background-color: $subcolor
+        background-color: var(--subcolor)
         svg
             vertical-align: -5px
             fill: none
-            stroke: $subtextcolor
+            stroke: var(--subtextcolor)
             transition: stroke 200ms ease-in-out
         a
             display: inline
-            background-color: $subcolor
+            background-color: var(--subcolor)
             padding: 8px 10px
             &:hover svg
-                stroke: $textcolor
+                stroke: var(--textcolor)
     .previous-page a, .previous-page-empty
         border-radius: 4px 0 0 4px
     .actual-page
         padding: 8px 12px
-        color: $subtextcolor
+        color: var(--subtextcolor)
     .next-page a, .next-page-empty
         border-radius: 0 4px 4px 0
     .previous-page-empty, .next-page-empty
@@ -604,16 +646,16 @@ figure
         svg
             vertical-align: -5px
             fill: none
-            stroke: $subtextcolor
+            stroke: var(--subtextcolor)
             transition: stroke 200ms ease-in-out
         a
             position: relative
             display: inline
-            background-color: $subcolor
+            background-color: var(--subcolor)
             padding: 8px 10px
             border-radius: 4px
             &:hover svg
-                stroke: $textcolor
+                stroke: var(--textcolor)
             &:hover:before
                 content: attr(alt)
                 position: absolute
@@ -621,8 +663,8 @@ figure
                 left: 0
                 width: max-content
                 max-width: 300px
-                background-color: $textcolor
-                color: $bgcolor
+                background-color: var(--textcolor)
+                color: var(--bgcolor)
                 font-size: 0.9rem
                 padding: 2px 8px
                 border-radius: 2px
@@ -642,7 +684,7 @@ figure
     p
         margin: unset
         padding: 0 1rem
-        color: $subtextcolor
+        color: var(--subtextcolor)
         font-size: 0.8rem
         a
             background: none
@@ -689,19 +731,19 @@ figure
     .fourohfour-return
         margin: round(2*$lh) 0
         a
-            color: $subtextcolor
-            background-color: $subcolor
+            color: var(--subtextcolor)
+            background-color: var(--subcolor)
             border-radius: 4px
             padding: 8px 12px
             &:hover
-                color: $textcolor
+                color: var(--textcolor)
             svg
                 margin-right: 6px
-                fill: $subtextcolor
+                fill: var(--subtextcolor)
                 vertical-align: -1px
                 transition: fill 200ms ease-in-out
             &:hover svg
-                fill: $textcolor
+                fill: var(--textcolor)
 
 //Scroll up button
 .scroll-up
@@ -712,7 +754,7 @@ figure
     a
         display: block
         background-color: $accentcolor
-        color: $bgcolor
+        color: var(--bgcolor)
         width: 40px
         line-height: 40px
         text-align: center
@@ -720,4 +762,4 @@ figure
         font-weight: bold
         border-radius: 2px
         &:hover
-            background-color: $textcolor
+            background-color: var(--textcolor)
