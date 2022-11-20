@@ -1,7 +1,7 @@
 ---
-title: "Nextcloud 24 Installation on Debian"
+title: "Nextcloud 25 Installation on Debian"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2022-06-10T20:15:52+01:00
+publishDate: 2022-11-20T11:21:42+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
@@ -9,13 +9,14 @@ tags: [Nextcloud, Debian, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: A month ago the [Nextcloud Hub 24](https://nextcloud.com/blog/nextcloud-hub-24-is-here/) was released and this tutorial is now updated to reflect its installation on Debian 11.
+update: With the release of the first update to [Nextcloud 25 *a.k.a.* Hub 3](https://nextcloud.com/blog/maintenance-releases-25-0-1-24-0-7-and-23-0-11-are-out/), I decided to updated this tutorial to reflect its installation on Debian 11.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
     - /nextcloud-21-installation-on-ubuntu/
     - /nextcloud-22-installation-on-debian/
     - /nextcloud-23-installation-on-debian/
+    - /nextcloud-24-installation-on-debian/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Debian!
@@ -24,24 +25,24 @@ At this point, is expected that you already had:
 + Choose a VPS provider and [concluded the initial setup of your Debian server](/debian-server-initial-setup/);
 + Installed [Nginx](/nginx-installation-on-debian/);
 + Installed [PostgreSQL](/postgresql-installation-on-debian/);
-+ Installed [PHP 8.0](/php-installation-on-debian/).
++ Installed [PHP 8.1](/php-installation-on-debian/).
 
 I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
-## Download Nextcloud 24
+## Download Nextcloud 25
 
-To download Nextcloud 24, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 25, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
-# wget https://download.nextcloud.com/server/releases/nextcloud-24.0.1.zip
+# wget https://download.nextcloud.com/server/releases/nextcloud-25.0.1.zip
 ```
 
 With the archive downloaded, now unzip it. We’ll also attempt to install `unzip`, in case we don’t have it installed already. The `-d` switch specifies the target directory, so the archive will be extracted to `/var/www/nextcloud`:
 ```plain
 # sudo apt install unzip
-# sudo unzip nextcloud-24.0.1.zip -d /var/www
+# sudo unzip nextcloud-25.0.1.zip -d /var/www
 ```
 
 Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
@@ -53,14 +54,14 @@ Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write 
 
 Beyond the ones we [installed previously](/php-installation-on-debian/#install-php), Nextcloud requires some additional PHP modules. To install them, run the following command:
 ```plain
-# sudo apt install php8.0-curl php8.0-dom php8.0-gd php8.0-mbstring php8.0-simplexml php8.0-xmlreader php8.0-xmlwriter php8.0-zip php8.0-bz2 php8.0-intl php8.0-ldap php8.0-smbclient php8.0-imap php8.0-bcmath php8.0-gmp php8.0-imagick
+# sudo apt install php8.1-curl php8.1-dom php8.1-gd php8.1-mbstring php8.1-simplexml php8.1-xmlreader php8.1-xmlwriter php8.1-zip php8.1-bz2 php8.1-intl php8.1-ldap php8.1-smbclient php8.1-imap php8.1-bcmath php8.1-gmp php8.1-imagick
 ```
 
 ### Configure PHP
 
 To meet the requirements of Nextcloud we need to make some changes in PHP configuration. The first one is changing the `memory_limit`. This setting is in **php.ini**, we can edit it running:
 ```plain
-# sudo nano /etc/php/8.0/fpm/php.ini
+# sudo nano /etc/php/8.1/fpm/php.ini
 ```
 
 Search for `memory_limit` and change it to `512M`.
@@ -69,7 +70,7 @@ Search for `memory_limit` and change it to `512M`.
 
 Another thing is that as we're using `php-fpm`, system environment variables like PATH, TMP or others are not automatically populated. A PHP call like `getenv('PATH');` can therefore return an empty result. So we need to manually configure the environment variables in **www.conf**. To edit this file run:
 ```plain
-# sudo nano /etc/php/8.0/fpm/pool.d/www.conf
+# sudo nano /etc/php/8.1/fpm/pool.d/www.conf
 ```
 
 Usually, near the bottom of the file, we will find some or all of the environment variables already, but commented out like this:
@@ -91,7 +92,7 @@ env[TMP] = /tmp
 
 With this changes done, restart the PHP service:
 ```plain
-# sudo systemctl restart php8.0-fpm
+# sudo systemctl restart php8.1-fpm
 ```
 
 ## Create PostgreSQL User and Database
@@ -210,7 +211,7 @@ And replace its content with the following code. {{< marker yellow >}}Don't forg
 ```nginx {hl_lines=[15,27,"32-33"]}
 upstream php-handler {
     #server 127.0.0.1:9000;
-    server unix:/var/run/php/php8.0-fpm.sock;
+    server unix:/var/run/php/php8.1-fpm.sock;
 }
 
 # Set the `immutable` cache control options only for assets with a cache busting `v` argument
@@ -269,6 +270,11 @@ server {
     # Pagespeed is not supported by Nextcloud, so if your server is built
     # with the `ngx_pagespeed` module, uncomment this line to disable it.
     #pagespeed off;
+
+    # The settings allows you to optimize the HTTP2 bandwitdth.
+    # See https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/
+    # for tunning hints
+    client_body_buffer_size 512k;
 
     # HTTP response headers borrowed from Nextcloud `.htaccess`
     add_header Referrer-Policy                      "no-referrer"   always;
@@ -425,16 +431,16 @@ Enabling memory caching can significantly improve the perfomance of your Nextclo
 
 To install **APCu**, go back to your terminal and run the following commands:
 ```plain
-# sudo apt install php8.0-apcu
+# sudo apt install php8.1-apcu
 ```
 
 {{< box red >}}
-APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/8.0/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
+APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/8.1/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
 {{< /box >}}
 
 And to install **Redis**, run:
 ```plain
-# sudo apt install redis-server php8.0-redis
+# sudo apt install redis-server php8.1-redis
 ```
 
 Then restart Nginx:
