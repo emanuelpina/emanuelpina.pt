@@ -9,7 +9,7 @@ tags: [Nextcloud, Debian, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: With the release of the first update to [Nextcloud 25 *a.k.a.* Hub 3](https://nextcloud.com/blog/maintenance-releases-25-0-1-24-0-7-and-23-0-11-are-out/), I decided to updated this tutorial to reflect its installation on Debian 11.
+update: With the release of the first update to [Nextcloud 25 *a.k.a.* Hub 3](https://nextcloud.com/blog/maintenance-releases-25-0-1-24-0-7-and-23-0-11-are-out/), I decided to update this tutorial to reflect its installation on Debian 11.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
