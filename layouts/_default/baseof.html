@@ -16,7 +16,7 @@
     {{ $js := resources.Get "js/custom.js" | resources.Minify | resources.Fingerprint }}
     <script async defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{ $count := resources.Get "js/count.js" | resources.Minify | resources.Fingerprint }}
-    <script async defer data-goatcounter="https://stats.emanuelpina.pt/count" src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
+    <script async defer data-website-id="468666c3-884c-4342-ae2e-b25690248c2e" data-host-url="https://stats.emanuelpina.pt" src="{{ $count.RelPermalink }}" integrity="{{ $count.Data.Integrity }}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ $bundlecss.RelPermalink }}" integrity="{{ $bundlecss.Data.Integrity }}" crossorigin="anonymous" />
     <link rel="shortcut icon" href="{{.Site.Params.imagecdn}}v1558565870/favicon.png" />
     {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
