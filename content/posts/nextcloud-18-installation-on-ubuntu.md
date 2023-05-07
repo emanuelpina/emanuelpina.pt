@@ -1,7 +1,7 @@
 ---
-title: "Nextcloud 25 Installation on Debian"
+title: "Nextcloud 26 Installation on Debian"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2022-11-20T11:21:42+01:00
+publishDate: 2023-05-07T09:19:42+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
@@ -9,7 +9,7 @@ tags: [Nextcloud, Debian, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: With the release of the first update to [Nextcloud 25 *a.k.a.* Hub 3](https://nextcloud.com/blog/maintenance-releases-25-0-1-24-0-7-and-23-0-11-are-out/), I decided to update this tutorial to reflect its installation on Debian 11.
+update: With the release of the first update to [Nextcloud 26 *a.k.a.* Hub 4](https://nextcloud.com/blog/updates-26-0-1-and-25-0-6-are-out-get-them-now/), as usual, I updated this tutorial to reflect its installation on Debian 11.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
@@ -17,6 +17,7 @@ aliases:
     - /nextcloud-22-installation-on-debian/
     - /nextcloud-23-installation-on-debian/
     - /nextcloud-24-installation-on-debian/
+    - /nextcloud-25-installation-on-debian/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Debian!
@@ -31,18 +32,18 @@ I’m currently using Debian 11, but these instructions may be equally valid for
 
 <!--more-->
 
-## Download Nextcloud 25
+## Download Nextcloud 26
 
-To download Nextcloud 25, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 26, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
-# wget https://download.nextcloud.com/server/releases/nextcloud-25.0.1.zip
+# wget https://download.nextcloud.com/server/releases/latest.zip
 ```
 
 With the archive downloaded, now unzip it. We’ll also attempt to install `unzip`, in case we don’t have it installed already. The `-d` switch specifies the target directory, so the archive will be extracted to `/var/www/nextcloud`:
 ```plain
 # sudo apt install unzip
-# sudo unzip nextcloud-25.0.1.zip -d /var/www
+# sudo unzip latest.zip -d /var/www
 ```
 
 Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write to it:
@@ -277,13 +278,13 @@ server {
     client_body_buffer_size 512k;
 
     # HTTP response headers borrowed from Nextcloud `.htaccess`
-    add_header Referrer-Policy                      "no-referrer"   always;
-    add_header X-Content-Type-Options               "nosniff"       always;
-    add_header X-Download-Options                   "noopen"        always;
-    add_header X-Frame-Options                      "SAMEORIGIN"    always;
-    add_header X-Permitted-Cross-Domain-Policies    "none"          always;
-    add_header X-Robots-Tag                         "none"          always;
-    add_header X-XSS-Protection                     "1; mode=block" always;
+    add_header Referrer-Policy                      "no-referrer"       always;
+    add_header X-Content-Type-Options               "nosniff"           always;
+    add_header X-Download-Options                   "noopen"            always;
+    add_header X-Frame-Options                      "SAMEORIGIN"        always;
+    add_header X-Permitted-Cross-Domain-Policies    "none"              always;
+    add_header X-Robots-Tag                         "noindex, nofollow" always;
+    add_header X-XSS-Protection                     "1; mode=block"     always;
 
     # Opt out of Google Chrome tracking everything you do.
     # Note: if you’re reading this, stop using Google Chrome.
