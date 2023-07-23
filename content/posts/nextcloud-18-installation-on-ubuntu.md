@@ -1,15 +1,15 @@
 ---
-title: "Nextcloud 26 Installation on Debian"
+title: "Nextcloud 27 Installation on Debian"
 date: 2020-01-26T14:41:14+01:00
-publishDate: 2023-05-07T09:19:42+01:00
+publishDate: 2023-07-23T17:34:51+01:00
 draft: false
 thumbnail: v1567799486/2019/nextcloud.png
 categories: [SysAdmin]
-tags: [Nextcloud, Debian, VPS]
+tags: [Debian, Nextcloud, VPS]
 readmore: "Read the tutorial"
 tableofcontents: true
 summarize: true
-update: With the release of the first update to [Nextcloud 26 *a.k.a.* Hub 4](https://nextcloud.com/blog/updates-26-0-1-and-25-0-6-are-out-get-them-now/), as usual, I updated this tutorial to reflect its installation on Debian 11.
+update: With the releases of [Nextcloud 27 *a.k.a.* Hub 5](https://nextcloud.com/blog/introducing-hub-5-first-to-deliver-self-hosted-ai-powered-digital-workspace/) and [Debian 12 *a.k.a.* Bookworm](https://bits.debian.org/2023/06/bookworm-released.html), time have come to update this tutorial.
 aliases:
     - /nextcloud-18-installation-on-ubuntu/
     - /nextcloud-20-installation-on-ubuntu/
@@ -18,6 +18,7 @@ aliases:
     - /nextcloud-23-installation-on-debian/
     - /nextcloud-24-installation-on-debian/
     - /nextcloud-25-installation-on-debian/
+    - /nextcloud-26-installation-on-debian/
 ---
 
 Finally, I'll now cover the installation of Nextcloud on Debian!
@@ -26,15 +27,15 @@ At this point, is expected that you already had:
 + Choose a VPS provider and [concluded the initial setup of your Debian server](/debian-server-initial-setup/);
 + Installed [Nginx](/nginx-installation-on-debian/);
 + Installed [PostgreSQL](/postgresql-installation-on-debian/);
-+ Installed [PHP 8.1](/php-installation-on-debian/).
++ Installed [PHP 8.2](/php-installation-on-debian/).
 
-I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
+I’m currently using Debian 12, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
-## Download Nextcloud 26
+## Download Nextcloud 27
 
-To download Nextcloud 26, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
+To download Nextcloud 27, change into the `/tmp` folder, to keep things clean, and use `wget` to download the archive:
 ```plain
 # cd /tmp
 # wget https://download.nextcloud.com/server/releases/latest.zip
@@ -55,14 +56,14 @@ Now we’ll have to change the owner of `/var/www/nextcloud` so Nginx can write 
 
 Beyond the ones we [installed previously](/php-installation-on-debian/#install-php), Nextcloud requires some additional PHP modules. To install them, run the following command:
 ```plain
-# sudo apt install php8.1-curl php8.1-dom php8.1-gd php8.1-mbstring php8.1-simplexml php8.1-xmlreader php8.1-xmlwriter php8.1-zip php8.1-bz2 php8.1-intl php8.1-ldap php8.1-smbclient php8.1-imap php8.1-bcmath php8.1-gmp php8.1-imagick
+# sudo apt install php8.2-curl php8.2-gd php8.2-mbstring php8.2-xml php8.2-zip php8.2-bz2 php8.2-intl php8.2-ldap php8.2-imap php8.2-bcmath php8.2-gmp php8.2-imagick
 ```
 
 ### Configure PHP
 
 To meet the requirements of Nextcloud we need to make some changes in PHP configuration. The first one is changing the `memory_limit`. This setting is in **php.ini**, we can edit it running:
 ```plain
-# sudo nano /etc/php/8.1/fpm/php.ini
+# sudo nano /etc/php/8.2/fpm/php.ini
 ```
 
 Search for `memory_limit` and change it to `512M`.
@@ -71,7 +72,7 @@ Search for `memory_limit` and change it to `512M`.
 
 Another thing is that as we're using `php-fpm`, system environment variables like PATH, TMP or others are not automatically populated. A PHP call like `getenv('PATH');` can therefore return an empty result. So we need to manually configure the environment variables in **www.conf**. To edit this file run:
 ```plain
-# sudo nano /etc/php/8.1/fpm/pool.d/www.conf
+# sudo nano /etc/php/8.2/fpm/pool.d/www.conf
 ```
 
 Usually, near the bottom of the file, we will find some or all of the environment variables already, but commented out like this:
@@ -93,7 +94,7 @@ env[TMP] = /tmp
 
 With this changes done, restart the PHP service:
 ```plain
-# sudo systemctl restart php8.1-fpm
+# sudo systemctl restart php8.2-fpm
 ```
 
 ## Create PostgreSQL User and Database
@@ -105,12 +106,12 @@ To create a user and database for Nextcloud we first need to login to PostgreSQL
 
 Then create a username (choose a **username** and **password** according to your preferences):
 ```postgres
-CREATE USER username WITH PASSWORD 'password';
+CREATE USER username WITH PASSWORD 'password' CREATEDB;
 ```
 
 Create a database:
 ```postgres
-CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UNICODE';
+CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UTF8';
 ```
 
 Set the user you created as the owner of the database:
@@ -121,6 +122,7 @@ ALTER DATABASE nextcloud OWNER TO username;
 Grant the user all the privileges over the database:
 ```postgres
 GRANT ALL PRIVILEGES ON DATABASE nextcloud TO username;
+GRANT ALL PRIVILEGES ON SCHEMA public TO username;
 ```
 
 To quit the PostgreSQL prompt, run:
@@ -135,12 +137,12 @@ We'll now create a Nginx _server block_ to nextcloud. I'm naming it **nextcloud*
 # sudo nano /etc/nginx/sites-available/nextcloud
 ```
 
-Copy the following content to the file and change the `server_name` from **box.emanuelpina.ml** to the domain address you want use:
+Copy the following content to the file and change the `server_name` from **box.emanuelpina.pt** to the domain address you want use:
 ```nginx
 server {
     listen 80;
     listen [::]:80;
-    server_name box.emanuelpina.ml;
+    server_name box.emanuelpina.pt;
 }
 ```
 
@@ -179,7 +181,7 @@ We'll then be presented with a list of all domains enabled on our server:
 ```plain
 Which names would you like to activate HTTPS for?
 -------------------------------------------------------------------------------
-1: box.emanuelpina.ml
+1: box.emanuelpina.pt
 -------------------------------------------------------------------------------
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel):
@@ -191,14 +193,14 @@ If that’s successful, Certbot will finish with a message like below. {{< marke
 
 ```plain {hl_lines=["6-9"]}
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Congratulations! You have successfully enabled https://box.emanuelpina.ml
+Congratulations! You have successfully enabled https://box.emanuelpina.pt
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/box.emanuelpina.ml/fullchain.pem
+   /etc/letsencrypt/live/box.emanuelpina.pt/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/box.emanuelpina.ml/privkey.pem
+   /etc/letsencrypt/live/box.emanuelpina.pt/privkey.pem
 ...
 ```
 
@@ -212,7 +214,7 @@ And replace its content with the following code. {{< marker yellow >}}Don't forg
 ```nginx {hl_lines=[15,27,"32-33"]}
 upstream php-handler {
     #server 127.0.0.1:9000;
-    server unix:/var/run/php/php8.1-fpm.sock;
+    server unix:/var/run/php/php8.2-fpm.sock;
 }
 
 # Set the `immutable` cache control options only for assets with a cache busting `v` argument
@@ -266,7 +268,7 @@ server {
     gzip_comp_level 4;
     gzip_min_length 256;
     gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+    gzip_types application/atom+xml text/javascript application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
     # Pagespeed is not supported by Nextcloud, so if your server is built
     # with the `ngx_pagespeed` module, uncomment this line to disable it.
@@ -296,6 +298,15 @@ server {
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
+
+    # Add .mjs as a file extension for javascript
+    # Either include it in the default mime.types list
+    # or include you can include that list explicitly and add the file extension
+    # only for Nextcloud like below:
+    include mime.types;
+    types {
+        text/javascript js mjs;
+    }
 
     # Specify how to handle directories -- specifying `/index.php$request_uri`
     # here as the fallback means that Nginx always exhibits the desired behaviour
@@ -432,16 +443,16 @@ Enabling memory caching can significantly improve the perfomance of your Nextclo
 
 To install **APCu**, go back to your terminal and run the following commands:
 ```plain
-# sudo apt install php8.1-apcu
+# sudo apt install php8.2-apcu
 ```
 
 {{< box red >}}
-APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/8.1/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
+APCu is disabled by default on CLI which could cause issues with Nextcloud’s cron jobs. Make sure to set `apc.enable_cli` to `1` on `/etc/php/8.2/cli/php.ini` or append `--define apc.enable_cli=1` to the cron job command.
 {{< /box >}}
 
 And to install **Redis**, run:
 ```plain
-# sudo apt install redis-server php8.1-redis
+# sudo apt install redis-server php8.2-redis
 ```
 
 Then restart Nginx:

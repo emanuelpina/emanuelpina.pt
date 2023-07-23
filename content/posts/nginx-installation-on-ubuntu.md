@@ -17,7 +17,7 @@ This is the second post on the road to self-host Nextcloud. At this point we hav
 
 Now, we're going to cover the installation of Nginx, the use of Let's Encrypt SSL certificates and the configuration of the web server to use HTTP Strict Transport Security (HSTS).
 
-I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
+I’m currently using Debian 12, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
@@ -41,14 +41,18 @@ We can check if it’s working by running:
 If all went well, we should get something like this:
 ```plain
 ● nginx.service - A high performance web server and a reverse proxy server
-   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-   Active: active (running) since Fri 2019-10-04 17:40:28 UTC; 9s ago
-     Docs: man:nginx(8)
- Main PID: 17673 (nginx)
-    Tasks: 2 (limit: 1152)
-   CGroup: /system.slice/nginx.service
-           ├─17673 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-           └─17676 nginx: worker process
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2023-07-23 16:43:52 UTC; 1min 17s ago
+       Docs: man:nginx(8)
+    Process: 2471 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 2472 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 2495 (nginx)
+      Tasks: 2 (limit: 2251)
+     Memory: 1.8M
+        CPU: 25ms
+     CGroup: /system.slice/nginx.service
+             ├─2495 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─2496 "nginx: worker process"
 ```
 
 ## Adjust the Firewall
@@ -63,10 +67,11 @@ List the application configurations that **UFW** knows how to work with by typin
 We get a listing of the application profiles, like this:
 ```plain
 Available applications:
+  ...
   Nginx Full
   Nginx HTTP
   Nginx HTTPS
-  OpenSSH
+  ...
 ```
 
 There are three profiles available for Nginx:
@@ -99,19 +104,19 @@ Add the following HTML to the file:
 ```html
 <html>
     <head>
-        <title>Welcome to EmanuelPina.ml!</title>
+        <title>Welcome to EmanuelPina.pt!</title>
     </head>
     <body>
         <h1>Hello World!</h1>
-        <p><b>The emanuelpina.ml server block is working!</b></p>
+        <p><b>The emanuelpina.pt server block is working!</b></p>
     </body>
 </html>
 ```
 Save and close the file when you're finished.
 
-In order for Nginx to serve this content, we need to create a _server block_ with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one. We'll name it **emanuelpina.ml** but you can name it whatever you like:
+In order for Nginx to serve this content, we need to create a _server block_ with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one. We'll name it **emanuelpina.pt** but you can name it whatever you like:
 ```plain
-# sudo nano /etc/nginx/sites-available/emanuelpina.ml
+# sudo nano /etc/nginx/sites-available/emanuelpina.pt
 ```
 
 Paste in the following configuration block, which is similar to the default, but updated for our new directory and domain name:
@@ -123,7 +128,7 @@ server {
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
 
-    server_name emanuelpina.ml www.emanuelpina.ml;
+    server_name emanuelpina.pt www.emanuelpina.pt;
 
     location / {
             try_files $uri $uri/ =404;
@@ -134,7 +139,7 @@ server {
 
 Next, let’s enable the site by creating a link from this file to the `sites-enabled` directory, which Nginx reads from during startup:
 ```plain
-# sudo ln -s /etc/nginx/sites-available/emanuelpina.ml /etc/nginx/sites-enabled/
+# sudo ln -s /etc/nginx/sites-available/emanuelpina.pt /etc/nginx/sites-enabled/
 ```
 
 Then, test to make sure that there are no syntax errors in the Nginx files:
@@ -173,8 +178,8 @@ We'll then be presented with a list of all domains enabled on our server:
 ```plain
 Which names would you like to activate HTTPS for?
 -------------------------------------------------------------------------------
-1: emanuelpina.ml
-2: www.emanuelpina.ml
+1: emanuelpina.pt
+2: www.emanuelpina.pt
 -------------------------------------------------------------------------------
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel):
@@ -195,13 +200,13 @@ Let's run our domain on [this SSL Server Test](https://www.ssllabs.com/ssltest/)
 ![SSL Labs First Test Result](https://img.emanuelpina.pt/c_fit,f_auto,q_auto,w_700/v1570216401/2021/nginx-installation-five.png)
 
 
-We got an **A**. Not bad, but [we can do better](https://invidio.us/watch?v=m-lSlJc_5NE/)! To do so we'll enable HSTS.
+We got an **A**. Not bad, but we can do better! To do so we'll enable HSTS.
 
 HSTS stands for [HTTP Strict Transport Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security/) and is a response header that informs the browser that it should never load a site using HTTP and should automatically convert all attempts to access it to HTTPS requests instead.
 
 Enabling HSTS is as easy as editting our _server block_:
 ```plain
-# sudo nano /etc/nginx/sites-available/emanuelpina.ml
+# sudo nano /etc/nginx/sites-available/emanuelpina.pt
 ```
 
 And adding `add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;` just bellow the **server_name**, like this:
@@ -209,7 +214,7 @@ And adding `add_header Strict-Transport-Security "max-age=31536000; includeSubDo
 server {
     ###
     				
-    server_name emanuelpina.ml www.emanuelpina.ml;
+    server_name emanuelpina.pt www.emanuelpina.pt;
 				
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 

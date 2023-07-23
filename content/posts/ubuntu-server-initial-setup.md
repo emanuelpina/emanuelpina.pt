@@ -17,7 +17,7 @@ This is the first of a series of posts that will cover from the deployment of a 
 
 On this post I will cover the use of SSH to connect to a server, the creation of a new user with administrative privileges and the setup of a firewall.
 
-I’m currently using Debian 11, but these instructions may be equally valid for other versions of Debian and Ubuntu.
+I’m currently using Debian 12, but these instructions may be equally valid for other versions of Debian and Ubuntu.
 
 <!--more-->
 
@@ -41,7 +41,7 @@ While managing our server, we'll spend a lot of time working on a terminal sessi
 
 To do that we've to make use of an SSH key, which is a pair of encryption keys mathematically linked to each other: a private key and a public key. The public key is used to encrypt a message whereas the private key is used to decrypt it. There are several ways to generate an SSH key. Usually the SSH client we'll use is capable of doing it and that's probably the easiest way. For Windows, the most popular SSH client is [Putty](https://putty.org/), but I use [Termius](https://www.termius.com/). To know more on how to connect to a server using SSH, see [this tutorial from DigitalOcean](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/).
 
-So, we'll keep our private key to ourself, to use with the SSH client, and install/copy the public key to our server. Almost any VPS provider nowadays have an option on their console that let's add our public SSH keys so we can chose to automatically add them upon server deployment. That's how I do it. But if you prefer to install/copy your SSH key only after the server deployment, see [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804).
+So, we'll keep our private key to ourself, to use with the SSH client, and install/copy the public key to our server. Almost any VPS provider nowadays have an option on their console that let's add our public SSH keys so we can chose to automatically add them upon server deployment. That's how I do it. But if you prefer to install/copy your SSH key only after the server deployment, see [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-debian-11).
 
 Moving on, after creating a new Debian server there are a few configuration steps that we should take to increase security and usability.
 
@@ -137,4 +137,4 @@ In a following post I will cover the [installation of Nginx](/nginx-installation
 
 {{< call-for-contribution >}}
 
-[^1]: [Initial Server Setup with Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
+[^1]: [Initial Server Setup with Debian 11](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-11)
