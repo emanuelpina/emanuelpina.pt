@@ -21,12 +21,6 @@
     force = true
 
 [[redirects]]
-    from = "https://emanuelpina.ml/*"
-    to = "https://emanuelpina.pt/:splat"
-    status = 301
-    force = true
-
-[[redirects]]
     from = "https://mnlpn.xyz/*"
     to = "https://emanuelpina.pt/:splat"
     status = 301
